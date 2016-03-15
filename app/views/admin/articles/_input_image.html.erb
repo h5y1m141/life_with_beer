@@ -1,0 +1,39 @@
+<div class="tab-pane" id="tab5" ng-class="{'active':selectedTab == 4}">
+  <header class="panel-heading">
+    <i class="fa fa-edit article__contents__icon"></i>
+    画像登録
+  </header>
+  <div class="panel-body">
+    <form class="form-horizontal">
+      <div class="row"></div>
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label class="col-xs-1">画像の説明文</label>
+          <div class="col-xs-10">
+            <textarea class="form-control" cols="40" name="mainTitle" ng-model="imageDescription" rows="3" type="text"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-1">引用元画像URL</label>
+          <div class="col-xs-10">
+            <input class="form-control" ng-model="originURL" type="text"></input>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-1">アップロード画像</label>
+          <div class="col-xs-10">
+            <input class="imageFile" file-model="imageFile" ng-hide="remoteImageURL" type="file"></input>
+            <img ng-if="imageFileSrc" ng-src="{{imageFileSrc %> %>"/>
+            <br/>
+            <button class="btn-info" ng-click="uploadImage(imageFileSrc,'img')" ng-if="imageFileSrc">アップロードする</button>
+            <input class="form-control" ng-hide="imageFileSrc" ng-model="remoteImageURL" placeholder="外部サイトから取り込みたい場合にはこちらに入力"></input>
+            <article_image>
+            </article_image>
+            <br/>
+            <button class="btn-info" ng-click="remoteImage()" ng-if="remoteImageURL">リモートの画像を取得してアップロードする</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+//= require admin/twitter/bootstrap/transition
+//= require admin/twitter/bootstrap/alert
+//= require admin/twitter/bootstrap/modal
+//= require admin/twitter/bootstrap/dropdown
+//= require admin/twitter/bootstrap/scrollspy
+//= require admin/twitter/bootstrap/tab
+//= require admin/twitter/bootstrap/tooltip
+//= require admin/twitter/bootstrap/popover
+//= require admin/twitter/bootstrap/button
+//= require admin/twitter/bootstrap/collapse
+//= require admin/twitter/bootstrap/carousel
+//= require admin/twitter/bootstrap/affix

@@ -1,0 +1,25 @@
+<div class='container-fluid'>
+  <%= render partial: '/admin/pagenation', locals: {resouces: @articles }%>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>下書きページのURL</th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <% if(article.preview_key) %>
+            <td><%= link_to preview_url(article), preview_url(article) %></td>
+          <% else %>
+            <td>URLが設定されていません</td>
+          <% end %>
+          <td><%= link_to '編集画面へ', edit_admin_article_path(article.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

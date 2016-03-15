@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h2>
+      <%= @item.name %>
+    </h2>
+  </div>
+</div>
+<div class="row" ng-controller="ItemCtrl" ng-init="init('<%= @item.thumbnail.to_json %>', '<%= @item.pictures.to_json %>')">
+  <%= form_for(@item, url: admin_item_path) do |f| %>
+    <div class="col-xs-6">
+      <img ng-src="{{ thumbnail.image.url }}">
+      <br/>
+      <%= f.label :tags, 'タグ' %>
+      <% tag_value = @item.tags.map{|tag| tag[:name]} %>
+      <%= f.text_field :name, id: 'tags', name: 'tags', value: tag_value.join(",")  %><br />
+      <div class="actions">
+        <%= link_to '戻る', admin_items_path, class: 'btn btn-default' %>
+        <%= f.submit '更新する', class: 'btn btn-primary'%>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div>
+        <% unless @item.pictures.empty? %>
+          <ul class="list-inline">
+            <li ng-repeat="picuture in pictures track by $index">
+              <img ng-click="selectThumbnail($index)" ng-src="{{ picuture.image.medium_thumb.url }}">
+            </li>
+          </ul>
+        <% end %>
+        <%= f.hidden_field :thumbnail, id: 'thumbnail', name: 'thumbnail', value: '{{ thumbnail }}'  %><br />
+      </div>
+      <table class="table">
+        <tr>
+          <th class="col-xs-3">このアイテムについて</th>
+          <td><%= @item.description %></td>
+        </tr>
+        <tr>
+          <th class="col-xs-3">金額</th>
+          <td><%= number_to_currency(@item.original_price, locale: 'jp')%></td>
+        </tr>
+        <tr>
+          <th class="col-xs-3">セール金額</th>
+          <td><%= number_to_currency(@item.discount_price, locale: 'jp')%></td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+</div>
+
+

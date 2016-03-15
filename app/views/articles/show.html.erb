@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h2>
+      <%= @article.title %>
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <% @article.elements.each do |element| %>
+      <% if(element[:tag_name] == 'sub_head') %>
+        <h3>
+          <%= element[:element_data] %>
+        </h3>
+      <% elsif(element[:tag_name] == 'description') %>
+        <p>
+          <%= element[:element_data] %>
+        </p>
+      <% elsif(element[:tag_name] == 'instagram') %>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="5"><a href="<%= element[:element_data] %>" target="_blank"></a></blockquote>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to '戻る', articles_path, class: 'btn btn-default' %>

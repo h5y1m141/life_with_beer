@@ -1,0 +1,17 @@
+<div class="tab-pane" id="tab1" ng-class="{'active':selectedTab == 0}">
+  <section class="panel" ng-hide="requiredElementsFlag">
+    <div class="panel-body">
+      <form class="form-horizontal">
+        <div class="row">
+          <div class="form-group">
+            <label class="col-xs-1">タイトル</label>
+            <div class="col-xs-10">
+              <input size="80" class="article__contents__title article__contents__title--main" name="mainTitle" ng-model="mainTitle" placeholder="記事コンテンツのメインタイトルを入力してください" type="text"></input>
+              <title-length data="mainTitle"/>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

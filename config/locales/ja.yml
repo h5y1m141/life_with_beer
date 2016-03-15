@@ -1,0 +1,18 @@
+jp:
+  number:
+    currency:
+      format:
+        unit: "円"
+        format: "%n%u"
+        negative_format: "-%n%u"
+        precision: 0
+  helpers:
+    remember_me: '次回からパスワード入力を省略'
+    submit:
+      create: "登録する"
+      update: "更新する"
+      submit: "保存する"
+    label:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"

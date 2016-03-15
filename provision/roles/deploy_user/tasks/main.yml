@@ -1,0 +1,29 @@
+---
+
+# https://github.com/crushlovely/ansible-deploy-user
+- name: Create group
+  group: name={{ group }} state=present
+
+- name: Ensure sudoers.d is enabled
+  lineinfile: dest=/etc/sudoers state=present backup=yes regexp='^#includedir /etc/sudoers.d' line='#includedir /etc/sudoers.d'
+
+- name: Set up password-less sudo for user
+  copy: content="%{{ user }} ALL=(ALL) NOPASSWD:ALL" dest="/etc/sudoers.d/{{ user }}" owner=root group=root mode=0440
+
+- name: Create user
+  user: name={{ user }} state=present group={{ group }} shell=/bin/bash
+
+- name: copy ssh
+  template: src=/vagrant/id_rsa.pub dest=/home/ops/id_rsa.pub
+  
+- name: Create .ssh
+  shell: mkdir /home/ops/.ssh; chmod 700 /home/ops/.ssh
+  
+- name: ssh authorized key
+  shell: cd /home/ops/.ssh; touch authorized_keys; chmod 600 authorized_keys; cat /home/ops/id_rsa.pub >> authorized_keys
+
+- name: change owner & group
+  shell: chown -R ops /home/ops/.ssh; chgrp -R ops /home/ops/.ssh
+
+# - name: SSH setting
+#   authorized_key: user={{ user }} key="{{ lookup('file', '/home/ops/id_rsa.pub') }}" manage_dir=yes path='/home/ops'

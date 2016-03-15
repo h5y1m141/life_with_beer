@@ -1,0 +1,30 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ja:
+  breadcrumbs:
+    application:
+      root: "Index"
+    pages:
+      pages: "Pages"
+  helpers:
+    actions: "Actions"
+    links:
+      back: "戻る"
+      cancel: "cancel"
+      confirm: "本当によろしいですか？"
+      destroy: "削除"
+      new: "新規"
+      edit: "編集"
+    titles:
+      edit: "編集 %{model}"
+      save: "保存 %{model}"
+      new: "新規 %{model}"
+      delete: "削除 %{model}"
+  views:
+    pagination:
+      first: "&laquo; 先頭"
+      last: "最後 &raquo;"
+      next: "次 &rsaquo;"
+      previous: "&lsaquo; 前"
+      truncate: "&hellip;"

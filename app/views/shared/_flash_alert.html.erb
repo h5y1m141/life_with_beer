@@ -1,0 +1,9 @@
+<% if flash[:alert].present? %>
+  <div class="alert alert-block alert-danger">
+    <button class="close close-sm" data-dismiss="alert" type="button">
+      <i class="fa fa-times"></i>
+    </button>
+    <strong>Warning!</strong>
+    <%= flash[:alert] %>
+  </div>
+<% end %>

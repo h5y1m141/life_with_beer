@@ -1,0 +1,10 @@
+<div class="tab-pane" id="tab2" ng-class="{'active':selectedTab == 1}">
+  <div class="panel-body">
+    <textarea class="form-control" id="description" name="description" ng-model="description" placeholder=" ページ内の見出しや説明文はここから入力します"></textarea>
+    <div ng-show="description">
+      <div>
+        <description data="description" contents="contentsArea">説明文</description>
+      </div>
+    </div>
+  </div>
+</div>

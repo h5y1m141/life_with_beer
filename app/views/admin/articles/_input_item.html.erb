@@ -1,0 +1,30 @@
+<div class="tab-pane" id="tab3" ng-class="{'active':selectedTab == 2}">
+  <header class="panel-heading">
+    <i class="fa fa-picture-o article__contents__icon">
+      アイテムの登録
+    </i>
+  </header>
+  <div class="panel-body">
+    <div class="col-xs-6">
+      <input class="form-control" id="tagName" name="tagName" ng-model="tagName" tag placeholder="タグ名を入力すると関連するアイテムが検索できます" type="text" value="{{ tagName }}"></input>
+    </div>
+    <div class="col-xs-6">
+      <input class="form-control" id="brandName" name="brandName" ng-model="brandName" brand placeholder="ブランド名を入力すると関連するアイテムが検索できます" type="text" value="{{ brandName }}"></input>
+    </div>    
+    <div ng-if="items.length > 0">
+      <div class="article__contents__item" ng-repeat="item in items">
+        <img ng-click="selectItem(item)" ng-src="{{ item.thumbnail.image }}"/>
+      </div>
+      <div ng-if="lastPage == false">
+        <button class="btn-default btn-xs" ng-click="readMore()">さらにアイテムを読み込む</button>
+      </div>
+    </div>
+    <div ng-if="selectedItems.length > 0">
+      <div class="article__contents__item" ng-repeat="item in selectedItems">
+        <img ng-src="{{ item.thumbnail.image %> %> "/>
+      </div>
+      <hr/>
+      <button class="btn-info btn-md" ng-click="insertItems()">アイテムを登録する</button>
+    </div>
+  </div>
+</div>

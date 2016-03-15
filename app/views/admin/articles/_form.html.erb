@@ -1,0 +1,28 @@
+<div>
+  <h4>詳細情報</h4>
+  <%= form_for(@article, url: admin_article_path,  html: { class: "form-horizontal", role:"form"}) do |f| %>
+    <%= f.hidden_field :id, value: @article.id %>
+    <% unless @article.elements.empty? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>要素のタグ情報</th>
+            <th>記事データ</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @article.elements.each do |element| %>
+          <tr>
+            <td>
+              <%= f.hidden_field :id, value: element.id %>
+              <%= element[:tag_name] %>
+            </td>
+            <td><%= f.text_field 'element_data', value: element[:element_data], class: 'form-control' %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
+</div>

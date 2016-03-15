@@ -1,0 +1,44 @@
+<section class="item__main" ng-controller='ArticleCtrl'>
+  <script defer="defer" src="//platform.instagram.com/en_US/embeds.js"></script>
+  <section class="wrapper">
+    <div class="row">
+      <div ng-show="articleCreated" class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        記事の作成が完了しました
+      </div>
+      <div ng-show="articleNotCreated" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        記事の作成に失敗しました
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 article__contents__menu">
+        <div class="pull-right">
+          <ul class="list-inline">
+            <li><button class="btn-info" ng-click="saveArticle()">下書き保存</button></li>
+            <li><button class="btn-info" ng-click="saveArticle()">公開保存</button></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="nav nav-tabs">
+            <li data-toggle="tab" ng-repeat="tab in tabs" ng-click='selectTab($index)' ng-class="{'active':selectedTab == $index}">
+              <a data-toggle="tab" href="#">
+                {{ tab.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <%= render partial: "required_element" %>
+          <%= render partial: "input_text" %>
+          <%= render partial: "input_item" %>
+          <%= render partial: "input_instagram" %>
+          <%= render partial: "input_image" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <%= render partial: "contents_preview" %>
+    </div>
+  </section>
+</section>

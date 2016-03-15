@@ -1,0 +1,11 @@
+---
+- name: install MariaDB
+  yum: name={{ item }} state=installed
+  with_items:
+    - mariadb
+    - mariadb-libs
+    - mariadb-server
+  tags: mariadb
+- name: start MariaDB
+  shell: systemctl enable mariadb.service; systemctl start mariadb.service
+  tags: mariadb

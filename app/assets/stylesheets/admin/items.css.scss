@@ -1,0 +1,24 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.item {
+  &__name {
+    height: 100;
+  }
+  &__description {
+    padding: 5px;
+  }
+  &__pictures {
+    &-no-thumbnail {
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        border-top: 20px solid #3dcc63;
+        border-left: 20px solid transparent;
+        bottom: 310px;
+        right: -12%;
+      }
+    }
+  }  
+}

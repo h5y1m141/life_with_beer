@@ -1,0 +1,19 @@
+---
+- name: remove MariaDB
+  yum: name={{ item }} state=absent
+  with_items:
+    - mariadb
+    - mariadb-libs
+    - mariadb-server
+  tags: mysql
+- name: add repositry
+  yum: name={{ item }}
+  with_items:
+    - http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+  tags: mysql
+- name: install MySQL
+  shell: yum -y install mysql-community-server
+  tags: mysql
+- name: start MariaDB
+  shell: systemctl enable mysqld.service; systemctl start mysqld.service
+  tags: mysql

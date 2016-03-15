@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading">条件検索</div>
+  <div class="panel-body">
+    <%= search_form_for @search, url: admin_items_path do |f| %>
+      <%= f.label :original_price_gteq, '最低価格' %>
+      <%= f.text_field :original_price_gteq %>
+      <%= f.label :original_price_lteq, '最高価格' %>
+      <%= f.text_field :original_price_lteq %>
+      <div>
+        <%= f.submit '検索する', class: 'btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

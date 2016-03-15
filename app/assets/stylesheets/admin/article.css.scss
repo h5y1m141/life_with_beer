@@ -1,0 +1,20 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.article__contents {
+  &__edit__area {
+    border:1px dotted #999;
+  }
+  &__preview {
+    border:1px dotted #999;
+    margin: 20px;
+    width: 60%;
+    &__thumb {
+      width: 200px;
+    }
+  }
+  &__item {
+    display: inline;
+    margin: 3px;
+  }
+}

@@ -1,0 +1,48 @@
+<section class='article__main' ng-controller='ArticleCtrl' ng-init="init('<%= @article.to_json %>')">
+  <script defer="defer" src="//platform.instagram.com/en_US/embeds.js"></script>
+  <section class="wrapper">
+    <div class="row">
+      <div class="col-sm-12 article__contents__menu">
+        <div class="pull-right">
+          <ul class="list-inline">
+            <% if @article.draft? %>
+              <li><button class="btn-info" ng-click="saveArticle()">公開保存</button></li>
+            <% else %>
+              <li><button class="btn-info" ng-click="saveArticle()">下書き保存</button></li>
+            <% end %>
+          </ul>
+        </div>
+        <div>
+          <ul class="nav nav-tabs">
+            <li data-toggle="tab" ng-repeat="tab in tabs" ng-click='selectTab($index)' ng-class="{'active':selectedTab == $index}">
+              <a data-toggle="tab" href="#">
+                {{ tab.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <%= render partial: "required_element" %>
+          <%= render partial: "input_text" %>
+          <%= render partial: "input_item" %>
+          <%= render partial: "input_instagram" %>
+          <%= render partial: "input_image" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <%= render partial: "contents_preview" %>
+    </div>
+    <div class="row">
+      <div class='col-sm-12'>
+        <section class='panel'>
+          <header class='panel-heading'>
+            <h4>
+              <%= link_to '戻る', admin_articles_path %>
+            </h4>
+          </header>
+        </section>
+      </div>
+    </div>
+  </section>
+</section>

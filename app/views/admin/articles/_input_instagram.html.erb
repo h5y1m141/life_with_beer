@@ -1,0 +1,19 @@
+<div class="tab-pane" id="tab4" ng-class="{'active':selectedTab == 3}">
+  <header class="panel-heading">
+    <i class="fa fa-instagram article__contents__icon"></i>
+    Instagramの登録
+  </header>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-6">
+        <input class="form-control" name="instagram" ng-model="instagram" placeholder="Instagramの写真のURLを入力してください" type="text"></input>
+        <div ng-show="instagram">
+          <button class="btn-info" ng-click="insertInstagram()">写真を登録</button>
+        </div>
+      </div>
+      <div class="col-xs-6" ng-show="instagram">
+        <instagram data="instagram"></instagram>
+      </div>
+    </div>
+  </div>
+</div>
