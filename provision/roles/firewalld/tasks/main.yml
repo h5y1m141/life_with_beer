@@ -1,0 +1,17 @@
+---
+- name: enable firewall
+  shell: systemctl enable firewalld; systemctl start firewalld
+  tags: firewall
+- name: check default zone name
+  shell: firewall-cmd --get-default-zone
+  tags: firewall
+- name: allow http
+  shell: firewall-cmd --add-service=http --zone=public --permanent
+  tags: firewall
+- name: allow https
+  shell: firewall-cmd --add-service=https --zone=public --permanent
+  tags: firewall
+- name: reload to be able to apply firewall setting
+  shell: firewall-cmd --reload
+  tags: firewall
+

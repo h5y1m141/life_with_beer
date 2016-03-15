@@ -16,4 +16,4 @@
     - common
     - mysql
     - deploy_user
-    # - iptables
+    - firewalld
