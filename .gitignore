@@ -12,3 +12,5 @@
 .rbenv-gemsets
 /public/uploads
 .vagrant
+.vagrant/machines/default/virtualbox/*
+/provision/ssh_key/*

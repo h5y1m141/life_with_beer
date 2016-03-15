@@ -8,8 +8,12 @@
     rbenv_root: /home/vagrant/.rbenv
     rbenv_bin: /home/vagrant/.rbenv/libexec/rbenv
     group: ops
+    # NOTE: Password must be hashed. this is created with:
+    # openssl passwd -salt salty -1 あなたのパスワード
+    user_password: $1$salty$9LqYQSloA.dNYnW6izxVe/
     user: ops
   roles:
     - common
     - mysql
     - deploy_user
+    # - iptables
