@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         post :load_elements
       end
     end
+    resources :breweries, only: [:new, :create, :index, :edit, :update, :destroy]
   end
   root to: 'static_pages#index'
   get '/articles/preview/:preview_key', to: 'articles#preview'

@@ -1,0 +1,21 @@
+<div class='container-fluid'>
+  <%= render partial: '/admin/pagenation', locals: {resouces: @breweries }%>
+
+  <% @breweries.each_slice(4) do |column4_breweries| %>
+    <div class='row'>
+      <% column4_breweries.each do |brewery| %>
+        <div class='col-md-3 col-sm-6'>
+          <h4><%= brewery.name %></h4>
+          <ul class='list-inline'>
+            <li>
+              <%= link_to(admin_brewery_path(brewery), method: :delete, data:{ confirm: '削除してもいいですか？' }) do %>
+                <button class="btn btn-danger btn-sm">削除</button>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <%= render partial: '/admin/pagenation', locals: {resouces: @breweries }%>
+</div>
