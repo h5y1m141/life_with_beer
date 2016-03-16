@@ -14,7 +14,7 @@
   user: name={{ user }} state=present group={{ group }} shell=/bin/bash
 
 - name: copy ssh
-  template: src=/vagrant/id_rsa.pub dest=/home/ops/id_rsa.pub
+  template: src=/vagrant/provision/ssh_key/id_rsa.pub dest=/home/ops/id_rsa.pub
   
 - name: Create .ssh
   shell: mkdir /home/ops/.ssh; chmod 700 /home/ops/.ssh
@@ -24,6 +24,3 @@
 
 - name: change owner & group
   shell: chown -R ops /home/ops/.ssh; chgrp -R ops /home/ops/.ssh
-
-# - name: SSH setting
-#   authorized_key: user={{ user }} key="{{ lookup('file', '/home/ops/id_rsa.pub') }}" manage_dir=yes path='/home/ops'
