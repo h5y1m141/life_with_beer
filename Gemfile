@@ -46,8 +46,9 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'capistrano3-unicorn'  
+  gem 'capistrano3-unicorn'
   gem 'thin'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
@@ -59,7 +60,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rack-cors', :require => 'rack/cors'
   gem 'teaspoon-jasmine'
-  gem 'web-console', '~> 2.0'
 end
 
 group :test do
