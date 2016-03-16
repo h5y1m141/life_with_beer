@@ -39,14 +39,14 @@ gem 'seed-fu', '~> 2.3'
 gem 'devise', '~> 3.5'
 gem 'sitemap_generator'
 gem 'jp_prefecture'
+gem 'sprockets-rails', '~> 2.0' # https://github.com/modeset/teaspoon/issues/443
 
 group :development do
   gem 'annotate'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'capistrano3-unicorn'
-  gem 'web-console', '~> 2.0'
+  gem 'capistrano3-unicorn'  
   gem 'thin'
 end
 
@@ -59,6 +59,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rack-cors', :require => 'rack/cors'
   gem 'teaspoon-jasmine'
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do
