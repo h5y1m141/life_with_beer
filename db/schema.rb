@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160315063934) do
   add_index "articles", ["preview_key"], name: "index_articles_on_preview_key", using: :btree
 
   create_table "breweries", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name",       limit: 255, null: false
     t.string   "web_site",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -166,9 +166,8 @@ ActiveRecord::Schema.define(version: 20160315063934) do
   end
 
   create_table "social_accounts", force: :cascade do |t|
-    t.integer  "account_type", limit: 4
-    t.string   "name",         limit: 255
-    t.string   "url",          limit: 255
+    t.integer  "account_type", limit: 4,   null: false
+    t.string   "url",          limit: 255, null: false
     t.string   "comment",      limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
