@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UrbanOutdoorApp')
+angular.module('LifeWithBeerApp')
   .directive('previewItem',['$window', function($window) {
     return {
       restrict: 'E',

@@ -1,3 +1,11 @@
-新規登録
+<div class="row" ng-controller="BreweryCtrl">
+  <div class="col-xs-12">
+  <%= render partial: 'form' %>
+  </div>
+  <div class="col-xs-12">
+    <h3>SNSの設定情報</h3>
+    {{ selectedSocialAccounts }}
+  </div>
 
-<%= @brewery.name %>
+</div>
+

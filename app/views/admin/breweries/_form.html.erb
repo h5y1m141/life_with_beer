@@ -1,0 +1,28 @@
+<%= form_for(@brewery, url: admin_breweries_path, html: { class: 'form-horizontal'}) do |f| %>
+  <div class="col-xs-10">
+    <div class="form-group">
+      <%= f.label :name, '名前' , class: 'control-label col-xs-2' %>
+      <div class="col-xs-10">
+        <%= f.text_field :name, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :url, 'URL' , class: 'control-label col-xs-2' %>
+      <div class="col-xs-10">
+        <%= f.text_field :web_site, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :social_accounts, 'ソーシャルアカウント' , class: 'control-label col-xs-2' %>
+      <div class="col-xs-10">
+        <social-account-list accounts="selectedSocialAccounts" data="<%= @social_accounts.to_json %>"> </social-account-list>
+      </div>
+    </div>
+    <div class="col-xs-10">
+      <div class="actions">
+        <%= link_to '戻る', admin_breweries_path, class: 'btn btn-default' %>
+        <%= f.submit '作成する', class: 'btn btn-primary'%>
+      </div>
+    </div>
+  </div>
+<% end %>

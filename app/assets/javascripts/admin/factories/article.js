@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UrbanOutdoorApp')
+angular.module('LifeWithBeerApp')
   .factory('Article', ['$resource' ,function ($resource) {
     return $resource('/admin/articles/:id.json',{
       id: '@id'

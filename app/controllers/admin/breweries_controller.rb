@@ -9,6 +9,7 @@ class Admin::BreweriesController < AdminController
   
   def new
     @brewery = Brewery.new
+    @social_accounts = generate_social_account_list
   end
   
   def create
@@ -38,6 +39,16 @@ class Admin::BreweriesController < AdminController
   end
 
   def brewery_param
-    params.require(:brewery).permit(:name)
+    params.require(:brewery).permit(:name, :web_site)
   end  
+
+  def generate_social_account_list
+    # {"facebook"=>0, "twitter"=>1, "hatena"=>2・・という構造から
+    # [{:index=>0, :name=>"facebook"}, {:index=>1, :name=>"twitter"}という構造に変更するために
+    list =[]
+    SocialAccount.account_types.keys.each_with_index do|account, index|
+      list.push({index: index, name: account })
+    end
+    return list
+  end
 end

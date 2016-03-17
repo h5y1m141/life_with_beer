@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UrbanOutdoorApp')
+angular.module('LifeWithBeerApp')
   .directive('titleLength',['$compile', function($compile) {
     var selectTemplate = function(title){
       var safeLengthMessage = '<span class="label label-danger">文字数：{{ title.length }}</span>';

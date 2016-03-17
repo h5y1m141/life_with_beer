@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UrbanOutdoorApp')
+angular.module('LifeWithBeerApp')
   .directive('previewText', function($compile) {
     var selectTemplate = function(tag){
       var baseTemplate;
