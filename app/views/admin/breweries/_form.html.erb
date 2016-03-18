@@ -13,7 +13,13 @@
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :social_accounts, 'ソーシャルアカウント' , class: 'control-label col-xs-2' %>
+      <%= f.label :image, 'イメージ' , class: 'control-label col-xs-2' %>
+      <div class="col-xs-10">
+        <%= f.file_field :image, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :social_accounts, 'SNS情報' , class: 'control-label col-xs-2' %>
       <div class="col-xs-10">
         <social-account-list attributes="socialAccountsAttributes" accounts="selectedSocialAccounts" data="<%= @social_accounts.to_json %>"> </social-account-list>
       </div>

@@ -13,6 +13,7 @@ class Admin::BreweriesController < AdminController
   end
 
   def create
+    binding.pry
     @brewery = Brewery.new(brewery_params)
     if @brewery.save
       redirect_to admin_breweries_path, notice: "#{@brewery.name}を作成しました"
@@ -39,7 +40,7 @@ class Admin::BreweriesController < AdminController
   end
 
   def brewery_params
-    params.require(:brewery).permit(:name, :web_site, social_accounts_attributes: [:account_type, :url, :comment])
+    params.require(:brewery).permit(:name, :web_site, :image, social_accounts_attributes: [:account_type, :url, :comment])
   end
 
   def generate_social_account_list
@@ -54,7 +55,7 @@ class Admin::BreweriesController < AdminController
 
   def revise_params
     social_accounts = JSON.parse(params[:brewery][:social_accounts])
-    params[:brewery][:social_accounts_attributes] = social_accounts.map{|account| { account_type: account.keys.first.to_i, url: account.values.first }}
+    params[:brewery][:social_accounts_attributes] = social_accounts.map{|account| { account_type: account.keys.first.to_i, url: account.values.first }} unless social_accounts.first.empty?
     params[:brewery].delete(:social_accounts)
   end
 end

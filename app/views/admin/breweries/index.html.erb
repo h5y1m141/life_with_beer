@@ -5,6 +5,13 @@
     <div class='row'>
       <% column4_breweries.each do |brewery| %>
         <div class='col-md-3 col-sm-6'>
+          <%= link_to(edit_admin_brewery_path(brewery)) do %>
+            <% if brewery.image.url.nil? %>
+              <%= image_tag('logo/logo-medium.png', class: 'thumbnail') %>
+            <% else %>
+              <%= image_tag(brewery.image.medium_thumb.url, class: 'thumbnail') %>
+            <% end %>
+          <% end %>
           <h4><%= brewery.name %></h4>
           <ul class='list-inline'>
             <li>
