@@ -6,36 +6,31 @@ angular.module('LifeWithBeerApp')
       restrict: 'EA',
       scope: {
         socialAccountList: '=data',
-        selectedSocialAccounts: '=accounts'
+        selectedSocialAccounts: '=accounts',
+        socialAccountsAttributes: '=attributes'
       },
       compile: function(elm, attrs, transclude){
-        return function postLink(scope, elm, attrs) {          
+        return function postLink(scope, elm, attrs) {
           scope.$watch('socialAccountList', function(socialAccountList) {
             if(socialAccountList){
-              var template = '<select class="form-control" ng-model="selectedSocialAccount" ng-options="account as account.name for account in socialAccountList"></select>' +
-                    '<div col-xs-8>' +
-                    '<input type="text" ng-model="url" class="form-control" placeholder="URLを入力してください">' + 
-                    '<a class="btn btn-info" ng-click="select()">追加</a>' +
-                    '</div>';
-              
-              elm.html(template); 
+              var template = '<ul class="list-unstyled"><li ng-repeat="account in socialAccountList">' +
+                    '<div class="form-group">' +
+                      '<label class="control-label col-xs-2">{{ account.name }}</label>' +
+                      '<div class="col-xs-10">' +
+                      '<input type="text" ng-model="socialAccounts[account.index]" class="form-control" placeholder="URLを入力してください">' +
+                      '</div>' +
+                    '</div>' +
+                    '</li></ul>';
+              elm.html(template);
               $compile(elm.contents())(scope);
-              scope.selectedSocialAccount = socialAccountList[0];
+              scope.socialAccountsAttributes.push(scope.socialAccounts);
+              scope.selectedSocialAccounts.push(scope.socialAccounts);
             }
           });
         };
       },
       controller: function($scope){
-        $scope.select = function(){
-          var params;
-          params = {
-            account_type: $scope.selectedSocialAccount.index,
-            url: $scope.url
-          };
-          $scope.selectedSocialAccounts.push(params);
-        };
+        $scope.socialAccounts = {};
       }
     };
   }]);
-
-
