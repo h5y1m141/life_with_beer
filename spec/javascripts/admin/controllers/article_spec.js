@@ -5,7 +5,7 @@ describe('ArticleCtrl', function () {
   var ctrl,
       scope;
 
-  beforeEach(module('UrbanOutdoorApp'));
+  beforeEach(module('LifeWithBeerApp'));
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     ctrl = $controller('ArticleCtrl', {

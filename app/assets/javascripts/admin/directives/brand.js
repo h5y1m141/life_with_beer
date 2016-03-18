@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UrbanOutdoorApp')
+angular.module('LifeWithBeerApp')
   .directive('brand',['Item', function(Item) {
     return {
       restrict: "A",

@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name UrbanOutdoorApp
+ * @name LifeWithBeerApp
  * @description
- * # UrbanOutdoorApp
+ * # LifeWithBeerApp
  *
  * Main module of the application.
  */
 angular
-  .module('UrbanOutdoorApp', [
+  .module('LifeWithBeerApp', [
     'ngResource'
   ])
   .config(["$httpProvider", function($httpProvider) {

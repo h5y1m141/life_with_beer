@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UrbanOutdoorApp')
+angular.module('LifeWithBeerApp')
   .directive("instagram",['$window','$q','$compile', function($window, $q, $compile) {
     return {
       restrict: 'E',

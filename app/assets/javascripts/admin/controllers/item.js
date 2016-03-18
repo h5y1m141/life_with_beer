@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UrbanOutdoorApp')
+angular.module('LifeWithBeerApp')
   .controller('ItemCtrl', ['$scope', function ($scope) {
     $scope.init = function(thumbnail, pictures){
       var _thumbnail = JSON.parse(thumbnail);

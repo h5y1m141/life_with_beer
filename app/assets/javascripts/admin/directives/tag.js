@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UrbanOutdoorApp')
+angular.module('LifeWithBeerApp')
   .directive('tag',['Item', function(Item) {
     return {
       restrict: "A",
