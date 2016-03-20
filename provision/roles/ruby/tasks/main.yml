@@ -1,0 +1,36 @@
+---
+- name: Install Ruby
+  yum: name={{ item }} state=installed
+  with_items:
+    - epel-release
+    - ruby 
+    - ruby-devel 
+    - libxml2-devel
+    - libxslt-devel
+    - mysql-devel
+    - qtwebkit-devels
+  tags: ruby
+- name: Install GPG
+  shell: bash -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3"
+  tags: ruby
+- name: Install RVM
+  shell: bash -c "curl -sSL https://get.rvm.io | bash -s stable --ruby={{ ruby_version }}"
+  tags: ruby
+- name: Install Ruby with rvm
+  shell: bash -c "/usr/local/rvm/bin/rvm install {{ ruby_version }}"
+- name: install bundler
+  shell: bash -lc "gem install bundler"
+  tags: ruby
+- name: symlink for Capybara webkit
+  shell: bash -c "ln -s /usr/lib64/qt4/bin/qmake /usr/bin/qmake"
+- name: symlink for Rails app directory
+  shell: bash -c "ln -s /vagrant /home/ops/life_with_beer"
+- name: bundle install
+  shell: bash -lc "cd {{ rails_directory }};bundle install --path vendor/bundle"
+  tags: ruby
+- name: create shared directory
+  shell: bash -lc "mkdir /home/ops/shared; mkdir -p /home/ops/shared/tmp/sockets; mkdir -p /home/ops/shared/tmp/pids; mkdir /home/ops/shared/log; ln -s /home/ops/shared /home/ops/life_with_beer/shared"
+  tags: ruby
+- name: chown and chgrp
+  shell: bash -lc "chown -R ops /home/ops/shared; chgrp -R ops /home/ops/shared;chown -R ops /home/ops/life_with_beer; chgrp -R ops /home/ops/life_with_beer"
+  tags: ruby
