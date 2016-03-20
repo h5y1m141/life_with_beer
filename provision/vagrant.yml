@@ -18,5 +18,6 @@
     - mysql
     - deploy_user
     - firewalld
+    - nginx
     - ruby
     - rails
