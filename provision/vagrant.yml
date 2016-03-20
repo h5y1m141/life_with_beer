@@ -12,8 +12,10 @@
     # openssl passwd -salt salty -1 あなたのパスワード
     user_password: $1$salty$9LqYQSloA.dNYnW6izxVe/
     user: ops
+    rails_directory: /vagrant
   roles:
     - common
     - mysql
     - deploy_user
     - firewalld
+    - ruby
