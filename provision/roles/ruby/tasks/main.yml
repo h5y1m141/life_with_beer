@@ -23,6 +23,14 @@
   tags: ruby
 - name: symlink for Capybara webkit
   shell: bash -c "ln -s /usr/lib64/qt4/bin/qmake /usr/bin/qmake"
+- name: symlink for Rails app directory
+  shell: bash -c "ln -s /vagrant /home/ops/life_with_beer"
 - name: bundle install
   shell: bash -lc "cd {{ rails_directory }};bundle install --path vendor/bundle"
+  tags: ruby
+- name: create shared directory
+  shell: bash -lc "mkdir /home/ops/shared; mkdir -p /home/ops/shared/tmp/sockets; mkdir -p /home/ops/shared/tmp/pids; mkdir /home/ops/shared/log; ln -s /home/ops/shared /home/ops/life_with_beer/shared"
+  tags: ruby
+- name: chown and chgrp
+  shell: bash -lc "chown -R ops /home/ops/shared; chgrp -R ops /home/ops/shared;chown -R ops /home/ops/life_with_beer; chgrp -R ops /home/ops/life_with_beer"
   tags: ruby
