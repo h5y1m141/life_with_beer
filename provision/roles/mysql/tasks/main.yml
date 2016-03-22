@@ -14,6 +14,9 @@
 - name: install MySQL
   shell: yum -y install mysql-community-server
   tags: mysql
-- name: start MariaDB
+- name: locate my.cnf
+  copy: src=/vagrant/provision/mysql/my.cnf dest=/etc/my.cnf mode=0644 owner=root group=root
+  tags: mysql
+- name: start MySQL
   shell: systemctl enable mysqld.service; systemctl start mysqld.service
   tags: mysql
