@@ -8,7 +8,7 @@
     - libxml2-devel
     - libxslt-devel
     - mysql-devel
-    - qtwebkit-devels
+    - qtwebkit-devel
   tags: ruby
 - name: Install GPG
   shell: bash -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3"
