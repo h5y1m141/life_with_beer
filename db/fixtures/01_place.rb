@@ -12,4 +12,6 @@ places.each do |place|
     place_type: place_type
 })
 end
-
+puts 'まいばすけっとの情報をスクレイピング'
+my_basket_crawler = Crawler::MyBasket.new
+my_basket_crawler.run.each{|place| Place.create!(place)}
