@@ -7,29 +7,29 @@
     <div class='row'>
       <% column4_items.each do |item| %>
         <div class='col-md-3 col-sm-6'>
-          <%= link_to(edit_admin_item_path(item)) do %>
-            <% if item.thumbnail.present? %>
-              <%= image_tag item.thumbnail.image.large_thumb.url %>
-            <% else %>
-              <%= image_tag item.pictures.first.image.large_thumb.url %>
+          <div class="item__media__thumbnail thumbnail">
+            <%= link_to(edit_admin_item_path(item)) do %>
+              <% if item.image.present? %>
+                <%= image_tag item.image.medium_thumb.url %>
+              <% end %>
             <% end %>
-          <% end %>
-
-          <% if item.thumbnail.present? %>
-            <h4><%= item.name %></h4>
-          <% else %>
-            <h4 class="item__pictures-no-thumbnail"><%= item.name %></h4>
-          <% end %>
-          <ul class='list-unstyled'>
-            <li>金額：<%= number_to_currency(item.original_price, locale: 'jp') %></li>
-          </ul>
+            <p class="item__media__caption">
+              出典：<%= item.original_image_url %>
+            </p>
+          </div>
+          <h4><%= item.name %></h4>
           <ul class='list-inline'>
+            <li>
+              <%= link_to(edit_admin_item_path(item)) do %>
+                <button class="btn btn-info btn-sm">編集</button>
+              <% end %>
+            </li>
             <li>
               <%= link_to(admin_item_path(item), method: :delete, data:{ confirm: '削除してもいいですか？' }) do %>
                 <button class="btn btn-danger btn-sm">削除</button>
               <% end %>
             </li>
-          </ul>
+          </ul>          
         </div>
       <% end %>
     </div>

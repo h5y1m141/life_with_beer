@@ -20,5 +20,17 @@
         right: -12%;
       }
     }
-  }  
+  }
+  &__media {
+    &__thumbnail {
+      min-height: 200px;
+      max-height: 350px;
+      padding: 5px;
+    }
+    &__caption {
+      word-wrap: break-word;
+      margin-top: 20px;
+      color: #999;
+    }
+  }
 }

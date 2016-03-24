@@ -1,9 +1,11 @@
 describe Admin::ItemsController, type: :routing do
+  it_routes_to(:get, '/admin/items/new', 'admin/items#new')
   it_routes_to(:get, '/admin/items', 'admin/items#index')
   it_routes_to(:get, '/admin/items/1/edit', 'admin/items#edit', id: '1')
   it_routes_to(:patch, '/admin/items/1', 'admin/items#update', id: '1')
   it_routes_to(:delete, '/admin/items/1', 'admin/items#destroy', id: '1')
   it_routes_to(:post, '/admin/items/search_by_tag.json', 'admin/items#search_by_tag', format: 'json' )
+  it_routes_to(:post, '/admin/items', 'admin/items#create')
 end
 
 describe Admin::ArticlesController, type: :routing do
