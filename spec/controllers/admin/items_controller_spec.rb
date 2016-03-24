@@ -7,6 +7,11 @@ describe Admin::ItemsController, type: :controller do
   let(:tags) { create_list(:tag, 2) }
   before(:each) { login_user(user) }
 
+  describe 'newアクションについて' do
+    let(:request) { get :new}
+    it_renders_template(:new)
+  end
+
   describe 'indexアクションについて' do
     let(:request_without_parameter) { get :index, q: {}  }
     let(:request_with_parameter) { get :index, q: { original_price_gteq: 1000} }

@@ -80,22 +80,6 @@ ActiveRecord::Schema.define(version: 20160315063934) do
 
   add_index "favorites", ["favoriteable_id", "favoriteable_type"], name: "index_favorites_on_favoriteable_id_and_favoriteable_type", using: :btree
 
-  create_table "item_favorites", force: :cascade do |t|
-    t.integer  "resource_id",   limit: 4
-    t.string   "resource_type", limit: 255
-    t.text     "comment",       limit: 65535
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
-  create_table "item_reviews", force: :cascade do |t|
-    t.integer  "resource_id",   limit: 4
-    t.string   "resource_type", limit: 255
-    t.text     "comment",       limit: 65535
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
   create_table "item_tag_relays", force: :cascade do |t|
     t.integer  "item_id",    limit: 4
     t.integer  "tag_id",     limit: 4
@@ -105,20 +89,20 @@ ActiveRecord::Schema.define(version: 20160315063934) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "name",           limit: 255,   null: false
-    t.string   "url",            limit: 255,   null: false
-    t.integer  "original_price", limit: 4
-    t.boolean  "discounted",     limit: 1
-    t.integer  "discount_price", limit: 4
-    t.text     "description",    limit: 65535
-    t.integer  "store_id",       limit: 4,     null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "thumbnail_id",   limit: 4
+    t.string   "name",               limit: 255,                null: false
+    t.string   "url",                limit: 255,                null: false
+    t.integer  "original_price",     limit: 4
+    t.boolean  "discounted",         limit: 1
+    t.integer  "discount_price",     limit: 4
+    t.text     "description",        limit: 65535
+    t.text     "image",              limit: 65535
+    t.text     "original_image_url", limit: 65535,              null: false
+    t.integer  "ibu",                limit: 4,     default: 10, null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   add_index "items", ["name"], name: "index_items_on_name", using: :btree
-  add_index "items", ["thumbnail_id"], name: "index_items_on_thumbnail_id", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.integer  "width",                limit: 4

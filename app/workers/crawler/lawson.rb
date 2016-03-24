@@ -3,7 +3,7 @@ class Crawler::MyBasket < Crawler::Base
 
   def initialize
     super
-    @base_url = 'http://www.aeonretail.jp'
+    @base_url = 'http://www.e-map.ne.jp'
   end
   def run
     fetch_places

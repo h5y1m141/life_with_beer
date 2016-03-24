@@ -15,14 +15,12 @@
 
 class Item < ActiveRecord::Base
   has_many :stocks, dependent: :delete_all
-  has_many :reviews, as: :resource, class_name: ItemReview.name
-  has_many :favorites, as: :resource, class_name: ItemFavorite.name
   has_many :pictures, dependent: :delete_all
   has_many :item_tag_relays, dependent: :destroy
   has_many :tags, through: :item_tag_relays
   belongs_to :store
   belongs_to :thumbnail, class_name: 'Picture', foreign_key: :thumbnail_id
-
+  mount_uploader :image, PictureUploader
   accepts_nested_attributes_for :stocks
   accepts_nested_attributes_for :tags
 

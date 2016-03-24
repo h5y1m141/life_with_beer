@@ -8,8 +8,11 @@
 Vagrant.configure(2) do |config|
   config.vm.box = 'bento/centos-7.1'
   config.vm.synced_folder '.', '/vagrant', type: 'nfs'
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
   config.vm.network :private_network, ip: '192.168.33.37'
-  config.vm.network :forwarded_port, guest: 22, host: 12222, id: 'ssh'
+  config.vm.network :forwarded_port, guest: 22, host: 12222, id: 'ssh'  
   config.ssh.guest_port = 12222
   config.ssh.forward_agent = true
   config.vm.provision 'ansible_local' do |ansible|

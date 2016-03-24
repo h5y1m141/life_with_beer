@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get :about
   end
   namespace :admin do
-    resources :items, only: [:index, :edit, :update, :destroy] do
+    resources :items do
       collection do
         post :search_by_tag
       end

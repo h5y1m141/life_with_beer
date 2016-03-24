@@ -2,11 +2,24 @@ class Admin::ItemsController < AdminController
   include ItemSearchModule
   before_action :set_item, only: [:edit, :destroy, :update]
   before_action :reset_tags, only: [:update]
+
+  def new
+    @item = Item.new
+  end
+
   def index
     @search = search_items_by_parameters(params[:q])
     @items = @search.result.all.page(params[:page]).per(params[:per_page])
   end
 
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to admin_items_path, notice: "#{@item.name}を作成しました"
+    else
+      redirect_to admin_items_path, alert: "#{@item.name}の作成が行えませんでした"
+    end
+  end
   def edit
     if(@item.tags.count == 0)
       @item.tags.build
@@ -16,10 +29,8 @@ class Admin::ItemsController < AdminController
   end
 
   def update
-    thumbnail_id = JSON.parse(params[:thumbnail])['id']
     tag_values = params[:tags].split(",").map{|tag_name| { name: tag_name } }
     updat_params = {
-      thumbnail_id: thumbnail_id,
       tags_attributes: tag_values
     }
     if @item.update(updat_params)
@@ -46,7 +57,7 @@ class Admin::ItemsController < AdminController
   end
 
   def item_params
-    params.require(:item).permit(:name, :url , :original_price, :discounted, :discount_price, :description, :tags)
+    params.require(:item).permit(:name, :url , :original_price, :discounted, :discount_price, :description, :tags, :image, :original_image_url, :ibu)
   end
 
   def reset_tags

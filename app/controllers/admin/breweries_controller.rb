@@ -13,7 +13,6 @@ class Admin::BreweriesController < AdminController
   end
 
   def create
-    binding.pry
     @brewery = Brewery.new(brewery_params)
     if @brewery.save
       redirect_to admin_breweries_path, notice: "#{@brewery.name}を作成しました"

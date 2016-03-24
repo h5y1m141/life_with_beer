@@ -7,7 +7,9 @@ class CreateItems < ActiveRecord::Migration
       t.boolean :discounted
       t.integer :discount_price
       t.text :description
-      t.integer :store_id, null: false
+      t.text :image
+      t.text :original_image_url, null: false
+      t.integer :ibu, null: false, default: 10
 
       t.timestamps null: false
     end
