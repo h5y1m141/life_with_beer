@@ -23,14 +23,9 @@
           <label class="col-xs-1">アップロード画像</label>
           <div class="col-xs-10">
             <input class="imageFile" file-model="imageFile" ng-hide="remoteImageURL" type="file"></input>
-            <img ng-if="imageFileSrc" ng-src="{{imageFileSrc %> %>"/>
+            <img ng-src="imageFileSrc" />
             <br/>
-            <button class="btn-info" ng-click="uploadImage(imageFileSrc,'img')" ng-if="imageFileSrc">アップロードする</button>
-            <input class="form-control" ng-hide="imageFileSrc" ng-model="remoteImageURL" placeholder="外部サイトから取り込みたい場合にはこちらに入力"></input>
-            <article_image>
-            </article_image>
-            <br/>
-            <button class="btn-info" ng-click="remoteImage()" ng-if="remoteImageURL">リモートの画像を取得してアップロードする</button>
+            <button class="btn-info" ng-click="uploadImage(imageFileSrc,'img')">アップロードする</button>
           </div>
         </div>
       </div>

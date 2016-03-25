@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('LifeWithBeerApp')
-  .controller('ArticleCtrl', ['$scope','Article', function ($scope, Article) {
+  .controller('ArticleCtrl', ['$scope','Article','$http', function ($scope, Article, $http) {
     var prepareArticleData = function(contents){
       var result = [];
       angular.forEach(contents, function(content, key){
@@ -74,4 +74,37 @@ angular.module('LifeWithBeerApp')
         });
       });
     };
+    $scope.uploadImage = function(fileSrc, fileType){
+      var formData = new FormData();
+      formData.append('file',fileSrc);
+      $http.post('/admin/pictures.json',formData,{
+        transformRequest: angular.identity,
+        headers: {'Content-type':undefined}
+      }).success(function(res){
+        console.log(res);
+        var image = res.image;
+        $scope.contentsArea.push({
+          tag_name: 'img',
+          element_data: image,
+          imagePath: image.image.url          
+        });
+        $scope.imageFileSrc = null;
+        $('.imageFile').val('');
+
+      }).error(function(res){
+      });
+    };
+    $scope.$watch("imageFile", function (imageFile) {
+      $scope.imageFileSrc = undefined;
+      if (!imageFile || !imageFile.type.match("image.*")) {
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function () {
+        $scope.$apply(function () {
+          $scope.imageFileSrc = reader.result;
+        });
+      };
+      reader.readAsDataURL(imageFile);
+    });    
   }]);

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       end
     end
     resources :breweries, only: [:new, :create, :index, :edit, :update, :destroy]
+    resources :pictures
   end
   root to: 'static_pages#index'
   get '/articles/preview/:preview_key', to: 'articles#preview'
