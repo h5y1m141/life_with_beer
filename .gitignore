@@ -14,3 +14,4 @@
 /.vagrant/machines/default/virtualbox/*
 /provision/ssh_key/*
 /shared
+app/assets/stylesheets/styles-bluegreen.css
