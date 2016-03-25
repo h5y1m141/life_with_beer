@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('LifeWithBeerApp')
-  .controller('ArticleCtrl', ['$scope','Article', function ($scope, Article) {
+  .controller('ArticleCtrl', ['$scope', 'Article', function ($scope, Article) {
     var prepareArticleData = function(contents){
       var result = [];
       angular.forEach(contents, function(content, key){

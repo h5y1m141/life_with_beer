@@ -17,4 +17,9 @@
     display: inline;
     margin: 3px;
   }
+  &__picture {
+    min-height: 120px;
+    max-height: 120px;
+    margin: 10px;
+  }  
 }

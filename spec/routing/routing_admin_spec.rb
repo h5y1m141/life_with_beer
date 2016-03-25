@@ -26,3 +26,12 @@ describe Admin::BreweriesController, type: :routing do
   it_routes_to(:delete, '/admin/breweries/1', 'admin/breweries#destroy', id: '1')
   it_routes_to(:post, '/admin/breweries.json', 'admin/breweries#create', format: 'json' )
 end
+
+describe Admin::PicturesController, type: :routing do
+  it_routes_to(:get, '/admin/pictures/new', 'admin/pictures#new')
+  it_routes_to(:get, '/admin/pictures', 'admin/pictures#index')
+  it_routes_to(:get, '/admin/pictures/1/edit', 'admin/pictures#edit', id: '1')
+  it_routes_to(:patch, '/admin/pictures/1', 'admin/pictures#update', id: '1')
+  it_routes_to(:delete, '/admin/pictures/1', 'admin/pictures#destroy', id: '1')
+  it_routes_to(:post, '/admin/pictures.json', 'admin/pictures#create', format: 'json' )
+end
