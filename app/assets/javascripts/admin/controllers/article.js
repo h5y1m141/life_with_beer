@@ -92,12 +92,14 @@ angular.module('LifeWithBeerApp')
     };
     $scope.$watch("imageFile", function (imageFile) {
       $scope.imageFileSrc = undefined;
-      if (!imageFile || !imageFile.type.match("image.*")) {
+      //画像ファイルじゃなければ何もしない
+      if(!imageFile || !imageFile.type.match("image.*")){
         return;
       }
       var reader = new FileReader();
       reader.onload = function () {
         $scope.$apply(function () {
+          console.log(reader.result);
           $scope.imageFileSrc = reader.result;
         });
       };

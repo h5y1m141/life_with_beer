@@ -23,7 +23,7 @@
           <label class="col-xs-1">アップロード画像</label>
           <div class="col-xs-10">
             <input class="imageFile" file-model="imageFile" ng-hide="remoteImageURL" type="file"></input>
-            <img ng-src="imageFileSrc" />
+            <img ng-if="imageFileSrc" ng-src="{{ imageFileSrc }}" />
             <br/>
             <button class="btn-info" ng-click="uploadImage(imageFileSrc,'img')">アップロードする</button>
           </div>
