@@ -28,23 +28,6 @@ class Item < ActiveRecord::Base
     includes(:tags).where('tags.name': tags )
   end
 
-  def self.create_or_update_by_crawler(params)
-    return false unless params[:url] && params[:images] && params[:stocks]
-    pictures = self.prepare_pictures(params[:images], params[:url])
-    item = Item.where(url: params[:url]).first_or_create(self.revised_parameter(params))
-    if item.pictures.empty?
-      item.pictures = pictures
-      item.tap(&:save)
-    end
-
-    # 在庫のIDがパラメーターに含まれないため純粋な更新処理が出来ないので
-    # 一度在庫を削除してから再度在庫を登録
-    unless item.new_record?
-      item.stocks.delete_all
-      item.update(params)
-    end
-  end
-
   def self.prepare_pictures(image_path_list, url)
     result = []
     image_path_list.each do |image_url|
