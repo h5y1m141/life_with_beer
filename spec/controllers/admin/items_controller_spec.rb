@@ -1,10 +1,9 @@
 describe Admin::ItemsController, type: :controller do
   let(:user) { create(:user) }
-  let(:item) { create(:item) }
+  let(:item) { create(:item, :coedo) }
   let(:off_sale_items) { create_list(:item, 2, :off_sale) }
   let(:low_price_items) { create_list(:item, 2, :low_price) }
   let(:items) { off_sale_items; low_price_items }
-  let(:tags) { create_list(:tag, 2) }
   before(:each) { login_user(user) }
 
   describe 'newアクションについて' do
@@ -36,12 +35,12 @@ describe Admin::ItemsController, type: :controller do
   end
 
   describe 'updateアクションについて' do
-    let(:response) { put :update, { id: item.id, thumbnail: '{"id": 10000}', tags: tags } }
-    it 'thumbnailのIDが更新される' do
-      expect(item.thumbnail_id).to eq 1
+    let(:response) { put :update, { id: item.id, item: {name: 'Stone', tag_names: 'IPA, Stone'}} }
+    it 'nameが更新される' do
+      expect(item.name).to eq 'COEDO'
       response
       item.reload
-      expect(item.thumbnail_id).to eq 10000
+      expect(item.name).to eq 'Stone'
     end
     it_returns_http_status(302)
     it_redirects_to('/admin/items')
