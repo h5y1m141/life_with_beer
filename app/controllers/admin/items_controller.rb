@@ -29,11 +29,9 @@ class Admin::ItemsController < AdminController
   end
 
   def update
-    tag_values = params[:tags].split(",").map{|tag_name| { name: tag_name } }
-    updat_params = {
-      tags_attributes: tag_values
-    }
-    if @item.update(updat_params)
+    params[:item][:tags_attributes] = params[:item][:tag_names].split(",").map{|tag_name| { name: tag_name } } unless params[:item][:tag_names].empty?
+    params[:item].delete(:tag_names)
+    if @item.update(item_params)
       redirect_to admin_items_path, notice: '更新が完了しました'
     else
       redirect_to edit_admin_item(@item), notice: '更新できません'
@@ -57,7 +55,7 @@ class Admin::ItemsController < AdminController
   end
 
   def item_params
-    params.require(:item).permit(:name, :url , :original_price, :discounted, :discount_price, :description, :tags, :image, :original_image_url, :ibu)
+    params.require(:item).permit(:name, :url , :original_price, :discounted, :discount_price, :description, :image, :original_image_url, :ibu, :tag_names, tags_attributes: [:name])
   end
 
   def reset_tags
