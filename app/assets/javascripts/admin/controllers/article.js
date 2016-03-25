@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('LifeWithBeerApp')
-  .controller('ArticleCtrl', ['$scope','Article','$http', function ($scope, Article, $http) {
+  .controller('ArticleCtrl', ['$scope','Article','Picture', function ($scope, Article, Picture) {
     var prepareArticleData = function(contents){
       var result = [];
       angular.forEach(contents, function(content, key){
@@ -75,23 +75,19 @@ angular.module('LifeWithBeerApp')
       });
     };
     $scope.uploadImage = function(fileSrc, fileType){
-      var formData = new FormData();
+      var query,
+          formData = new FormData();
       formData.append('file',fileSrc);
-      $http.post('/admin/pictures.json',formData,{
-        transformRequest: angular.identity,
-        headers: {'Content-type':undefined}
-      }).success(function(res){
-        console.log(res);
-        var image = res.image;
+      query = Picture.fileUpload(formData);
+      query.$promise.then(function(response){
+        var image = response.image;
         $scope.contentsArea.push({
           tag_name: 'img',
           element_data: image,
           imagePath: image.image.url          
         });
         $scope.imageFileSrc = null;
-        $('.imageFile').val('');
-
-      }).error(function(res){
+        $('.imageFile').val('');        
       });
     };
     $scope.$watch("imageFile", function (imageFile) {
