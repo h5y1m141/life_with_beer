@@ -1,6 +1,37 @@
-<div class="row" ng-controller="BreweryCtrl">
-  <div class="col-xs-12">
-    <%= render partial: 'form' %>
-  </div>
-</div>
-
+<section class="row" ng-controller="BreweryCtrl">
+  <section class="wrapper">
+    <div class="row">
+      <div class="col-xs-1">
+      </div>
+      <div class="col-xs-11">
+        <div>
+          <ul class="nav nav-tabs">
+            <li data-toggle="tab" ng-repeat="tab in tabs" ng-click='selectTab($index)' ng-class="{'active':selectedTab == $index}">
+              <a data-toggle="tab" href="#">
+                {{ tab.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <%= form_for(@brewery, url: admin_breweries_path, html: { class: 'form-horizontal'}) do |f| %>
+          <div class="tab-content">
+            <%= render partial: 'base_info', locals: {f: f} %>
+            <%= render partial: 'sns_info', locals: {f: f} %>
+            <%= render partial: 'item_info', locals: {f: f} %>
+          </div>
+          <div class="row">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-10">
+              <ul class="list-inline">
+                <%= f.hidden_field :social_accounts, value: "{{ selectedSocialAccounts }}" %>
+                <li><%= link_to '戻る', admin_breweries_path, class: 'btn btn-default' %></li>
+                <li><%= f.submit '作成する', class: 'btn btn-primary'%></li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</section>

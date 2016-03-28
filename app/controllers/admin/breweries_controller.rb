@@ -1,8 +1,8 @@
 class Admin::BreweriesController < AdminController
   include BrewerySearchModule
   before_action :set_brewery, only: [:edit, :destroy, :update]
-  before_action :revise_params, only: [:create]
-  before_action :generate_social_account_list, only: [:create, :edit]
+  before_action :revise_params, only: [:create, :update]
+  before_action :generate_social_account_list, only: [:new, :edit]
   def index
     @search = search_breweries_by_parameters(params[:q])
     @breweries = @search.result.all.page(params[:page]).per(params[:per_page])    
@@ -22,6 +22,7 @@ class Admin::BreweriesController < AdminController
   end
 
   def edit
+    @brewery_social_accounts = @brewery.social_accounts
   end
 
   def update
@@ -44,7 +45,7 @@ class Admin::BreweriesController < AdminController
   end
 
   def brewery_params
-    params.require(:brewery).permit(:name, :web_site, :image, social_accounts_attributes: [:account_type, :url, :comment])
+    params.require(:brewery).permit(:name, :web_site, :image, social_accounts_attributes: [:id, :account_type, :url, :comment])
   end
 
   def generate_social_account_list
@@ -54,11 +55,15 @@ class Admin::BreweriesController < AdminController
     SocialAccount.account_types.keys.each_with_index do|account, index|
       @social_accounts.push({index: index, name: account })
     end
+    @social_accounts
   end
 
   def revise_params
     social_accounts = JSON.parse(params[:brewery][:social_accounts])
-    params[:brewery][:social_accounts_attributes] = social_accounts.map{|account| { account_type: account.keys.first.to_i, url: account.values.first }} unless social_accounts.first.empty?
+    unless social_accounts.first.empty?
+      social_accounts_attributes = social_accounts.map{|account| { id: account['social_account_id'], account_type: account['index'], url: account['url'] }}
+      params[:brewery][:social_accounts_attributes] = social_accounts_attributes
+    end
     params[:brewery].delete(:social_accounts)
   end
 end
