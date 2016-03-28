@@ -46,7 +46,9 @@ class Admin::BreweriesController < AdminController
   end
 
   def brewery_params
-    params.require(:brewery).permit(:name, :web_site, :image, social_accounts_attributes: [:id, :account_type, :url, :comment])
+    params.require(:brewery).permit(:name, :web_site, :image,
+      social_accounts_attributes: [:id, :account_type, :url, :comment]
+    )
   end
 
   def generate_social_account_list
@@ -61,10 +63,10 @@ class Admin::BreweriesController < AdminController
 
   def revise_params
     social_accounts = JSON.parse(params[:brewery][:social_accounts])
+    binding.pry
     unless social_accounts.first.empty?
       social_accounts_attributes = social_accounts.map{|account| { id: account['social_account_id'], account_type: account['index'], url: account['url'] }}
       params[:brewery][:social_accounts_attributes] = social_accounts_attributes
     end
-    params[:brewery].delete(:social_accounts)
   end
 end

@@ -2,4 +2,5 @@
 
 angular.module('LifeWithBeerApp')
   .controller('ItemCtrl', ['$scope', function ($scope) {
+
   }]);
