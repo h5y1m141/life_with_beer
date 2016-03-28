@@ -10,6 +10,7 @@ class Admin::BreweriesController < AdminController
 
   def new
     @brewery = Brewery.new
+    @item = Item.new
   end
 
   def create

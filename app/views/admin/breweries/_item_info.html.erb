@@ -1,5 +1,26 @@
 <div class="tab-pane" id="tab3" ng-class="{'active':selectedTab == 2}">
   <section class="panel">
-  アイテム
+    <div class="panel-body">
+      <div class="form-group">
+        <div class="col-xs-2">
+          <input type="text" ng-model="name" class="form-control" placeholder="名前を入力">
+        </div>
+        <div class="col-xs-2">
+          <input type="file" ng-model="image" class="form-control">
+        </div>
+        <div class="col-xs-2">
+          <input type="text" ng-model="url" class="form-control" placeholder="取得画像のURLを入力">
+        </div>
+        <div class="col-xs-2">
+          <input type="text" ng-model="ibu" class="form-control" placeholder="ibuを入力してください">
+        </div>
+        <div class="col-xs-1">
+          <button type="button" class="btn btn-primary btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 追加
+          </button>
+          <!-- <button class="btn btn-small btn-primary">アイテムを設定</button> -->
+        </div>
+      </div>
+    </div>
   </section>
 </div>
