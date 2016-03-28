@@ -6,4 +6,5 @@ class Brewery < ActiveRecord::Base
   mount_uploader :image, PictureUploader
 
   accepts_nested_attributes_for :social_accounts
+  accepts_nested_attributes_for :items
 end

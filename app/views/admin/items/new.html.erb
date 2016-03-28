@@ -1,5 +1,15 @@
 <div class="row" ng-controller="ItemCtrl">
   <div class="col-xs-12">
-    <%= render partial: 'form' %>
+    <%= form_for(@item, url: admin_items_path, html: { class: 'form-horizontal'}) do |f| %>
+      <%= render partial: 'form' , locals: {f: f} %>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-4">
+          <ul class="list-inline">
+            <li><%= link_to '戻る', admin_items_path, class: 'btn btn-default' %></li>
+            <li><%= f.submit '作成する', class: 'btn btn-primary'%><li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

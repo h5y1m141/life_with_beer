@@ -1,0 +1,9 @@
+<div class="tab-pane" id="tab2" ng-class="{'active':selectedTab == 1}">
+  <section class="panel">
+    <div class="panel-body">
+      <div class="col-xs-10">
+        <social-account-list data="<%= @brewery_social_accounts.to_json %>" accounts="selectedSocialAccounts" attributes="<%= @social_accounts.to_json %>" ></social-account-list>
+      </div>
+    </div>
+  </section>
+</div>

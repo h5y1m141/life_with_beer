@@ -1,55 +1,46 @@
-<%= form_for(@item, url: admin_items_path, html: { class: 'form-horizontal'}) do |f| %>
-  <div class="col-xs-10">
-    <div class="form-group">
-      <%= f.label :name, '名前' , class: 'control-label col-xs-2' %>
-      <div class="col-xs-10">
-        <%= f.text_field :name, class: 'form-control'%>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :url, 'URL' , class: 'control-label col-xs-2' %>
-      <div class="col-xs-10">
-        <%= f.text_field :url, class: 'form-control'%>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :image, 'イメージ' , class: 'control-label col-xs-2' %>
-      <div class="col-xs-10">
-        <%= f.file_field :image, class: 'form-control'%>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :original_image_url, '取得画像元のURL' , class: 'control-label col-xs-2' %>
-      <div class="col-xs-10">
-        <%= f.text_field :original_image_url, class: 'form-control'%>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :ibu, '苦味度数（IBU）' , class: 'control-label col-xs-2' %>
-      <div class="col-xs-10">
-        <%= f.text_field :ibu, class: 'form-control'%>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :description, '説明' , class: 'control-label col-xs-2' %>
-      <div class="col-xs-10">
-        <%= f.text_area :description, class: 'form-control', size: "20x5" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :tags, 'タグ' , class: 'control-label col-xs-2' %>
-      <% tag_value = @item.tags.map{|tag| tag[:name]} %>
-      <div class="col-xs-10">
-        <%= f.text_field :name, id: 'tags', name: 'tags', value: tag_value.join(","), class: 'form-control'  %>
-      </div>
+<div class="col-xs-10">
+  <div class="form-group">
+    <%= f.label :name, '名前' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :name, class: 'form-control'%>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-2 col-md-offset-4">
-      <ul class="list-inline">
-        <li><%= link_to '戻る', admin_items_path, class: 'btn btn-default' %></li>
-        <li><%= f.submit '作成する', class: 'btn btn-primary'%><li>
-      </ul>
+  <div class="form-group">
+    <%= f.label :url, 'URL' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :url, class: 'form-control'%>
     </div>
   </div>
-<% end %>
+  <div class="form-group">
+    <%= f.label :image, 'イメージ' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.file_field :image, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :original_image_url, '取得画像元のURL' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :original_image_url, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ibu, '苦味度数（IBU）' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :ibu, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, '説明' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_area :description, class: 'form-control', size: "20x5" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :tags, 'タグ' , class: 'control-label col-xs-2' %>
+    <% tag_value = @item.tags.map{|tag| tag[:name]} %>
+    <div class="col-xs-10">
+      <%= f.text_field :name, id: 'tags', name: 'tags', value: tag_value.join(","), class: 'form-control'  %>
+    </div>
+  </div>
+</div>
+
