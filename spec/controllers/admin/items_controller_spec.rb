@@ -45,6 +45,7 @@ describe Admin::ItemsController, type: :controller do
     it_returns_http_status(302)
     it_redirects_to('/admin/items')
   end
+
   describe 'destroyアクションについて' do
     let(:request) { delete :destroy, id: item.id }
     it_returns_http_status(302)
@@ -60,6 +61,7 @@ describe Admin::ItemsController, type: :controller do
       it_renders_template(:search_by_tag)
     end
   end
+
   describe 'search_by_breweryアクションについて' do
     before(:each) do
       request.env['HTTP_ACCEPT'] = 'application/json'
@@ -69,5 +71,14 @@ describe Admin::ItemsController, type: :controller do
       it_returns_http_status(200)
       it_renders_template(:search_by_tag)
     end
+  end
+
+  describe 'createアクションについて' do
+    before(:each) do
+      request.env['HTTP_ACCEPT'] = 'application/json'
+    end
+    let(:response) {post :create , {item: {name: 'PunkIPA', url: 'http://brewdog', original_image_url: 'http://brewdog',   tag_names: 'IPA, Stone' } } }
+    it_returns_http_status(302)
+    it_redirects_to('/admin/items')
   end
 end

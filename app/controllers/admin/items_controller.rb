@@ -64,6 +64,7 @@ class Admin::ItemsController < AdminController
   def reset_tags
     @item.tags.delete_all
   end
+
   def revise_params
     unless params[:item][:tag_names].empty?
       tags_attributes = params[:item][:tag_names].split(",").map{|tag_name| { name: tag_name } }
