@@ -36,10 +36,10 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :tags, 'タグ' , class: 'control-label col-xs-2' %>
+    <%= f.label :tag_names, 'タグ' , class: 'control-label col-xs-2' %>
     <% tag_value = @item.tags.map{|tag| tag[:name]} %>
     <div class="col-xs-10">
-      <%= f.text_field :name, id: 'tags', name: 'tags', value: tag_value.join(","), class: 'form-control'  %>
+      <%= f.text_field :tag_names, id: 'tags', value: tag_value.join(","), class: 'form-control'  %>
     </div>
   </div>
 </div>

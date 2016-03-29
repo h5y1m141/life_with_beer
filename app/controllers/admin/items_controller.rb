@@ -2,6 +2,7 @@ class Admin::ItemsController < AdminController
   include ItemSearchModule
   before_action :set_item, only: [:edit, :destroy, :update]
   before_action :reset_tags, only: [:update]
+  before_action :revise_params, only: [:create, :update]
 
   def new
     @item = Item.new
@@ -29,8 +30,6 @@ class Admin::ItemsController < AdminController
   end
 
   def update
-    params[:item][:tags_attributes] = params[:item][:tag_names].split(",").map{|tag_name| { name: tag_name } } unless params[:item][:tag_names].empty?
-    params[:item].delete(:tag_names)
     if @item.update(item_params)
       redirect_to admin_items_path, notice: '更新が完了しました'
     else
@@ -64,5 +63,12 @@ class Admin::ItemsController < AdminController
 
   def reset_tags
     @item.tags.delete_all
+  end
+  def revise_params
+    unless params[:item][:tag_names].empty?
+      tags_attributes = params[:item][:tag_names].split(",").map{|tag_name| { name: tag_name } }
+      params[:item][:tags_attributes] = tags_attributes
+    end
+    params[:item].delete(:tag_names)
   end
 end
