@@ -25,8 +25,12 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :stocks
   accepts_nested_attributes_for :tags
 
-  scope :fetch_by_tags, ->(tags) do
-    includes(:tags).where('tags.name': tags )
+  scope :fetch_by_tag, ->(tag) do
+    includes(:tags).where('tags.name': tag )
+  end
+
+  scope :fetch_by_brewery, ->(brewery) do
+    includes(:brewery).where('breweries.name': brewery)
   end
 
   def self.prepare_pictures(image_path_list, url)

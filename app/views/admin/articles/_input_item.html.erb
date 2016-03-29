@@ -9,11 +9,11 @@
       <input class="form-control" id="tagName" name="tagName" ng-model="tagName" tag placeholder="タグ名を入力すると関連するアイテムが検索できます" type="text" value="{{ tagName }}"></input>
     </div>
     <div class="col-xs-6">
-      <input class="form-control" id="brandName" name="brandName" ng-model="brandName" brand placeholder="ブランド名を入力すると関連するアイテムが検索できます" type="text" value="{{ brandName }}"></input>
+      <input class="form-control" id="breweryName" name="breweryName" ng-model="breweryName" brewery placeholder="ブリュワー名を入力すると関連するアイテムが検索できます" type="text" value="{{ breweryName }}"></input>
     </div>    
     <div ng-if="items.length > 0">
       <div class="article__contents__item" ng-repeat="item in items">
-        <img ng-click="selectItem(item)" ng-src="{{ item.thumbnail.image }}"/>
+        <img ng-click="selectItem(item)" ng-src="{{ item.image.url }}"/>
       </div>
       <div ng-if="lastPage == false">
         <button class="btn-default btn-xs" ng-click="readMore()">さらにアイテムを読み込む</button>
@@ -21,7 +21,7 @@
     </div>
     <div ng-if="selectedItems.length > 0">
       <div class="article__contents__item" ng-repeat="item in selectedItems">
-        <img ng-src="{{ item.thumbnail.image %> %> "/>
+        <img ng-src="{{ item.image.url }} "/>
       </div>
       <hr/>
       <button class="btn-info btn-md" ng-click="insertItems()">アイテムを登録する</button>

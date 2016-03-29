@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :items do
       collection do
         post :search_by_tag
+        post :search_by_brewery
       end
     end
     resources :articles do

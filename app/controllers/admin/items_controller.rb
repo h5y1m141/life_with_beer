@@ -44,10 +44,14 @@ class Admin::ItemsController < AdminController
   end
 
   def search_by_tag
-    tags = item_params['tags'].split(",")
-    @items = Item.fetch_by_tags(tags)
+    tag = item_params['tag']
+    @items = Item.fetch_by_tag(tag)
   end
 
+  def search_by_brewery
+    @items = Item.fetch_by_brewery(item_params['brewery'])
+    render action: :search_by_tag
+  end
   private
 
   def set_item
@@ -55,7 +59,7 @@ class Admin::ItemsController < AdminController
   end
 
   def item_params
-    params.require(:item).permit(:name, :url , :original_price, :discounted, :discount_price, :description, :image, :original_image_url, :ibu, :tag_names, tags_attributes: [:name])
+    params.require(:item).permit(:name, :url , :original_price, :discounted, :discount_price, :description, :image, :original_image_url, :ibu, :tag, :brewery, :tag_names, tags_attributes: [:name])
   end
 
   def reset_tags

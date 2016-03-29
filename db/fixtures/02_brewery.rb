@@ -26,6 +26,17 @@ breweries = [
     ]
   },
   {
+    name: 'StoneBrewing',
+    web_site: 'http://www.stonebrewing.com/',
+    social_accounts_attributes: [
+      {
+        account_type: 1,
+        url: 'https://twitter.com/stonebrewingco',
+        comment: 'StoneのTwitter'
+      }
+    ]
+  },
+  {
     name: '箕面ビール',
     web_site: 'http://www.minoh-beer.jp/',
     social_accounts_attributes: [
