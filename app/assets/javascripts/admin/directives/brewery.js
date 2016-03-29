@@ -1,18 +1,19 @@
 'use strict';
 
 angular.module('LifeWithBeerApp')
-  .directive('brand',['Item', function(Item) {
+  .directive('brewery',['Item', function(Item) {
     return {
       restrict: "A",
       link: function($scope, $element, $attrs, $controllers) {
-        $scope.$watch('brandName', function(html){
+        $scope.$watch('breweryName', function(html){
           var params = {
             item: {
-              brand: $scope.brandName
+              brewery: $scope.breweryName
             }          
           };
-          var data = Item.search_by_brand(params);
+          var data = Item.search_by_brewery(params);
           data.$promise.then(function(response){
+            console.log(response);
             $scope.items = response.items;
           });
         });

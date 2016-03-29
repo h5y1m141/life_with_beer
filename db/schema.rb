@@ -57,13 +57,6 @@ ActiveRecord::Schema.define(version: 20160315063934) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "brewery_item_relays", force: :cascade do |t|
-    t.integer  "brewery_id", limit: 4
-    t.integer  "item_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
   create_table "brewery_social_account_relays", force: :cascade do |t|
     t.integer  "brewery_id",        limit: 4
     t.integer  "social_account_id", limit: 4
@@ -98,10 +91,12 @@ ActiveRecord::Schema.define(version: 20160315063934) do
     t.text     "image",              limit: 65535
     t.text     "original_image_url", limit: 65535,              null: false
     t.integer  "ibu",                limit: 4,     default: 10, null: false
+    t.integer  "brewery_id",         limit: 4
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
   end
 
+  add_index "items", ["brewery_id"], name: "index_items_on_brewery_id", using: :btree
   add_index "items", ["name"], name: "index_items_on_name", using: :btree
 
   create_table "pictures", force: :cascade do |t|

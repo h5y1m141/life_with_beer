@@ -12,9 +12,9 @@ angular.module('LifeWithBeerApp')
           item: '@value'
         }
       },
-      search_by_brand: {
+      search_by_brewery: {
         method: 'POST',
-        url: '/admin/items/search_by_brand.json',
+        url: '/admin/items/search_by_brewery.json',
         params: {
           item: '@value'
         }

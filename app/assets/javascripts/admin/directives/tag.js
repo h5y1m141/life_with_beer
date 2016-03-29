@@ -8,7 +8,7 @@ angular.module('LifeWithBeerApp')
         $scope.$watch('tagName', function(html){
           var params = {
             item: {
-              tags: $scope.tagName
+              tag: $scope.tagName
             }          
           };
           var data = Item.search_by_tag(params);
