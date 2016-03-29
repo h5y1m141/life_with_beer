@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration
       t.text :image
       t.text :original_image_url, null: false
       t.integer :ibu, null: false, default: 10
+      t.references :brewery, index: true
 
       t.timestamps null: false
     end
