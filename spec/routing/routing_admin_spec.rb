@@ -36,3 +36,12 @@ describe Admin::PicturesController, type: :routing do
   it_routes_to(:delete, '/admin/pictures/1', 'admin/pictures#destroy', id: '1')
   it_routes_to(:post, '/admin/pictures.json', 'admin/pictures#create', format: 'json' )
 end
+
+describe Admin::PlacesController, type: :routing do
+  it_routes_to(:get, '/admin/places/new', 'admin/places#new')
+  it_routes_to(:post, '/admin/places', 'admin/places#create')
+  it_routes_to(:get, '/admin/places', 'admin/places#index')
+  it_routes_to(:get, '/admin/places/1/edit', 'admin/places#edit', id: '1')
+  it_routes_to(:patch, '/admin/places/1', 'admin/places#update', id: '1')
+  it_routes_to(:delete, '/admin/places/1', 'admin/places#destroy', id: '1')  
+end
