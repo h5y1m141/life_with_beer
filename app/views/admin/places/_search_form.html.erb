@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">条件検索</div>
+  <div class="panel-body">
+    <%= search_form_for @search, url: admin_places_path do |f| %>
+      <%= f.label :name_eq, '名前' %>
+      <%= f.text_field :name_eq %>
+      <%= f.label :prefecture_id_in, '都道府県コード' %>
+      <%= f.select :prefecture_id_in , @prefectures %>
+      <%= f.label :prefecture_id_in, 'お店のタイプ' %>
+      <%= f.select :place_type_eq, @place_type_list %>
+      <div>
+        <%= f.submit '検索する', class: 'btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

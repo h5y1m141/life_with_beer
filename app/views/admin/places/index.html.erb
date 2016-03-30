@@ -1,0 +1,29 @@
+<div class='container-fluid'>
+  <%= render partial: '/admin/pagenation', locals: {resouces: @places }%>
+  <div class="row">
+    <%= render partial: 'search_form' %>
+  </div>
+  <% @places.each_slice(4) do |column4_places| %>
+    <div class='row'>
+      <% column4_places.each do |place| %>
+        <div class='col-md-3 col-sm-6'>
+          <h3><%= place.name %></h3>
+          <p><%= place.address %></p>
+          <ul class='list-inline'>
+            <li>
+              <%= link_to(edit_admin_place_path(place)) do %>
+                <button class="btn btn-info btn-sm">編集</button>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to(admin_place_path(place), method: :delete, data:{ confirm: '削除してもいいですか？' }) do %>
+                <button class="btn btn-danger btn-sm">削除</button>
+              <% end %>
+            </li>
+          </ul>          
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <%= render partial: '/admin/pagenation', locals: {resouces: @places }%>
+</div>
