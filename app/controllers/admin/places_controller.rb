@@ -1,8 +1,7 @@
 class Admin::PlacesController < AdminController
   include PlaceSearchModule
-
   before_action :set_place, only: [:edit, :destroy, :update]
-  before_action :revise_params, only: [:create, :update]
+
 
   def new
     @place = Place.new
@@ -16,19 +15,15 @@ class Admin::PlacesController < AdminController
   end
 
   def create
-    @place = Place.new(place_params)
+    @place = Place.new(place_params.merge(place_type: place_params['place_types'].to_i))
     if @place.save
       redirect_to admin_places_path, notice: "#{@place.name}を作成しました"
     else
       redirect_to admin_places_path, alert: "#{@place.name}の作成が行えませんでした"
     end
   end
+  
   def edit
-    if(@place.tags.count == 0)
-      @place.tags.build
-    else
-      @place
-    end
   end
 
   def update
@@ -51,18 +46,6 @@ class Admin::PlacesController < AdminController
   end
 
   def place_params
-    params.require(:place).permit(:name, :url , :original_price, :discounted, :discount_price, :description, :image, :original_image_url, :ibu, :tag, :brewery, :tag_names, tags_attributes: [:name])
-  end
-
-  def reset_tags
-    @place.tags.delete_all
-  end
-
-  def revise_params
-    unless params[:place][:tag_names].empty?
-      tags_attributes = params[:place][:tag_names].split(",").map{|tag_name| { name: tag_name } }
-      params[:place][:tags_attributes] = tags_attributes
-    end
-    params[:place].delete(:tag_names)
+    params.require(:place).permit(:name, :prefecture_id,:address, :address2, :phone_number, :latitude, :longitude, :place_type)
   end
 end

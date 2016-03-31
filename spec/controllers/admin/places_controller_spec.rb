@@ -1,6 +1,6 @@
 describe Admin::PlacesController, type: :controller do
   let(:user) { create(:user) }
-  let(:place) { create_list(:place, :restaurant) }
+  let(:place) { create(:place, :restaurant) }
   let(:places) { create_list(:place, 5, :restaurant) }
   before(:each) { login_user(user) }
 
@@ -14,7 +14,8 @@ describe Admin::PlacesController, type: :controller do
       request.env['HTTP_ACCEPT'] = 'application/json'
     end
     let(:place_params) { attributes_for(:place) }
-    let(:response) {post :create, place_params }
+
+    let(:response) {post :create, place: place_params }
     it_returns_http_status(302)
     it_redirects_to('/admin/places')
   end
