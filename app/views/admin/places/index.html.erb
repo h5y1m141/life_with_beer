@@ -8,7 +8,7 @@
       <% column4_places.each do |place| %>
         <div class='col-md-3 col-sm-6'>
           <h3><%= place.name %></h3>
-          <p><%= place.address %></p>
+          <p><%= place.address %><%= place.address2 %></p>
           <ul class='list-inline'>
             <li>
               <%= link_to(edit_admin_place_path(place)) do %>

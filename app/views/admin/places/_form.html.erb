@@ -1,9 +1,60 @@
-<div class="col-xs-10">
+<div class="col-xs-10" ng-init="init(<%= @place.latitude %>, <%= @place.longitude %>)">
   <div class="form-group">
     <%= f.label :name, '名前' , class: 'control-label col-xs-2' %>
     <div class="col-xs-10">
       <%= f.text_field :name, class: 'form-control'%>
     </div>
   </div>
-</div>
+  <div class="form-group">
+    <%= f.label :place_type, 'お店のカテゴリ' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.select :place_type, Place.place_types.keys.to_a, class: 'control-label col-xs-2' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :prefecture_id, '都道府県' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.select :prefecture_id , @prefectures %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, '住所１' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :address, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address2, '住所２' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :address2, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_number, '電話番号' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :phone_number, class: 'form-control', placeholder: '03-1234-5678'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :latitude, '緯度' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :latitude, class: 'form-control', 'ng-model':'latitude' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :longitude, '経度' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <%= f.text_field :longitude, class: 'form-control', 'ng-model': 'longitude' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '地図' , class: 'control-label col-xs-2' %>
+    <div class="col-xs-10">
+      <div id="map_canvas" class="form-control place__contents__map">
+        
+      </div>      
+    </div>
 
+  </div>  
+</div>
+<script src="https://maps.googleapis.com/maps/api/js"></script>

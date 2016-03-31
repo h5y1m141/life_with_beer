@@ -1,1 +1,16 @@
-edit
+<div class="row" ng-controller="PlaceCtrl">
+  <div class="col-xs-12">
+    <%= form_for(@place, url: admin_place_path, html: { class: 'form-horizontal'}) do |f| %>
+      <%= render partial: 'form' , locals: {f: f} %>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-4">
+          <ul class="list-inline">
+            <li><%= link_to '戻る', admin_places_path, class: 'btn btn-default' %></li>
+            <li><%= f.submit '更新する', class: 'btn btn-primary'%><li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
