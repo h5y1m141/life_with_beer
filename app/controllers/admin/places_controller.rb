@@ -1,7 +1,10 @@
 class Admin::PlacesController < AdminController
   include PlaceSearchModule
+  include SocialAccountSearchModule
   before_action :set_place, only: [:edit, :destroy, :update]
   before_action :set_place_option, only: [:index, :new, :edit]
+  before_action :revise_params, only: [:create, :update]
+  before_action :generate_social_account_list, only: [:new, :edit]
 
   def new
     @place = Place.new
@@ -22,6 +25,7 @@ class Admin::PlacesController < AdminController
   end
   
   def edit
+    @place_social_accounts = @place.social_accounts
   end
 
   def update
@@ -44,11 +48,22 @@ class Admin::PlacesController < AdminController
   end
 
   def place_params
-    params.require(:place).permit(:name, :prefecture_id,:address, :address2, :phone_number, :latitude, :longitude, :place_type)
+    params.require(:place).permit(
+      :name, :prefecture_id,:address, :address2, :phone_number, :latitude, :longitude, :place_type,
+      social_accounts_attributes: [:id, :account_type, :url, :comment]
+    )
   end
 
   def set_place_option
     @prefectures = Place.prefectures
     @place_type_list = Place.place_type_list
   end
+  
+  def revise_params
+    social_accounts = JSON.parse(params[:place][:social_accounts])
+    unless social_accounts.first.empty?
+      social_accounts_attributes = social_accounts.map{|account| { id: account['social_account_id'], account_type: account['index'], url: account['url'] }}
+      params[:place][:social_accounts_attributes] = social_accounts_attributes
+    end
+  end  
 end

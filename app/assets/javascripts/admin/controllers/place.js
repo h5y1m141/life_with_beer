@@ -2,6 +2,7 @@
 
 angular.module('LifeWithBeerApp')
   .controller('PlaceCtrl', ['$scope', function ($scope) {
+    $scope.selectedSocialAccounts = [];
     $scope.latitude = null;
     $scope.longitude = null;
     var renderGoogleMap = function(latitude, longitude){

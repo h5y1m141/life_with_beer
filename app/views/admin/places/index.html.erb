@@ -9,6 +9,54 @@
         <div class='col-md-3 col-sm-6'>
           <h3><%= place.name %></h3>
           <p><%= place.address %><%= place.address2 %></p>
+          <% if place.social_accounts.present? %>
+            <ul class='list-inline'>
+              <% if place.social_accounts.facebook.first.url.present? %>
+                <li>
+                  <a
+                      class="btn btn-lg btn-social-icon btn-facebook"
+                      href="<%= place.social_accounts.facebook.first.url %>"
+                      target="_blank"
+                  >
+                    <span class="fa fa-facebook"></span>
+                  </a>
+                </li>
+              <% end %>
+              <% if place.social_accounts.twitter.first.url.present? %>
+                <li>
+                  <a
+                      class="btn btn-lg btn-social-icon btn-twitter"
+                      href="<%= place.social_accounts.twitter.first.url %>"
+                      target="_blank"
+                  >
+                    <span class="fa fa-twitter"></span>
+                  </a>
+                </li>
+              <% end %>
+              <% if place.social_accounts.blog.first.url.present? %>
+                <li>
+                  <a
+                      class="btn btn-lg btn-social-icon btn-instagram"
+                      href="<%= place.social_accounts.blog.first.url %>"
+                      target="_blank"
+                  >
+                    <span class="fa fa-globe"></span>
+                  </a>
+                </li>
+              <% end %>
+              <% if place.social_accounts.instagram.first.url.present? %>
+                <li>
+                  <a
+                      class="btn btn-lg btn-social-icon btn-instagram"
+                      href="<%= place.social_accounts.instagram.first.url %>"
+                      target="_blank"
+                  >
+                    <span class="fa fa-instagram"></span>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
           <ul class='list-inline'>
             <li>
               <%= link_to(edit_admin_place_path(place)) do %>
@@ -20,7 +68,7 @@
                 <button class="btn btn-danger btn-sm">削除</button>
               <% end %>
             </li>
-          </ul>          
+          </ul>
         </div>
       <% end %>
     </div>
