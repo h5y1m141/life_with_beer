@@ -2,6 +2,7 @@ describe Admin::PlacesController, type: :controller do
   let(:user) { create(:user) }
   let(:place) { create(:place, :restaurant) }
   let(:places) { create_list(:place, 5, :restaurant) }
+  let(:social_accounts) {'[{"index":1,"url":"https://twitter.com/twinswanlake"}]' }  
   before(:each) { login_user(user) }
 
   describe 'newアクションについて' do
@@ -14,8 +15,8 @@ describe Admin::PlacesController, type: :controller do
       request.env['HTTP_ACCEPT'] = 'application/json'
     end
     let(:place_params) { attributes_for(:place) }
-
-    let(:response) {post :create, place: place_params }
+    
+    let(:response) {post :create, place: place_params.merge(social_accounts: social_accounts ) }
     it_returns_http_status(302)
     it_redirects_to('/admin/places')
   end
@@ -44,7 +45,7 @@ describe Admin::PlacesController, type: :controller do
   end
 
   describe 'updateアクションについて' do
-    let(:response) { put :update, { id: place.id, place: {name: 'クラフトビールのレストラン'}} }
+    let(:response) { put :update, { id: place.id, place: {name: 'クラフトビールのレストラン', social_accounts: social_accounts }}}
     it 'nameが更新される' do
       expect(place.name).to eq 'ビールが飲めるお店'
       response
