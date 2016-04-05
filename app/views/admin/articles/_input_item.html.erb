@@ -10,7 +10,7 @@
     </div>
     <div class="col-xs-6">
       <input class="form-control" id="breweryName" name="breweryName" ng-model="breweryName" brewery placeholder="ブリュワー名を入力すると関連するアイテムが検索できます" type="text" value="{{ breweryName }}"></input>
-    </div>    
+    </div>
     <div ng-if="items.length > 0">
       <div class="article__contents__item" ng-repeat="item in items">
         <img ng-click="selectItem(item)" ng-src="{{ item.image.url }}"/>

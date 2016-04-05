@@ -11,8 +11,13 @@ class Admin::PlacesController < AdminController
   end
 
   def index
-    @search = search_places_by_parameters(params[:q])
+    query_params = (request[:format] == 'json') ? JSON.parse(params['q']) : params[:q]
+    @search = search_places_by_parameters(query_params)
     @places = @search.result.all.page(params[:page]).per(params[:per_page])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('LifeWithBeerApp')
-  .controller('ArticleCtrl', ['$scope', 'Article', function ($scope, Article) {
+  .controller('ArticleCtrl', ['$scope', 'Article','Place', function ($scope, Article, Place) {
     var prepareArticleData = function(contents){
       var result = [];
       angular.forEach(contents, function(content, key){
@@ -19,7 +19,8 @@ angular.module('LifeWithBeerApp')
       { title: '文章登録'},
       { title: 'アイテム登録'},
       { title: 'Instagram登録'},
-      { title: '画像登録'}
+      { title: '画像登録'},
+      { title: 'お店登録'}
     ];
     $scope.selectedTab = 0;
     $scope.selectedItems = [];
@@ -72,6 +73,14 @@ angular.module('LifeWithBeerApp')
         angular.forEach(response.elements,function(element){
           $scope.contentsArea.push(element);
         });
+      });
+    };
+    $scope.searchWithRansack =  function(params){
+      var query,
+          str = { prefecture_id_in: 1 };
+      query = Place.query({q: str});
+      query.$promise.then(function(response){
+        console.log(response);
       });
     };
   }]);
