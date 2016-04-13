@@ -3,13 +3,22 @@
   yum: name={{ item }} state=installed
   with_items:
     - epel-release
-    - ruby 
-    - ruby-devel 
-    - libxml2-devel
-    - libxslt-devel
+    - ruby
     - mysql-devel
-    - qtwebkit-devel
   tags: ruby
+- name: check if qtwebkit
+  shell: bash -c 'yum search qtwebkit-devel'
+  register: result
+  failed_when: result.rc not in [0, 1]
+  tags: ruby
+  
+- name: setup qtwebkit
+  yum: name=http://rpm.pbone.net/index.php3/stat/3/srodzaj/2/search/qtwebkit-2.3.4-6.el7.1.src.rpm state=present
+  when: result.rc == 1
+  tags: ruby
+  
+- name: install qtweb-kit
+  yum: name=qtwebkit-devel state=installed
 - name: Install GPG
   shell: bash -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3"
   tags: ruby
@@ -18,16 +27,22 @@
   tags: ruby
 - name: Install Ruby with rvm
   shell: bash -c "/usr/local/rvm/bin/rvm install {{ ruby_version }}"
+  
 - name: install bundler
   shell: bash -lc "gem install bundler"
   tags: ruby
+  
+- name: check if Capybara webkit symlink
+  shell: bash -c 'ls -al /usr/bin/qmake'
+  register: result
+  failed_when: result.rc not in [0, 1]
+  tags: ruby
+  
 - name: symlink for Capybara webkit
   shell: bash -c "ln -s /usr/lib64/qt4/bin/qmake /usr/bin/qmake"
-- name: symlink for Rails app directory
-  shell: bash -c "ln -s /vagrant /home/ops/life_with_beer"
-- name: bundle install
-  shell: bash -lc "cd {{ rails_directory }};bundle install --path vendor/bundle"
+  when: result.rc == 1
   tags: ruby
+  
 - name: create shared directory
   shell: bash -lc "mkdir /home/ops/shared; mkdir -p /home/ops/shared/tmp/sockets; mkdir -p /home/ops/shared/tmp/pids; mkdir /home/ops/shared/log; ln -s /home/ops/shared /home/ops/life_with_beer/shared"
   tags: ruby

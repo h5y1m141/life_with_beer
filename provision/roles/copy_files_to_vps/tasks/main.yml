@@ -1,0 +1,18 @@
+---
+- name: copy ssh
+  copy: src=/Users/hoyamada/Documents/rails/life_with_beer/provision/ssh_key/id_rsa.pub dest=/home/ops/id_rsa.pub
+  tags: ssh
+- name: locate my.cnf
+  copy: src=/Users/hoyamada/Documents/rails/life_with_beer/provision/mysql/my.cnf dest=/etc/my.cnf mode=0644 owner=root group=root
+  tags: mysql
+- name: place nginx conf file
+  copy: src=/Users/hoyamada/Documents/rails/life_with_beer/provision/nginx/vagrant/nginx.conf dest=/etc/nginx/nginx.conf mode=0644 owner=root group=root
+  tags: nginx
+- name: check if  Rails app directory
+  shell: bash -c 'ls -al /home/ops/life_with_beer'
+  register: result
+  failed_when: result.rc not in [0, 1]
+  
+- name: create Rails app directory
+  shell: bash -c "mkdir /home/ops/life_with_beer"
+  when: result.rc == 1

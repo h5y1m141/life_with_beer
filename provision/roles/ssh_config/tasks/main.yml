@@ -1,0 +1,10 @@
+---
+- name: Create .ssh
+  shell: mkdir /home/ops/.ssh; chmod 700 /home/ops/.ssh
+  tags: ssh_config
+- name: ssh authorized key
+  shell: cd /home/ops/.ssh; touch authorized_keys; chmod 600 authorized_keys; cat /home/ops/id_rsa.pub >> authorized_keys
+  tags: ssh_config
+- name: change owner & group
+  shell: chown -R ops /home/ops/.ssh; chgrp -R ops /home/ops/.ssh
+  tags: ssh_config

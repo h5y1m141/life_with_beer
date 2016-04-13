@@ -1,9 +1,15 @@
 ---
+- name: check if repository registerd
+  shell: bash -c 'yum repolist all | grep nginx/x86_64'
+  register: result
+  failed_when: result.rc not in [0, 1]
+  tags: nginx  
+- name: add nginx repository
+  yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm state=present
+  when: result.rc == 1
+  tags: nginx  
 - name: install nginx
   yum: name=nginx state=installed
-  tags: nginx
-- name: place nginx conf file
-  copy: src=/vagrant/provision/nginx/vagrant/nginx.conf dest=/etc/nginx/nginx.conf mode=0644 owner=root group=root
   tags: nginx
 - name: start nginx
   shell: bash -c 'systemctl enable nginx; systemctl start nginx'

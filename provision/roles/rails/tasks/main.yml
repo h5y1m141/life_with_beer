@@ -8,6 +8,6 @@
     - nodejs
     - gcc-c++
     - make
-- name: start Unicorn
-  shell: bash -lc "ch /home/ops/life_with_beer; bundle exec unicorn_rails -c config/unicorn.rb -E production -D"
-  tags: rails
+# - name: start Unicorn
+#   shell: bash -lc "ch /home/ops/life_with_beer; bundle exec unicorn_rails -c config/unicorn.rb -E production -D"
+#   tags: rails
