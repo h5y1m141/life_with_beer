@@ -1,6 +1,7 @@
 ---
-- hosts: vagrant
-  sudo: true
+- hosts: sakura
+  become: yes
+  become_method: su
   vars:
     hostname: vagrant-ansible-rails
     environtment: vagrant
@@ -16,10 +17,10 @@
   roles:
     - common
     - deploy_user
-    - copy_files_to_vagrant
-    - ssh_config    
+    - nginx    
+    - copy_files_to_vps
+    - ssh_config
     - mysql
     - firewalld
-    - nginx
     - ruby
     - rails

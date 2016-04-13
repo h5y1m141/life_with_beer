@@ -6,16 +6,19 @@
     - mariadb-libs
     - mariadb-server
   tags: mysql
+- name: check if repository registerd
+  shell: bash -c 'yum repolist all | grep mysql57-community/x86_64'
+  register: result
+  failed_when: result.rc not in [0, 1]
+  tags: mysql
 - name: add repositry
   yum: name={{ item }}
   with_items:
     - http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+  when: result.rc == 1    
   tags: mysql
 - name: install MySQL
   shell: yum -y install mysql-community-server
-  tags: mysql
-- name: locate my.cnf
-  copy: src=/vagrant/provision/mysql/my.cnf dest=/etc/my.cnf mode=0644 owner=root group=root
   tags: mysql
 - name: start MySQL
   shell: systemctl enable mysqld.service; systemctl start mysqld.service

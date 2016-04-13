@@ -1,5 +1,9 @@
 ---
 # package installation
+- name: yum update
+  become: yes
+  become_method: sudo  
+  shell: bash -lc "yum update"
 - name: install basic packages
   yum: name={{ item }} state=installed
   with_items:
@@ -17,7 +21,6 @@
     - libyaml
     - libyaml-devel
     - tcl-devel
-    - db4-devel
     - libffi-devel
     - gcc
     - libxml2
@@ -28,7 +31,8 @@
     - ImageMagick-devel
 
 - name: install Development Tool
-  sudo: true
+  become: yes
+  become_method: sudo
   shell: yum -y groupinstall "Development Tools"
 
 # timezone
