@@ -19,13 +19,25 @@
   
 - name: install qtweb-kit
   yum: name=qtwebkit-devel state=installed
-- name: Install GPG
-  shell: bash -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3"
+
+- name: check if rvm
+  shell: bash -c 'ls -al /usr/local/rvm/bin/rvm'
+  register: rvm_result
+  failed_when: rvm_result.rc not in [0, 1]
   tags: ruby
+  
+- name: Install GPG
+  shell: bash -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3"
+  when: rvm_result.rc == 1
+  tags: ruby
+  
 - name: Install RVM
   shell: bash -c "curl -sSL https://get.rvm.io | bash -s stable --ruby={{ ruby_version }}"
+  when: rvm_result.rc == 1
   tags: ruby
+  
 - name: Install Ruby with rvm
+  when: rvm_result.rc == 1
   shell: bash -c "/usr/local/rvm/bin/rvm install {{ ruby_version }}"
   
 - name: install bundler
@@ -33,12 +45,14 @@
   tags: ruby
   
 - name: check if Capybara webkit symlink
-  shell: bash -c 'ls -al /usr/bin/qmake'
+  shell: bash -c 'which qmake'
   register: result
   failed_when: result.rc not in [0, 1]
   tags: ruby
   
 - name: symlink for Capybara webkit
+  become: yes
+  become_method: sudo
   shell: bash -c "ln -s /usr/lib64/qt4/bin/qmake /usr/bin/qmake"
   when: result.rc == 1
   tags: ruby

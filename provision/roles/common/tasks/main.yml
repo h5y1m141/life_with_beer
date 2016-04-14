@@ -1,9 +1,9 @@
 ---
 # package installation
-- name: yum update
-  become: yes
-  become_method: sudo  
-  shell: bash -lc "yum update"
+# - name: yum update
+#   become: yes
+#   become_method: sudo  
+#   shell: bash -lc "yum update"
 - name: install basic packages
   yum: name={{ item }} state=installed
   with_items:
