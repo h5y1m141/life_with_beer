@@ -4,8 +4,16 @@
 - name: locate my.cnf
   copy: src=/vagrant/provision/mysql/my.cnf dest=/etc/my.cnf mode=0644 owner=root group=root
   tags: mysql
+  
 - name: place nginx conf file
   copy: src=/vagrant/provision/nginx/vagrant/nginx.conf dest=/etc/nginx/nginx.conf mode=0644 owner=root group=root
   tags: nginx
+
+- name: check if symlink
+  shell: bash -c "ls -al /vagrant /home/ops/life_with_beer"
+  register: result
+  failed_when: result.rc not in [0, 1]
+  
 - name: symlink for Rails app directory
   shell: bash -c "ln -s /vagrant /home/ops/life_with_beer"
+  when: result.rc == 1

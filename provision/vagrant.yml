@@ -16,10 +16,10 @@
   roles:
     - common
     - deploy_user
+    - nginx    
     - copy_files_to_vagrant
     - ssh_config    
     - mysql
     - firewalld
-    - nginx
     - ruby
     - rails
