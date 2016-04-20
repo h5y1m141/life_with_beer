@@ -15,3 +15,4 @@
 /provision/ssh_key/*
 /shared
 app/assets/stylesheets/styles-bluegreen.css
+/config/database.yml
