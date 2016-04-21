@@ -1,5 +1,5 @@
 class Admin::PicturesController < AdminController
-  before_action :set_picture, only: [:edit, :destroy, :update, :load_elements]
+  before_action :set_picture, only: [:show, :edit, :destroy, :update, :load_elements]
   
   def index
     @pictures = Picture.all
@@ -7,6 +7,9 @@ class Admin::PicturesController < AdminController
 
   def new
     @picture = Picture.new
+  end
+
+  def show
   end
 
   def create

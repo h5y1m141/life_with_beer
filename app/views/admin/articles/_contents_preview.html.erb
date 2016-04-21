@@ -5,7 +5,7 @@
   <div class="article__contents__container">
     <div ng-repeat="content in contentsArea track by $index">
       <preview-text data="content.element_data" tag="content.tag_name" ng-if="content.tag_name == 'sub_head' || content.tag_name == 'description'"></preview-text>
-      <img class="article__contents__preview__thumb" ng-if="content.tag_name == 'img'" picture="content.imagePath"/>
+      <img class="article__contents__preview__thumb" ng-if="content.tag_name == 'img'" picture="content.element_data"/>
       <preview-item data="content.element_data" ng-if="content.tag_name == 'item'"></preview-item>
       <instagram data="content.element_data" ng-if="content.tag_name == 'instagram'"></instagram>
     </div>
