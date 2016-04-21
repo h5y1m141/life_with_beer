@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :stores
   resources :articles, only: [:index, :show]
+  resources :tags, only: [:index, :show]
   controller :static_pages do
     get :about
   end
