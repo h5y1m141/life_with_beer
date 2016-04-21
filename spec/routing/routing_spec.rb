@@ -22,3 +22,8 @@ describe ArticlesController, type: :routing do
   it_routes_to(:get, '/items/1', 'items#show', id: '1')
   it_routes_to(:get, '/articles/preview/1', 'articles#preview', preview_key: '1')
 end
+
+describe TagsController, type: :routing do
+  it_routes_to(:get, '/tags', 'tags#index')
+  it_routes_to(:get, '/tags/1', 'tags#show', id: '1')
+end
