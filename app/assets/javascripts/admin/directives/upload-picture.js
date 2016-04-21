@@ -47,10 +47,10 @@ angular.module('LifeWithBeerApp')
           formData.append('file', $scope.imageFileSrc);
           query = Picture.fileUpload(formData);
           query.$promise.then(function(response){
-            var image = response.image;
+            var image = response;
             $scope.contentsArea.push({
               tag_name: 'img',
-              element_data: image.image.id
+              element_data: image.id
             });
             $scope.resetImage();
             $scope.progressStatus = false;
