@@ -50,8 +50,7 @@ angular.module('LifeWithBeerApp')
             var image = response.image;
             $scope.contentsArea.push({
               tag_name: 'img',
-              element_data: image,
-              imagePath: image.image.url
+              element_data: image.image.id
             });
             $scope.resetImage();
             $scope.progressStatus = false;

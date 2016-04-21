@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('LifeWithBeerApp')
-  .directive("picture", function($compile) {
+  .directive("picture", ['$compile', 'Picture', function($compile, Picture) {
     return {
       restrict: 'A',
       replace: true,
@@ -9,8 +9,12 @@ angular.module('LifeWithBeerApp')
       template: '<img ng-src="{{value}}" >',
       link: function postLink(scope, element, attrs) {
         scope.$watch('picture' , function(html){
-          attrs.$set('src',scope.picture);
+          var query =  Picture.get({ id: 7 });
+          query.$promise.then(function(response){
+            var picture = response.image;
+            attrs.$set('src',picture.url);
+          });          
         });
       }
     };
-  });
+  }]);
