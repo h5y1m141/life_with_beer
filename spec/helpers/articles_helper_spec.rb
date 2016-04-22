@@ -13,8 +13,9 @@ describe ArticlesHelper, type: :helper do
     context 'imgが引数に渡された場合' do
       let(:picture){ create(:picture)}
       it 'imgタグが含まれるHTMLを生成する' do
-        expect(helper.article_element_data('img', picture.id)).to eq "<img class=\"img-responsive\" src=\"/uploads/picture/image/#{picture.id}/sample.jpg\" alt=\"Sample\" />"
+        expected = "<img class=\"img-responsive\" src=\"/uploads/picture/image/#{picture.id}/sample.jpg\" alt=\"Sample\" />"
+        expect(helper.article_element_data('img', picture.id)).to eq expected
       end
-    end    
+    end
   end
 end
