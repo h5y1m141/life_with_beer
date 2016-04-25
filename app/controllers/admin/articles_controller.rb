@@ -1,6 +1,8 @@
 class Admin::ArticlesController < AdminController
   include ArticleSearchModule
+  include PlaceSearchModule
   before_action :set_article, only: [:edit, :destroy, :update, :load_elements]
+  before_action :set_place_option, only: [:new]
   
   def index
     @search = search_articles_by_parameters(params[:q])
@@ -8,6 +10,8 @@ class Admin::ArticlesController < AdminController
   end
 
   def new
+    @search = search_places_by_parameters(params[:q])
+    @prefectures = Place.prefectures_with_key
     @article = Article.new
   end
 
@@ -37,6 +41,10 @@ class Admin::ArticlesController < AdminController
   end
 
   def article_param
-    params.permit('title', 'publish_status', 'elements_attributes': ['tag_name', 'element_data', 'sory_key'])
+    params.permit('title', 'publish_status','elements_attributes':['tag_name', 'element_data', 'sory_key'])
+  end
+  def set_place_option
+    @prefectures = Place.prefectures
+    @place_type_list = Place.place_type_list
   end
 end
