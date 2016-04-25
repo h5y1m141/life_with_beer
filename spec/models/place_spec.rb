@@ -14,4 +14,11 @@ describe Place, type: :model do
       expect(hokkaido_prefecture.last).to eq 1
     end
   end
+  describe 'prefectures_with_keyについて' do
+    it 'ハッシュが含まれる配列の値が得られる' do
+      prefecture = Place.prefectures_with_key.first
+      expect(prefecture[:name]).to eq '北海道'
+      expect(prefecture[:code]).to eq 1
+    end
+  end
 end
