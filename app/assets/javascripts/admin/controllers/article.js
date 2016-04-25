@@ -61,7 +61,8 @@ angular.module('LifeWithBeerApp')
     $scope.selectItem = function(item){
       $scope.contentsArea.push({
         tag_name: 'item',
-        element_data: item
+        item_data: item,
+        element_data: item.id
       });
     };
     $scope.init = function(json){
@@ -75,7 +76,7 @@ angular.module('LifeWithBeerApp')
         });
       });
     };
-    $scope.searchWithRansack =  function(params){
+    $scope.searchWithRansack =  function(){
       var query,
           str = {
             prefecture_id_in: $scope.selectedPrefecture.code,
@@ -90,9 +91,12 @@ angular.module('LifeWithBeerApp')
       return $scope.prefectures = data;
     };
     $scope.selectPlace = function(place){
+      // Rails側に送信する情報はnested_attributes用の値と
+      // プレビュー用のデータを分けるためにプロパティを別途設定
       $scope.contentsArea.push({
         tag_name: 'place',
-        element_data: place
+        place_data: place,
+        element_data: place.id
       });
     };
   }]);

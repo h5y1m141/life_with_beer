@@ -8,8 +8,9 @@ class Article < ActiveRecord::Base
   has_many :pictures, through: :article_picture_relays
 
   accepts_nested_attributes_for :elements
+  accepts_nested_attributes_for :places
   mount_uploader :thumbnail, PictureUploader
-
+  
   validates :title, presence: true
   enum publish_status: { draft: 0, published: 1 }
   after_create :generate_preview_key
