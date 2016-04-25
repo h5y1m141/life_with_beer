@@ -5,9 +5,12 @@
   </header>
   <div class="panel-body" ng-init=fetchPrefectures(<%= @prefectures.to_json %>)>
     <div class="col-xs-6">
-      <select class='form-control' ng-model='selectedPrefecture' ng-options="prefecture.name for prefecture in prefectures"></select>
+      <label for="prefectures">都道府県を選択</label>
+      <select name='prefectures' class='form-control' ng-model='selectedPrefecture' ng-options="prefecture.name for prefecture in prefectures"></select>
     </div>
     <div class="col-xs-6">
+      <label for="prefectures">お店の名前</label>
+      <input type="text" class='form-control' ng-model="placeName" />
     </div>
   </div>
   <div ng-if='searchResultPlaces'>

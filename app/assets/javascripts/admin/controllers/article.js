@@ -78,7 +78,8 @@ angular.module('LifeWithBeerApp')
     $scope.searchWithRansack =  function(params){
       var query,
           str = {
-            prefecture_id_in: $scope.selectedPrefecture.code
+            prefecture_id_in: $scope.selectedPrefecture.code,
+            name_start: $scope.placeName
           };
       query = Place.query({q: str});
       query.$promise.then(function(response){
