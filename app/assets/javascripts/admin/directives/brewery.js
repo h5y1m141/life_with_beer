@@ -13,7 +13,6 @@ angular.module('LifeWithBeerApp')
           };
           var data = Item.search_by_brewery(params);
           data.$promise.then(function(response){
-            console.log(response);
             $scope.items = response.items;
           });
         });

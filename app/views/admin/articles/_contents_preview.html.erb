@@ -8,6 +8,7 @@
       <img class="article__contents__preview__thumb" ng-if="content.tag_name == 'img'" picture="content.element_data"/>
       <preview-item data="content.element_data" ng-if="content.tag_name == 'item'"></preview-item>
       <instagram data="content.element_data" ng-if="content.tag_name == 'instagram'"></instagram>
+      <preview-place data="content.element_data" ng-if="content.tag_name == 'place'"></preview-place>
     </div>
   </div>
 </div>

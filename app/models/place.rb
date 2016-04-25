@@ -22,4 +22,13 @@ class Place < ActiveRecord::Base
   def self.prefectures
     JpPrefecture::Prefecture.all.map{|o| [o.name, o.code]}
   end
+
+  def self.prefectures_with_key
+    JpPrefecture::Prefecture.all.map do |o|
+      {
+        name: o.name,
+        code: o.code
+      }
+    end
+  end
 end

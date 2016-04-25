@@ -11,6 +11,7 @@ class Admin::ArticlesController < AdminController
 
   def new
     @search = search_places_by_parameters(params[:q])
+    @prefectures = Place.prefectures_with_key
     @article = Article.new
   end
 

@@ -77,10 +77,21 @@ angular.module('LifeWithBeerApp')
     };
     $scope.searchWithRansack =  function(params){
       var query,
-          str = { prefecture_id_in: 1 };
+          str = {
+            prefecture_id_in: $scope.selectedPrefecture.code
+          };
       query = Place.query({q: str});
       query.$promise.then(function(response){
-        console.log(response);
+        $scope.searchResultPlaces = response;
+      });
+    };
+    $scope.fetchPrefectures = function(data){
+      return $scope.prefectures = data;
+    };
+    $scope.selectPlace = function(place){
+      $scope.contentsArea.push({
+        tag_name: 'place',
+        element_data: place
       });
     };
   }]);

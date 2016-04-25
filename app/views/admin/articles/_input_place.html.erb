@@ -3,7 +3,22 @@
     <i class="fa fa-edit article__contents__icon"></i>
     お店を登録
   </header>
-  <div class="panel-body">
-    <a class="btn" href='' ng-click="searchWithRansack('test')">検索する</a>
+  <div class="panel-body" ng-init=fetchPrefectures(<%= @prefectures.to_json %>)>
+    <div class="col-xs-6">
+      <select class='form-control' ng-model='selectedPrefecture' ng-options="prefecture.name for prefecture in prefectures"></select>
+    </div>
+    <div class="col-xs-6">
+    </div>
+  </div>
+  <div ng-if='searchResultPlaces'>
+    <ul ng-repeat='place in searchResultPlaces'>
+      <h3 ng-click='selectPlace(place)'>
+        {{ place.name }}
+      </h3>
+      <li>住所：{{ place.address }}{{ place.address2 }}</li>
+    </ul>
+  </div>
+  <div ng-if='selectedPrefecture'>
+    <a class="btn btn-primary" href='' ng-click="searchWithRansack(prefectureName)">検索する</a>
   </div>
 </div>
