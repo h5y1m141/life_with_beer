@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('LifeWithBeerApp')
   .controller('ArticleCtrl', ['$scope', 'Article','Place', function ($scope, Article, Place) {
     var prepareArticleData = function(contents){

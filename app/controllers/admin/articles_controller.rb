@@ -41,7 +41,7 @@ class Admin::ArticlesController < AdminController
   end
 
   def article_param
-    params.permit('title', 'publish_status','elements_attributes':['tag_name', 'element_data', 'sory_key'] )
+    params.permit('title', 'publish_status','elements_attributes':['tag_name', 'element_data', 'sory_key'])
   end
   def set_place_option
     @prefectures = Place.prefectures
