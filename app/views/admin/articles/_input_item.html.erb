@@ -13,7 +13,9 @@
     </div>
     <div ng-if="items.length > 0">
       <div class="article__contents__item" ng-repeat="item in items">
-        <img ng-click="selectItem(item)" ng-src="{{ item.image.url }}"/>
+        <select-item data="item" contents="contentsArea" class="btn btn-priamry">
+          <img ng-src="{{ item.image.url }}"/>
+        </select-item>
       </div>
       <div ng-if="lastPage == false">
         <button class="btn-default btn-xs" ng-click="readMore()">さらにアイテムを読み込む</button>
