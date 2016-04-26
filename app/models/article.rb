@@ -1,14 +1,10 @@
 class Article < ActiveRecord::Base
   has_many :elements, class_name: ArticleElement.name, dependent: :destroy
-  has_many :items, class_name: ArticleItemRelay.name, dependent: :destroy
   has_many :favorites, as: :favoriteable
-  has_many :place_article_relays, dependent: :destroy
-  has_many :places, through: :place_article_relays
   has_many :article_picture_relays, dependent: :destroy
   has_many :pictures, through: :article_picture_relays
 
   accepts_nested_attributes_for :elements
-  accepts_nested_attributes_for :places
   mount_uploader :thumbnail, PictureUploader
 
   validates :title, presence: true

@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 20160315063934) do
   add_index "article_elements", ["article_id"], name: "index_article_elements_on_article_id", using: :btree
   add_index "article_elements", ["sory_key"], name: "index_article_elements_on_sory_key", using: :btree
 
-  create_table "article_item_relays", force: :cascade do |t|
-    t.integer  "item_id",    limit: 4
-    t.integer  "article_id", limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
   create_table "article_picture_relays", force: :cascade do |t|
     t.integer  "article_id", limit: 4
     t.integer  "picture_id", limit: 4
@@ -111,13 +104,6 @@ ActiveRecord::Schema.define(version: 20160315063934) do
   end
 
   add_index "pictures", ["item_id"], name: "index_pictures_on_item_id", using: :btree
-
-  create_table "place_article_relays", force: :cascade do |t|
-    t.integer  "place_id",   limit: 4
-    t.integer  "article_id", limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
 
   create_table "place_item_relays", force: :cascade do |t|
     t.integer  "place_id",   limit: 4
