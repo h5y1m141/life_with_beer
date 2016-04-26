@@ -15,9 +15,11 @@
   </div>
   <div ng-if='searchResultPlaces'>
     <ul ng-repeat='place in searchResultPlaces'>
-      <h3 ng-click='selectPlace(place)'>
-        {{ place.name }}
-      </h3>
+      <select-place data="place" contents="contentsArea" class="btn btn-priamry">
+        <h3>
+          {{ place.name }}
+        </h3>
+      </select-place>
       <li>住所：{{ place.address }}{{ place.address2 }}</li>
     </ul>
   </div>

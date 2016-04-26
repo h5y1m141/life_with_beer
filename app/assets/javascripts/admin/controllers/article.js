@@ -56,13 +56,6 @@ angular.module('LifeWithBeerApp')
         element_data: $scope.instagram
       });
     };
-    $scope.selectItem = function(item){
-      $scope.contentsArea.push({
-        tag_name: 'item',
-        item_data: item,
-        element_data: item.id
-      });
-    };
     $scope.init = function(json){
       var query,
           article = JSON.parse(json);
