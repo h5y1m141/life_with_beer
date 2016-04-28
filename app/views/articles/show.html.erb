@@ -10,21 +10,8 @@
           </header>
           <div class="lwb__article__contents__body">
             <% @article.elements.each do |element| %>
-              <% if(element[:tag_name] == 'sub_head') %>
-                <h3>
-                  <%= element[:element_data] %>
-                </h3>
-              <% elsif(element[:tag_name] == 'description') %>
-                <p>
-                  <%= element[:element_data] %>
-                </p>
-              <% elsif(element[:tag_name] == 'img') %>
-                <% picture = Picture.find(element[:element_data]) %>
-                <%= image_tag picture.image.url, class: 'img-responsive' %>
-              <% elsif(element[:tag_name] == 'instagram') %>
-                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="5"><a href="<%= element[:element_data] %>" target="_blank"></a></blockquote>
-              <% end %>
-            <% end %>
+              <%= article_element_data(element[:tag_name], element[:element_data]) %>
+          <% end %>
           </div>
         </article>
         <%= link_to '戻る', root_path, class: 'btn btn-default' %>

@@ -1,0 +1,5 @@
+{
+  "indent": 2,
+  "strict": true,
+  "predef": ["angular"]
+}
