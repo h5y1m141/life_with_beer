@@ -30,55 +30,76 @@ article_elements = [
     article_id: 1,
     tag_name: 'sub_head',
     element_data: 'ホップの産地として有名だったことを最近知った',
-    sory_key: 2},
+    sory_key: 2
+  },
   {
     article_id: 1,
     tag_name: 'description',
     element_data: 
-      'のグループでクラフトビールが熱いぞ！ニュージーランドという記事を見つけたのですが、そこで\n\n「ちなみにNelsonはビール造りに欠かせないホップをニュージーランドで唯一商業用として生産している場所としても知られています。」\n\nということが書かれていました。',
-    sory_key: 3},
+      'のグループでクラフトビールが熱いぞ！ニュージーランドという記事を見つけたのですが、そこで「ちなみにNelsonはビール造りに欠かせないホップをニュージーランドで唯一商業用として生産している場所としても知られています。」ということが書かれていました。',
+    sory_key: 3
+  },
   {
     article_id: 1,
     tag_name: 'description',
     element_data: 
       'またこの記事によると、ネルソン ソーヴィンはニュージーランド産のホップで、パンクIPAにも使用されてるとかなので、元々自分が好きなタイプのクラフトビールには、ニュージーランド産のこのホップ使ったものが多かったんだなぁと最近知りました。',
-    sory_key: 4},
+    sory_key: 4
+  },
   {
     article_id: 1,
     tag_name: 'sub_head',
     element_data: '挑戦的な味のものが印象的',
-    sory_key: 5},
+    sory_key: 5
+  },
   {
     article_id: 1,
     tag_name: 'description',
     element_data: '8 Wired のHopWired IPAで、グラスに注いだ瞬間からポップのとても良い香りが一気に飛び込んできました。（ちなみに8 Wiredはこういう↓ボトルデザイン）',
-    sory_key: 6},
+    sory_key: 6
+  },
   {
     article_id: 1,
     tag_name: 'img',
     element_data: '1',
-    sory_key: 7},
+    sory_key: 7
+  },
   {
     article_id: 1,
     tag_name: 'sub_head',
     element_data: 'Yeastie BoysのPot Kettle Blackというのも面白い',
-    sory_key: 8},
+    sory_key: 8
+  },
   {
     article_id: 1,
     tag_name: 'description',
     element_data: '結構衝撃的だったのが、最近飲んだYeastie BoysのPot Kettle Black',
-    sory_key: 9},
+    sory_key: 9
+  },
   {
     article_id: 1,
     tag_name: 'img',
     element_data: '2',
-    sory_key: 10},
+    sory_key: 10
+  },
   {
     article_id: 1,
     tag_name: 'description',
     element_data: 'ホッピーポーターというPOP書いてあった通り最初に凄くマスカットみたいな感じの味わいがガツンと来て、でもポーターと言われるとそうかという味わいもあるし、色々考えつつも、気づいていたらポーターなのにゴクゴク飲んでました^^;',
     sory_key: 11
-  }
+  },
+  {
+    article_id: 1,
+    tag_name: 'description',
+    element_data: 'ちなみに藤小西さんはこちらになりますー',
+    sory_key: 12
+  },
+  {
+    article_id: 1,
+    tag_name: 'place',
+    element_data: '132',
+    sory_key: 13
+  }  
 ]
 
 article_elements.each do |element_params|
