@@ -3,4 +3,5 @@
 //= require twitter/bootstrap
 //= require angular
 //= require angular-resource
+//= require articles
 //= require_tree .
