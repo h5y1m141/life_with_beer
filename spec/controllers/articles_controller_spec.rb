@@ -1,7 +1,16 @@
 describe ArticlesController, type: :controller do
+  let(:draft_articles) { create_list(:article, 5) }
+  let(:published_articles) { create_list(:article, 5, :published) }
+
   describe 'indexアクションについて' do
     let(:response) {get :index  }
     it_renders_template(:index)
+    it 'ステータスが公開記事の一覧が取得できる' do
+      draft_articles
+      published_articles
+      response
+      expect(assigns(:articles).count).to eq published_articles.count
+    end
   end
 
   describe 'showアクションについて' do
