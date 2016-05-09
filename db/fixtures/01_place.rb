@@ -1,4 +1,9 @@
 require 'jp_prefecture'
+
+my_basket_places = JSON.parse(File.read('db/fixtures/my_basket_with_latlng.json'))
+my_basket_places.each do |place|
+  Place.create!(place)
+end
 places = JSON.parse(File.read('db/fixtures/place.json'))
 places.each do |place|
   place_type = (place['custom_fields']['shopFlg'] == 'false') ? 0 : 1
@@ -12,6 +17,3 @@ places.each do |place|
     place_type: place_type
 })
 end
-puts 'まいばすけっとの情報をスクレイピング'
-my_basket_crawler = Crawler::MyBasket.new
-my_basket_crawler.run.each{|place| Place.create!(place)}
