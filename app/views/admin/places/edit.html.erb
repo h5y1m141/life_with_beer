@@ -1,7 +1,7 @@
 <div class="row" ng-controller="PlaceCtrl">
   <div class="col-xs-12">
     <%= form_for(@place, url: admin_place_path, html: { class: 'form-horizontal'}) do |f| %>
-      <%= render partial: 'form' , locals: {f: f} %>
+      <%= render partial: 'form' , locals: {f: f, place_social_accounts: @place_social_accounts.to_json, social_accounts: @social_accounts.to_json } %>
       <div class="row">
         <div class="col-md-2 col-md-offset-4">
           <ul class="list-inline">            
