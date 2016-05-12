@@ -9,8 +9,11 @@ class CreatePlaces < ActiveRecord::Migration
       t.decimal :latitude, precision: 9, scale: 6
       t.decimal :longitude, precision: 9, scale: 6
       t.integer :place_type, null: false, default: 0
-
+      t.string :geohash
+      
       t.timestamps null: false
     end
+    add_index :places, :name
+    add_index :places, :geohash
   end
 end
