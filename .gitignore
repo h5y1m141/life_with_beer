@@ -16,3 +16,4 @@
 /shared
 app/assets/stylesheets/styles-bluegreen.css
 /config/database.yml
+/public/archives

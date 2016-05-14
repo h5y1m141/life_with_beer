@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
+  include PageCacheModule
   before_action :set_article, only: [:show]
-
+  before_filter :allow_page_caching, only: [:index, :show]
+  protect_from_forgery except: [:index, :show]
   def index
     @articles = Article.published
   end
