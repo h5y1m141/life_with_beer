@@ -41,6 +41,7 @@ gem 'sitemap_generator'
 gem 'jp_prefecture'
 gem 'sprockets-rails', '~> 2.0' # https://github.com/modeset/teaspoon/issues/443
 gem 'pr_geohash'
+gem 'actionpack-page_caching'
 
 group :development do
   gem 'annotate'
