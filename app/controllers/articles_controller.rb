@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
-
+  caches_page :index, :show
   def index
     @articles = Article.published
   end
