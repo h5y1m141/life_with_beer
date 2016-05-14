@@ -7,5 +7,6 @@ class CreateBreweries < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :breweries, :name
   end
 end

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315063934) do
+ActiveRecord::Schema.define(version: 20160512090216) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "geohash",    limit: 255
+    t.decimal  "latitude",               precision: 9, scale: 6
+    t.decimal  "longitude",              precision: 9, scale: 6
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "areas", ["geohash"], name: "index_areas_on_geohash", using: :btree
+  add_index "areas", ["name"], name: "index_areas_on_name", using: :btree
 
   create_table "article_elements", force: :cascade do |t|
     t.string   "tag_name",     limit: 255
@@ -42,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160315063934) do
   end
 
   add_index "articles", ["preview_key"], name: "index_articles_on_preview_key", using: :btree
+  add_index "articles", ["title"], name: "index_articles_on_title", using: :btree
 
   create_table "breweries", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -50,6 +63,8 @@ ActiveRecord::Schema.define(version: 20160315063934) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "breweries", ["name"], name: "index_breweries_on_name", using: :btree
 
   create_table "brewery_social_account_relays", force: :cascade do |t|
     t.integer  "brewery_id",        limit: 4
@@ -128,9 +143,13 @@ ActiveRecord::Schema.define(version: 20160315063934) do
     t.decimal  "latitude",                  precision: 9, scale: 6
     t.decimal  "longitude",                 precision: 9, scale: 6
     t.integer  "place_type",    limit: 4,                           default: 0, null: false
+    t.string   "geohash",       limit: 255
     t.datetime "created_at",                                                    null: false
     t.datetime "updated_at",                                                    null: false
   end
+
+  add_index "places", ["geohash"], name: "index_places_on_geohash", using: :btree
+  add_index "places", ["name"], name: "index_places_on_name", using: :btree
 
   create_table "social_accounts", force: :cascade do |t|
     t.integer  "account_type", limit: 4,   null: false
