@@ -45,3 +45,7 @@ describe Admin::PlacesController, type: :routing do
   it_routes_to(:patch, '/admin/places/1', 'admin/places#update', id: '1')
   it_routes_to(:delete, '/admin/places/1', 'admin/places#destroy', id: '1')  
 end
+
+describe Admin::BeerStylesController, type: :routing do
+  it_routes_to(:get, '/admin/beer_styles', 'admin/beer_styles#index')
+end
