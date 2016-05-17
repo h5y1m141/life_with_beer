@@ -100,6 +100,10 @@ ActiveRecord::Schema.define(version: 20160512090216) do
     t.text     "image",              limit: 65535
     t.text     "original_image_url", limit: 65535,              null: false
     t.integer  "ibu",                limit: 4,     default: 10, null: false
+    t.integer  "full_bodied_ratio",  limit: 4,     default: 1,  null: false
+    t.integer  "bitter_taste_ratio", limit: 4,     default: 1,  null: false
+    t.integer  "aroma_ratio",        limit: 4,     default: 1,  null: false
+    t.integer  "beer_style",         limit: 4,     default: 1,  null: false
     t.integer  "brewery_id",         limit: 4
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false

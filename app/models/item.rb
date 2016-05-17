@@ -24,7 +24,19 @@ class Item < ActiveRecord::Base
   mount_uploader :image, PictureUploader
   accepts_nested_attributes_for :stocks
   accepts_nested_attributes_for :tags
-
+  enum beer_style: {
+    pilsner: 1,
+    wheat_beer: 2,
+    saison: 3,
+    pale_ale: 4,
+    amber_ale: 5,
+    india_pale_ale: 6,
+    porter: 7,
+    stout: 8,
+    barley_wine: 9,
+    fruit_beer: 10
+  }
+  
   scope :fetch_by_tag, ->(tag) do
     includes(:tags).where('tags.name': tag )
   end

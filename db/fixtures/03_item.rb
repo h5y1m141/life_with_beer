@@ -9,6 +9,10 @@ items = [
     image: File.open("#{Rails.root}/db/pictures/stone.png"),
     original_image_url: "http://www.stonebrewing.com/beer/year-round-releases/stone-ipa",
     ibu: 77,
+    full_bodied_ratio: 10,
+    bitter_taste_ratio: 8,
+    aroma_ratio: 7,
+    beer_style: 6,
     brewery_id: 2
   },
   {
@@ -21,6 +25,10 @@ items = [
     image: File.open("#{Rails.root}/db/pictures/coedo-beniaka.png"),
     original_image_url: "http://www.coedobrewery.com/jp/beers/#beers05",
     ibu: 15,
+    full_bodied_ratio: 7,
+    bitter_taste_ratio: 3,
+    aroma_ratio: 6,
+    beer_style: 5,
     brewery_id: 1
   }
 ]
