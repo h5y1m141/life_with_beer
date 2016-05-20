@@ -1,8 +1,10 @@
 class BeerStylesController < ApplicationController
   before_action :set_beer_style, only: [:show]
+
   def index
     @beer_styles = BeerStyle.all
   end
+
   def show
   end
   
