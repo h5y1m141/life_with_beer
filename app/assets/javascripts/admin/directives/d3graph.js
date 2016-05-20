@@ -78,10 +78,10 @@ angular.module('LifeWithBeerApp')
         for (i = 0, len = angles.length; i < len; i++) {
           scales[i] = {
             x: d3.scale.linear()
-              .domain([0, 100])
+              .domain([0, 10])
               .range([s(0), s(r * Math.cos(angles[i] * (Math.PI / 180) - Math.PI / 2))]),
             y: d3.scale.linear()
-              .domain([0, 100])
+              .domain([0, 10])
               .range([s(0), s(r * Math.sin(angles[i] * (Math.PI / 180) - Math.PI / 2))])
           };
         }
@@ -103,12 +103,14 @@ angular.module('LifeWithBeerApp')
 
         return svg;
       }
-      radarChart(element[0], [
-        ['飲みごたえ', '香り', '苦味','アルコール度数', 'コク'],
-        [10, 10, 60, 50, 10],
-        [80, 70, 90, 80, 80],
-        [80, 90, 80, 90, 60]
-      ]);
+      var query = BeerStyle.query(),
+          beerStyles = [['飲みごたえ', '苦味','香り',]];
+      query.$promise.then(function(items){
+        angular.forEach(items, function(item, key){
+          beerStyles.push([item.full_bodied_ratio, item.bitter_taste_ratio, item.aroma_ratio]);
+        });
+        radarChart(element[0], beerStyles);
+      });
     }
   };
 }]);

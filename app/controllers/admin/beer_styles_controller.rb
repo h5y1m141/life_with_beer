@@ -1,4 +1,5 @@
 class Admin::BeerStylesController < AdminController
-  def index    
+  def index
+    @beer_styles = BeerStyle.all
   end
 end

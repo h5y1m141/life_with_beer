@@ -1,10 +1,9 @@
 FactoryGirl.define do
   factory :beer_style do
-    name "MyString"
-    full_bodied_ratio 1
-    bitter_taste_ratio "MyString"
-    integer "MyString"
-    aroma_ratio "MyString"
-    integer "MyString"
+    name 'ピルスナー'
+    full_bodied_ratio 2
+    bitter_taste_ratio 5
+    aroma_ratio 2
   end
 end
+
