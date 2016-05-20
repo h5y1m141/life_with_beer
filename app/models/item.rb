@@ -20,22 +20,11 @@ class Item < ActiveRecord::Base
   has_many :tags, through: :item_tag_relays
   belongs_to :store
   belongs_to :brewery
+  belongs_to :beer_style
   belongs_to :thumbnail, class_name: 'Picture', foreign_key: :thumbnail_id
   mount_uploader :image, PictureUploader
   accepts_nested_attributes_for :stocks
   accepts_nested_attributes_for :tags
-  enum beer_style: {
-    pilsner: 1,
-    wheat_beer: 2,
-    saison: 3,
-    pale_ale: 4,
-    amber_ale: 5,
-    india_pale_ale: 6,
-    porter: 7,
-    stout: 8,
-    barley_wine: 9,
-    fruit_beer: 10
-  }
   
   scope :fetch_by_tag, ->(tag) do
     includes(:tags).where('tags.name': tag )

@@ -14,8 +14,8 @@ angular.module('LifeWithBeerApp')
         var header = data.shift(),
             d = data,
             color = d3.scale.category10(),
-            width = 500,
-            height = 500,
+            width = 400,
+            height = 400,
             main,svg,r,s,rScale,circle,axisScale, axisLine,i, len, angles = [], scales = [];
 
         svg = d3.select(target)
@@ -104,10 +104,10 @@ angular.module('LifeWithBeerApp')
         return svg;
       }
       radarChart(element[0], [
-        ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
-        [10, 70, 20, 90, 100, 30, 23],
-        [20, 30, 30, 80, 80, 80, 33],
-        [30, 10, 80, 50, 20, 90, 63]
+        ['飲みごたえ', '香り', '苦味','アルコール度数', 'コク'],
+        [10, 10, 60, 50, 10],
+        [80, 70, 90, 80, 80],
+        [80, 90, 80, 90, 60]
       ]);
     }
   };

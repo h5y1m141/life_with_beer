@@ -13,7 +13,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :full_bodied_ratio, null: false, default: 1
       t.integer :bitter_taste_ratio, null: false, default: 1
       t.integer :aroma_ratio, null: false, default: 1
-      t.integer :beer_style, null: false, default: 1
+      t.references :beer_style, index: true
       t.references :brewery, index: true
 
       t.timestamps null: false

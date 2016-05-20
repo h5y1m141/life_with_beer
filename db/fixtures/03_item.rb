@@ -12,7 +12,7 @@ items = [
     full_bodied_ratio: 10,
     bitter_taste_ratio: 8,
     aroma_ratio: 7,
-    beer_style: 6,
+    beer_style_id: 6,
     brewery_id: 2
   },
   {
@@ -28,7 +28,7 @@ items = [
     full_bodied_ratio: 7,
     bitter_taste_ratio: 3,
     aroma_ratio: 6,
-    beer_style: 5,
+    beer_style_id: 5,
     brewery_id: 1
   }
 ]
