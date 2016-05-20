@@ -8,9 +8,9 @@ Rails.application.routes.draw do
              )
   resources :items
   resources :users
-  resources :stores
   resources :articles, only: [:index, :show]
   resources :tags, only: [:index, :show]
+  resources :beer_styles, only: [:index, :show]
   controller :static_pages do
     get :about
   end
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :breweries, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :pictures
     resources :places, except: [:show]
+    resources :beer_styles, only: [:index]
   end
   root to: 'static_pages#index'
   get '/articles/preview/:preview_key', to: 'articles#preview'
