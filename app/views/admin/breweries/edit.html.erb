@@ -6,9 +6,7 @@
       <div class="col-xs-11">
         <ul class="list-inline">
           <li>
-            <% unless @brewery.image.url.nil? %>
-              <%= image_tag(@brewery.image.small_thumb.url) %>
-            <% end %>
+            <%= image_tag(brewery_medium_logo(@brewery)) %>
           </li>
           <li>
             <h2><%= @brewery.name %></h2>
