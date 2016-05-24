@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :tags, only: [:index, :show]
   resources :beer_styles, only: [:index, :show]
+  resources :areas, only: [:index, :show]
   controller :static_pages do
     get :about
   end

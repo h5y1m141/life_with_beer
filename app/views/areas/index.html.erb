@@ -1,0 +1,20 @@
+<% cache 'article', expires_in: 1.minutes, skip_digest: true do %>
+  <div class='container-fluid'>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @areas.each do |area| %>
+          <tr>
+            <td><%= area.name %></td>
+            <td><%= link_to '詳細画面へ', area_path(area.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
