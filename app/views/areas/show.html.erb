@@ -1,0 +1,18 @@
+<div class='container-fluid'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= @area.name %>エリアのお店一覧</th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @area.places_belong_to_this_area_filterd.each do |place| %>
+        <tr>
+          <td><%= place.name %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

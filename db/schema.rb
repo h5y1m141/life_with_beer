@@ -14,12 +14,20 @@
 ActiveRecord::Schema.define(version: 20160520064359) do
 
   create_table "areas", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "geohash",    limit: 255
-    t.decimal  "latitude",               precision: 9, scale: 6
-    t.decimal  "longitude",              precision: 9, scale: 6
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.string   "name",                limit: 255
+    t.string   "geohash",             limit: 255
+    t.decimal  "latitude",                        precision: 9, scale: 6
+    t.decimal  "longitude",                       precision: 9, scale: 6
+    t.boolean  "north_direction",     limit: 1,                           default: true, null: false
+    t.boolean  "northeast_direction", limit: 1,                           default: true, null: false
+    t.boolean  "east_direction",      limit: 1,                           default: true, null: false
+    t.boolean  "southeast_direction", limit: 1,                           default: true, null: false
+    t.boolean  "south_direction",     limit: 1,                           default: true, null: false
+    t.boolean  "southwest_direction", limit: 1,                           default: true, null: false
+    t.boolean  "west_direction",      limit: 1,                           default: true, null: false
+    t.boolean  "northwest_direction", limit: 1,                           default: true, null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
   end
 
   add_index "areas", ["geohash"], name: "index_areas_on_geohash", using: :btree
