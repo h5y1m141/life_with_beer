@@ -1,0 +1,24 @@
+<div class='container-fluid'>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2><%= @area.name %>エリアのお店一覧</h2>
+    </div>
+    <div class="col-xs-12">    
+      <div id="map_canvas" class="form-control place__contents__map"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-11">
+      <ul class="media-list area__place__list">
+        <% @area.places_belong_to_this_area_filterd.each do |place| %>
+          <li class="media" data-latitude="<%= place.latitude %>"
+              data-longitude="<%= place.longitude %>">
+            <h3><%= place.name %></h3>
+          </li>
+        <% end %>
+      </ul>
+    </div>    
+  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js"></script>

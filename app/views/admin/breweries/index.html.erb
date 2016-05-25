@@ -7,11 +7,7 @@
         <div class='col-md-3 col-sm-6'>
           <div class="brewery__media__thumbnail">
           <%= link_to(edit_admin_brewery_path(brewery)) do %>
-            <% if brewery.image.url.nil? %>
-              <%= image_tag('logo/logo-medium.png', class: 'thumbnail') %>
-            <% else %>
-              <%= image_tag(brewery.image.medium_thumb.url, class: 'thumbnail') %>
-            <% end %>
+            <%= image_tag(brewery_medium_logo(brewery), class: 'thumbnail') %>
           <% end %>
           </div>
           <h4><%= brewery.name %></h4>

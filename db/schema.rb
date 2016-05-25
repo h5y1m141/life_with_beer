@@ -11,15 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512090216) do
+ActiveRecord::Schema.define(version: 20160520064359) do
 
   create_table "areas", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "geohash",    limit: 255
-    t.decimal  "latitude",               precision: 9, scale: 6
-    t.decimal  "longitude",              precision: 9, scale: 6
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.string   "name",                limit: 255
+    t.string   "geohash",             limit: 255
+    t.decimal  "latitude",                        precision: 9, scale: 6
+    t.decimal  "longitude",                       precision: 9, scale: 6
+    t.boolean  "north_direction",     limit: 1,                           default: true, null: false
+    t.boolean  "northeast_direction", limit: 1,                           default: true, null: false
+    t.boolean  "east_direction",      limit: 1,                           default: true, null: false
+    t.boolean  "southeast_direction", limit: 1,                           default: true, null: false
+    t.boolean  "south_direction",     limit: 1,                           default: true, null: false
+    t.boolean  "southwest_direction", limit: 1,                           default: true, null: false
+    t.boolean  "west_direction",      limit: 1,                           default: true, null: false
+    t.boolean  "northwest_direction", limit: 1,                           default: true, null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
   end
 
   add_index "areas", ["geohash"], name: "index_areas_on_geohash", using: :btree
@@ -55,6 +63,17 @@ ActiveRecord::Schema.define(version: 20160512090216) do
 
   add_index "articles", ["preview_key"], name: "index_articles_on_preview_key", using: :btree
   add_index "articles", ["title"], name: "index_articles_on_title", using: :btree
+
+  create_table "beer_styles", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.integer  "full_bodied_ratio",  limit: 4
+    t.integer  "bitter_taste_ratio", limit: 4
+    t.integer  "aroma_ratio",        limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "beer_styles", ["name"], name: "index_beer_styles_on_name", using: :btree
 
   create_table "breweries", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -100,11 +119,16 @@ ActiveRecord::Schema.define(version: 20160512090216) do
     t.text     "image",              limit: 65535
     t.text     "original_image_url", limit: 65535,              null: false
     t.integer  "ibu",                limit: 4,     default: 10, null: false
+    t.integer  "full_bodied_ratio",  limit: 4,     default: 1,  null: false
+    t.integer  "bitter_taste_ratio", limit: 4,     default: 1,  null: false
+    t.integer  "aroma_ratio",        limit: 4,     default: 1,  null: false
+    t.integer  "beer_style_id",      limit: 4
     t.integer  "brewery_id",         limit: 4
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
   end
 
+  add_index "items", ["beer_style_id"], name: "index_items_on_beer_style_id", using: :btree
   add_index "items", ["brewery_id"], name: "index_items_on_brewery_id", using: :btree
   add_index "items", ["name"], name: "index_items_on_name", using: :btree
 

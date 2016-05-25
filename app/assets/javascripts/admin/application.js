@@ -14,12 +14,14 @@
 //= require angular-resource
 //= require jquery
 //= require jquery_ujs
+//= require admin/d3.min
 //= require admin/twitter/bootstrap
 //= require admin/app
 //= require admin/controllers/article
 //= require admin/controllers/brewery
 //= require admin/controllers/item
 //= require admin/controllers/place
+//= require admin/controllers/beer-style-ctrl
 //= require admin/directives/brewery
 //= require admin/directives/description
 //= require admin/directives/filemodel
@@ -32,6 +34,7 @@
 //= require admin/directives/select-item
 //= require admin/directives/select-place
 //= require admin/directives/social-account-list
+//= require admin/directives/d3graph
 //= require admin/directives/tag
 //= require admin/directives/title-length
 //= require admin/directives/upload-picture
@@ -40,6 +43,8 @@
 //= require admin/factories/item
 //= require admin/factories/picture
 //= require admin/factories/place
+//= require admin/factories/d3
+//= require admin/factories/beer-style
 //= require admin/item
 //= require admin/jquery.tagsinput.min
 //= require admin/ng-lodash.min

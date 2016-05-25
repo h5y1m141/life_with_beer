@@ -1,6 +1,6 @@
 areas = [
-  { name: '銀座', latitude: 35.671612, longitude: 139.765456},
-  { name: '日比谷', latitude: 35.674303, longitude: 139.760520},
+  { name: '銀座', latitude: 35.671612, longitude: 139.765456, southeast_direction: false, south_direction: false, southwest_direction: false },
+  { name: '日比谷', latitude: 35.674303, longitude: 139.760520, north_direction: false, south_direction: false, southwest_direction: false, west_direction: false, northwest_direction: false},
   { name: '東京駅（八重洲エリア）', latitude: 35.681206, longitude: 139.768970 },
   { name: '東京駅（丸の内エリア）', latitude: 35.681546, longitude: 139.765387 },
   { name: '新橋', latitude: 35.666512, longitude: 139.758209 },

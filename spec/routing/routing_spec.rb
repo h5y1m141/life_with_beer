@@ -27,3 +27,7 @@ describe TagsController, type: :routing do
   it_routes_to(:get, '/tags', 'tags#index')
   it_routes_to(:get, '/tags/1', 'tags#show', id: '1')
 end
+
+describe BeerStylesController, type: :routing do
+  it_routes_to(:get, '/beer_styles', 'beer_styles#index')
+end
