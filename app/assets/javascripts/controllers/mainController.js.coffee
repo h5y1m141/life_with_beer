@@ -11,12 +11,23 @@
         latitude: $('#placeLatitude').attr('value'),
         longitude: $('#placeLongitude').attr('value')
       })
-      @googleMap.render(geoDataList)
+      if $('#placeLatitude').attr('value')
+        areaGeoData = {
+          latitude: $('#placeLatitude').attr('value'),
+          longitude: $('#placeLongitude').attr('value')
+        }
+        @googleMap.render(geoDataList, areaGeoData) 
+
       # エリア情報の設定
-      areaPlaceList = [] 
+      areaPlaceList = []
       $('.area__place__list > li').each (index, element) ->
         areaPlaceList.push({
           latitude: $(element).attr('data-latitude'),
           longitude: $(element).attr('data-longitude')
         })
-      @googleMap.render(areaPlaceList)
+      if areaPlaceList[0].latitude
+        areaGeoData = {
+          latitude: $('#area__place').attr('data-area-latitude'),
+          longitude: $('#area__place').attr('data-area-longitude')
+        }        
+        @googleMap.render(areaPlaceList, areaGeoData) 

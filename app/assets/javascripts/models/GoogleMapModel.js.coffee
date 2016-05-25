@@ -1,0 +1,2 @@
+@LifeWithBeer -> class GoogleMapModel
+  constructor: () ->
