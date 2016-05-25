@@ -4,7 +4,7 @@
     @mapOptions = {
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    }      
+    }
     @latlngs = []
     @markers = []
 
@@ -13,19 +13,25 @@
       latlng = new (google.maps.LatLng)(geoData.latitude, geoData.longitude)
       @latlngs.push(latlng)
 
-    @mapOptions.center = @latlngs[0]
-    
   prepareMarker: () ->
     for latlng in @latlngs
       marker = new google.maps.Marker({
         position: latlng
       })
       @markers.push(marker)
-      
-  render: (geoDataList) ->
+
+  calcCenterLatLng: (geoData) ->
+    return new (google.maps.LatLng)(geoData.latitude, geoData.longitude)
+
+  render: (geoDataList, areaGeoData) ->
     @geoDataList = geoDataList
     @generateLatLng()
     @prepareMarker()
-    map = new (google.maps.Map)(document.getElementById("map_canvas"), @mapOptions)
+    mapOptions = {
+      zoom: 14,
+      center: @calcCenterLatLng(areaGeoData),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new (google.maps.Map)(document.getElementById("map_canvas"), mapOptions)
     for marker in @markers
       marker.setMap(map)
