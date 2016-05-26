@@ -18,7 +18,8 @@ angular.module('LifeWithBeerApp')
       { title: 'アイテム登録'},
       { title: 'Instagram登録'},
       { title: '画像登録'},
-      { title: 'お店登録'}
+      { title: 'お店登録'},
+      { title: 'エリア登録'}
     ];
     $scope.selectedTab = 0;
     $scope.selectedItems = [];
@@ -80,6 +81,9 @@ angular.module('LifeWithBeerApp')
     };
     $scope.fetchPrefectures = function(data){
       return $scope.prefectures = data;
+    };
+    $scope.fetchAreas = function(data){
+      return $scope.areas = data;
     };
     $scope.selectPlace = function(place){
       // Rails側に送信する情報はnested_attributes用の値と
