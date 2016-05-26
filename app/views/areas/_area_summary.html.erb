@@ -1,0 +1,23 @@
+<div id="area__place__summary" class='container-fluid' data-area-latitude="<%= area.latitude %>" data-area-longitude="<%= area.longitude %>">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2><%= area.name %>エリアのお店一覧</h2>
+    </div>
+    <div class="col-xs-12">
+      <div id="map_area_summary" class="place__contents__map"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-11">
+      <ul class="media-list area__place__list__summary">
+        <% area.places_belong_to_this_area_filterd.each do |place| %>
+          <li class="media" data-latitude="<%= place.latitude %>"
+              data-longitude="<%= place.longitude %>">
+
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

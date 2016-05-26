@@ -9,6 +9,9 @@ module ArticlesHelper
     elsif(tag_type == 'place')
       @place = Place.find(contents.to_i)
       render partial: 'places/place_summary', locals: { place:  @place }
+    elsif(tag_type == 'area')
+      @area = Area.find(contents.to_i)
+      render partial: 'areas/area_summary', locals: { area: @area }
     else
       elements = {
         sub_head: {
