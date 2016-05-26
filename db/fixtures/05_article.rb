@@ -97,8 +97,20 @@ article_elements = [
   {
     article_id: 1,
     tag_name: 'place',
-    element_data: '132',
+    element_data: '738',
     sory_key: 13
+  },
+  {
+    article_id: 1,
+    tag_name: 'description',
+    element_data: '銀座エリアの情報をついでに埋め込む',
+    sory_key: 14
+  },
+  {
+    article_id: 1,
+    tag_name: 'area',
+    element_data: '1',
+    sory_key: 15
   }  
 ]
 

@@ -23,7 +23,7 @@
   calcCenterLatLng: (geoData) ->
     return new (google.maps.LatLng)(geoData.latitude, geoData.longitude)
 
-  render: (geoDataList, areaGeoData) ->
+  render: (geoDataList, areaGeoData, renderMapArea) ->
     @geoDataList = geoDataList
     @generateLatLng()
     @prepareMarker()
@@ -32,6 +32,9 @@
       center: @calcCenterLatLng(areaGeoData),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-    map = new (google.maps.Map)(document.getElementById("map_canvas"), mapOptions)
+    map = new (google.maps.Map)(document.getElementById(renderMapArea), mapOptions)
+
     for marker in @markers
       marker.setMap(map)
+
+    @markers = []

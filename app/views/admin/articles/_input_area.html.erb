@@ -1,0 +1,18 @@
+<div class="tab-pane" id="tab7" ng-class="{'active':selectedTab == 6}">
+  <header class="panel-heading">
+    <i class="fa fa-edit article__contents__icon"></i>
+    エリアを登録
+  </header>
+  <div class="panel-body" ng-init=fetchAreas(<%= @areas.to_json %>)>
+    <div class="col-xs-12">
+      <label for="prefectures">エリアを選択</label>
+      <select name='areas' class='form-control' ng-model='selectedArea' ng-options="area.name for area in areas"></select>
+    </div>
+  </div>
+  <div ng-if='selectedArea'>
+    <select-area data="selectedArea" contents="contentsArea">
+      <button class="btn btn-primary">設定する</button>
+      </select-area>
+  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js"></script>

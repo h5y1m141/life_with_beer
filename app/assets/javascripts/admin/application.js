@@ -31,7 +31,9 @@
 //= require admin/directives/preview-item
 //= require admin/directives/preview-place
 //= require admin/directives/preview-text
+//= require admin/directives/preview-area
 //= require admin/directives/select-item
+//= require admin/directives/select-area
 //= require admin/directives/select-place
 //= require admin/directives/social-account-list
 //= require admin/directives/d3graph
@@ -45,6 +47,7 @@
 //= require admin/factories/place
 //= require admin/factories/d3
 //= require admin/factories/beer-style
+//= require admin/factories/area
 //= require admin/item
 //= require admin/jquery.tagsinput.min
 //= require admin/ng-lodash.min
