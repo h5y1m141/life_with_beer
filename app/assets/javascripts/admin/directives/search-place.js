@@ -20,7 +20,6 @@ angular.module('LifeWithBeerApp')
         places: '=places'
       },
       link: function ($scope, $element, attrs) {
-
         $scope.$watch('area', function(html){
           var div,
               map,
@@ -44,8 +43,7 @@ angular.module('LifeWithBeerApp')
                 }
               });
               google.maps.event.addListener(marker, 'click', function(url){
-                console.log(this);
-                $scope.selectedPlace = this.data;
+                $scope.places.push(this.data);
                 $scope.$apply();
               });
               marker.setMap(map);
@@ -64,6 +62,6 @@ angular.module('LifeWithBeerApp')
         var div = $element[0].getElementsByClassName('searchPlaceMap')[0];
         prepareMap(div, $scope.area);
       },
-      template: '<div class="searchPlaceMap" style="width:800px;height:500px;"></div>{{ selectedPin }}{{ selectedPlace }}'
+      template: '<div class="searchPlaceMap" style="width:800px;height:500px;"></div>{{ selectedPin }}{{ places }}'
     };
   }]);
