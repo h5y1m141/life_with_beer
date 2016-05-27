@@ -31,6 +31,11 @@ Rails.application.routes.draw do
     resources :pictures
     resources :places, except: [:show]
     resources :beer_styles, only: [:index]
+    resources :areas  do
+      collection do
+        post :places_belong_to_this_area
+      end
+    end    
   end
   root to: 'static_pages#index'
   get '/articles/preview/:preview_key', to: 'articles#preview'
