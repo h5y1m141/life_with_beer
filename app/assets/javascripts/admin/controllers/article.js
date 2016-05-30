@@ -30,7 +30,7 @@ angular.module('LifeWithBeerApp')
     };
     // プレビューエリアの表示のために利用
     $scope.contentsArea = [];
-
+    $scope.selectedPlaces = [];
     $scope.saveArticle = function(){
       var elementsAttributes = prepareArticleData($scope.contentsArea),
           createArticle = $scope.createArticle,
