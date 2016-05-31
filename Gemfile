@@ -42,6 +42,10 @@ gem 'jp_prefecture'
 gem 'sprockets-rails', '~> 2.0' # https://github.com/modeset/teaspoon/issues/443
 gem 'pr_geohash'
 
+# SEO
+gem 'meta-tags', require: 'meta_tags'
+gem 'sitemap_generator'
+
 group :development do
   gem 'annotate'
   gem 'capistrano-rails'
