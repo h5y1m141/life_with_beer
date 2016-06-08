@@ -54,6 +54,7 @@ angular.module('LifeWithBeerApp')
             place = JSON.parse(event.target.value);
             $scope.contents.push({
               tag_name: 'place',
+              element_data: place.id,
               place_data: place
             });
             $scope.$apply();
