@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
     resources :breweries, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :pictures
-    resources :places, except: [:show]
+    resources :places
     resources :beer_styles, only: [:index]
     resources :areas  do
       collection do
