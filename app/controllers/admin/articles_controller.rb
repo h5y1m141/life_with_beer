@@ -2,7 +2,7 @@ class Admin::ArticlesController < AdminController
   include ArticleSearchModule
   include PlaceSearchModule
   before_action :set_article, only: [:edit, :destroy, :update, :load_elements]
-  before_action :set_place_option, only: [:new]
+  before_action :set_place_option, only: [:new, :edit]
   
   def index
     @search = search_articles_by_parameters(params[:q])
@@ -11,9 +11,7 @@ class Admin::ArticlesController < AdminController
 
   def new
     @search = search_places_by_parameters(params[:q])
-    @prefectures = Place.prefectures_with_key
     @article = Article.new
-    @areas = Area.all
   end
 
   def create
@@ -47,5 +45,6 @@ class Admin::ArticlesController < AdminController
   def set_place_option
     @prefectures = Place.prefectures
     @place_type_list = Place.place_type_list
+    @areas = Area.all
   end
 end
