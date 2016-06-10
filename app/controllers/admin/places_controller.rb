@@ -1,13 +1,19 @@
 class Admin::PlacesController < AdminController
   include PlaceSearchModule
   include SocialAccountSearchModule
-  before_action :set_place, only: [:edit, :destroy, :update]
+  before_action :set_place, only: [:show, :edit, :destroy, :update]
   before_action :set_place_option, only: [:index, :new, :edit]
   before_action :revise_params, only: [:create, :update]
   before_action :generate_social_account_list, only: [:new, :edit]
 
   def new
     @place = Place.new
+  end
+
+  def show
+    respond_to do |format|
+      format.json {render json: @place}
+    end
   end
 
   def index

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= render partial: '/layouts/meta_tags' %>
     <title><%= content_for?(:title) ? yield(:title) : "Life with Beer" %></title>
     <%= csrf_meta_tags %>
 
@@ -40,7 +41,7 @@
     <header>
       <div class="widewrapper masthead">
         <div class="container">
-          <a href="index.html" id="logo">
+          <a href="/" id="logo">
             Life with Beer
           </a>
 
@@ -62,54 +63,15 @@
       <div class="widewrapper footer">
         <div class="container">
           <div class="row">
-            <div class="col-md-4 footer-widget">
-              <h3> <i class="fa fa-cog"></i>Statistics</h3>
+            <div class="col-md-12 footer-widget">
 
-              <span>Even we sometimes loose track of how many articles we actually have here.  This one helps:</span>
-
-              <div class="stats">
-                <div class="line">
-                  <span class="counter">27</span>
-                  <span class="caption">Articles</span>
-                </div>
-                <div class="line">
-                  <span class="counter">208</span>
-                  <span class="caption">Comments</span>
-                </div>
-                <div class="line">
-                  <span class="counter">2</span>
-                  <span class="caption">Authors</span>
-                </div>                    
-              </div>
-            </div>
-
-            <div class="col-md-4 footer-widget">
-              <h3> <i class="fa fa-star"></i> Hall of Fame</h3>
-              <ul class="tales-list">
-                <li><a href="index.html">Why we Need to Encrypt All Communication</a></li>
-                <li><a href="#">Selling is a Function of Design. Not Vice-Versa.</a></li>
-                <li><a href="#">It’s Hard To Come Up With Dummy Titles</a></li>
-                <li><a href="#">Why the Internet is Full of Cats</a></li>
-                <li><a href="#">Last Made-Up Headline, I Swear!</a></li>
-              </ul>
-            </div>
-
-            <div class="col-md-4 footer-widget">
-              <h3> <i class="fa fa-envelope"></i>Contact Me</h3>
-
-              <span>I'm happy to hear from my readers. Thoughts, feedback, critique - all welcome! Drop me a line:</span>
-              
-              <span class="email">
-                <a href="#">jimmy@notanactualemail.com</a>, PGP key 0x5AK0BEA1
-              </span>
             </div>
           </div>
         </div>
       </div>
       <div class="widewrapper copyright">
         <div class="container">
-          <!--Note: Feel free to remove or change this link as you please. A link to HackerThemes is not required by any means-->
-          Designed by <a href="http://hackerthemes.com" rel="nofollow">HackerThemes</a>
+          Copyright &copy; 2016 Life with Beer All Rights Reserved.
         </div>
       </div>
     </footer>

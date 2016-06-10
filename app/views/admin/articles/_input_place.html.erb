@@ -3,27 +3,15 @@
     <i class="fa fa-edit article__contents__icon"></i>
     お店を登録
   </header>
-  <div class="panel-body" ng-init=fetchPrefectures(<%= @prefectures.to_json %>)>
+  <div class="panel-body">
     <div class="col-xs-6">
-      <label for="prefectures">都道府県を選択</label>
-      <select name='prefectures' class='form-control' ng-model='selectedPrefecture' ng-options="prefecture.name for prefecture in prefectures"></select>
+      <label for="prefectures">最初に登録したいお店のエリアを選択してください</label>
+      <select name='areas' class='form-control' ng-model='selectedArea' ng-options="area.name for area in areas"></select>
     </div>
-    <div class="col-xs-6">
-      <label for="prefectures">お店の名前</label>
-      <input type="text" class='form-control' ng-model="placeName" />
+    <div class="row">
+      <div class="col-xs-12" ng-if='selectedArea'>
+        <search-place data="selectedArea" places="selectedPlaces" contents="contentsArea"></search-place>
+      </div>
     </div>
-  </div>
-  <div ng-if='searchResultPlaces'>
-    <ul ng-repeat='place in searchResultPlaces'>
-      <select-place data="place" contents="contentsArea" class="btn btn-priamry">
-        <h3>
-          {{ place.name }}
-        </h3>
-      </select-place>
-      <li>住所：{{ place.address }}{{ place.address2 }}</li>
-    </ul>
-  </div>
-  <div ng-if='selectedPrefecture'>
-    <a class="btn btn-primary" href='' ng-click="searchWithRansack(prefectureName)">検索する</a>
   </div>
 </div>

@@ -6,4 +6,7 @@ class StaticPagesController < ApplicationController
     @tags = Tag.all
     @articles = Article.limit(4)
   end
+
+  def about
+  end
 end
