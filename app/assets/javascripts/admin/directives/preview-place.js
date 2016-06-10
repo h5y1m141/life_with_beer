@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('LifeWithBeerApp')
-  .directive('previewPlace',['$compile', function($compile) {
+  .directive('previewPlace',['$compile','Place', function($compile, Place) {
     var prepareMap = function(div, place){
       var mapOptions,
           map,
@@ -26,9 +26,16 @@ angular.module('LifeWithBeerApp')
         place: '=data'
       },
       controller: function($scope, $element){
-        var div = $element[0].getElementsByClassName('map')[0];
-        prepareMap(div, $scope.place);
+        var query,
+            div = $element[0].getElementsByClassName('map')[0];
+        query = Place.get({
+          id: $scope.place
+        });
+        query.$promise.then(function(place){
+          prepareMap(div, place);  
+        });
+        
       },
-      template: '<h4>店名： {{ place.name }}</h4><div class="map" style="width:500px;height:300px;"></div>'
+      template: '<div class="map" style="width:500px;height:300px;"></div>'
     };
   }]);
