@@ -7,6 +7,7 @@ angular.module('LifeWithBeerApp')
     },{
       save: {
         method: 'POST',
+        article: '@value',
         headers : {
           'Content-Type': 'application/json'
         }

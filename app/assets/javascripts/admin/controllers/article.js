@@ -37,9 +37,11 @@ angular.module('LifeWithBeerApp')
           query;
 
       query = Article.save({
-        title: $scope.mainTitle,
-        publish_status: (publishStatus === 'publish') ? 1 : 0,
-        elements_attributes: elementsAttributes
+        article: {
+          title: $scope.mainTitle,
+          publish_status: (publishStatus === 'publish') ? 1 : 0,
+          elements_attributes: elementsAttributes
+        }
       });
       query.$promise.then(function(response){
         $window.location.href = '/admin/articles';
