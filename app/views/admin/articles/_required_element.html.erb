@@ -4,7 +4,15 @@
       <form class="form-horizontal">
         <div class="row">
           <div class="form-group">
-            <label class="col-xs-1">タイトル</label>
+            <% if @article.published? %>
+              <label class="col-xs-1 label label-pill label-primary">
+                公開中
+              </label>
+            <% else %>
+              <label class="col-xs-1 label label-pill label-default">
+                下書き
+              </label>
+            <% end %>
             <div class="col-xs-10">
               <input size="80" class="article__contents__title article__contents__title--main" name="mainTitle" ng-model="mainTitle" placeholder="記事コンテンツのメインタイトルを入力してください" type="text"></input>
               <title-length data="mainTitle"/>
@@ -27,7 +35,7 @@
                 <li>チームワーク化</li>
                 <li>感謝の気持ち</li>
               </ul>
-              <li><h4>相手のメリットと一致するお願いを作る</li>h4></li>
+              <li><h4>相手のメリットと一致するお願いを作る</h4></li>
             </ul>
           </div>
         </div>

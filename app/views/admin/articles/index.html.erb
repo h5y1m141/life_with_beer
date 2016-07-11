@@ -4,6 +4,7 @@
     <thead>
       <tr>
         <th>タイトル</th>
+        <th>状態</th>
         <th>下書きページのURL</th>
         <th>詳細</th>
       </tr>
@@ -12,12 +13,19 @@
       <% @articles.each do |article| %>
         <tr>
           <td><%= article.title %></td>
+          <td>
+            <% if(article.published?) %>
+              <label class="label label-pill label-primary">公開中</label>
+            <% else %>
+              <label class="label label-pill label-default">下書き</label>
+            <% end %>
+          </td>
           <% if(article.preview_key) %>
             <td><%= link_to preview_url(article), preview_url(article) %></td>
           <% else %>
             <td>URLが設定されていません</td>
           <% end %>
-          <td><%= link_to '編集画面へ', edit_admin_article_path(article.id) %></td>
+          <td><%= link_to '編集画面へ', edit_admin_article_path(article.id), class: 'btn btn-xs btn-info' %></td>
         </tr>
       <% end %>
     </tbody>

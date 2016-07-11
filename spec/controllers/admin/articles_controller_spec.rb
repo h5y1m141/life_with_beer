@@ -40,7 +40,7 @@ describe Admin::ArticlesController, type: :controller do
       request.env['HTTP_ACCEPT'] = 'application/json'
     end
     describe '記事作成のタイトルのみ渡された場合' do
-      let(:response) {post :create , { title: '記事コンテンツのタイトル' } }
+      let(:response) {post :create , { article: { title: '記事コンテンツのタイトル' } } }
       it_returns_http_status(200)
       it '返り値にタイトルのデーターが含まれてる' do
         json = JSON.parse(response.body)
@@ -56,7 +56,7 @@ describe Admin::ArticlesController, type: :controller do
         ]
       end
 
-      let(:response) {post :create , { title: '記事にいくつかの要素が含まれてる', elements_attributes: attributes } }
+      let(:response) {post :create , { article: { title: '記事にいくつかの要素が含まれてる', elements_attributes: attributes } }}
       # it_returns_http_status(200)
       it '記事作後に得られる返り値に記事データーが含まれてる' do
         json = JSON.parse(response.body)
@@ -66,7 +66,7 @@ describe Admin::ArticlesController, type: :controller do
       end
     end
     describe '必須パラメーターが無い場合' do
-      let(:response) {post :create , {title: nil}}
+      let(:response) { post :create , { article: { title: nil } } }
       it_returns_http_status(400)
       it '返り値は空のデーターが返る' do
         json = JSON.parse(response.body)
