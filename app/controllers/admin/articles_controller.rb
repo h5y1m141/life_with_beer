@@ -26,6 +26,15 @@ class Admin::ArticlesController < AdminController
   def edit
   end
 
+  def update
+    @article.elements.delete_all
+    if @article.update(article_param)
+      render action: :create
+    else
+      render json: {}, status: 400
+    end
+  end
+
   def load_elements
     if (@article)
       @article
@@ -40,7 +49,7 @@ class Admin::ArticlesController < AdminController
   end
 
   def article_param
-    params.permit('title', 'publish_status','elements_attributes':['tag_name', 'element_data', 'sory_key'])
+    params.require(:article).permit('title', 'publish_status','elements_attributes':['tag_name', 'element_data', 'sory_key'])
   end
   def set_place_option
     @prefectures = Place.prefectures

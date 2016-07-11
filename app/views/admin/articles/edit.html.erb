@@ -3,15 +3,7 @@
   <section class="wrapper">
     <div class="row">
       <div class="col-sm-12 article__contents__menu">
-        <div class="pull-right">
-          <ul class="list-inline">
-            <% if @article.draft? %>
-              <li><button class="btn-info" ng-click="saveArticle()">公開保存</button></li>
-            <% else %>
-              <li><button class="btn-info" ng-click="saveArticle()">下書き保存</button></li>
-            <% end %>
-          </ul>
-        </div>
+        <%= render "page_update" %>
         <div>
           <ul class="nav nav-tabs">
             <li data-toggle="tab" ng-repeat="tab in tabs" ng-click='selectTab($index)' ng-class="{'active':selectedTab == $index}">

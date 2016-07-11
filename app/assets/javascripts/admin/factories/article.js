@@ -11,6 +11,15 @@ angular.module('LifeWithBeerApp')
           'Content-Type': 'application/json'
         }
       },
+      update: {
+        method: 'PUT',
+        params: {
+          article: '@value'
+        },
+        headers : {
+          'Content-Type': 'application/json'
+        }
+      },
       loadElements: {
         method: 'POST',
         headers : {

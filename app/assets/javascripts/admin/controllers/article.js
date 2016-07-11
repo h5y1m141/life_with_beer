@@ -1,5 +1,5 @@
 angular.module('LifeWithBeerApp')
-  .controller('ArticleCtrl', ['$scope', 'Article','Place', function ($scope, Article, Place) {
+  .controller('ArticleCtrl', ['$scope', 'Article','Place', '$window', function ($scope, Article, Place, $window) {
     var prepareArticleData = function(contents){
       var result = [];
       angular.forEach(contents, function(content, key){
@@ -31,24 +31,35 @@ angular.module('LifeWithBeerApp')
     // プレビューエリアの表示のために利用
     $scope.contentsArea = [];
     $scope.selectedPlaces = [];
-    $scope.saveArticle = function(){
+    $scope.saveArticle = function(publishStatus){
       var elementsAttributes = prepareArticleData($scope.contentsArea),
           createArticle = $scope.createArticle,
           query;
+
       query = Article.save({
         title: $scope.mainTitle,
-        publish_status: 0,
+        publish_status: (publishStatus === 'publish') ? 1 : 0,
         elements_attributes: elementsAttributes
       });
       query.$promise.then(function(response){
-        if(response.title){
-          $scope.articleCreated = true;
+        $window.location.href = '/admin/articles';
+      });
+    };
+    $scope.updateArticle = function(publishStatus){
+      var elementsAttributes = prepareArticleData($scope.contentsArea),
+          createArticle = $scope.createArticle,
+          query;
 
-        } else {
-          $scope.articleNotCreated = true;
+      query = Article.update({
+        id: $scope.articleID,
+        article: {
+          title: $scope.mainTitle,
+          publish_status: (publishStatus === 'publish') ? 1 : 0,
+          elements_attributes: elementsAttributes
         }
-        $scope.mainTitle = '';
-        $scope.contentsArea = [];
+      });
+      query.$promise.then(function(response){
+        $window.location.href = '/admin/articles';
       });
     };
     $scope.insertInstagram = function(){
@@ -61,6 +72,7 @@ angular.module('LifeWithBeerApp')
       var query,
           article = JSON.parse(json);
       $scope.mainTitle = article.title;
+      $scope.articleID = article.id;
       query = Article.loadElements({id: article.id });
       query.$promise.then(function(response){
         angular.forEach(response.elements,function(element){
