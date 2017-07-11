@@ -1,3 +1,9 @@
+PATH
+  remote: BlogEngine
+  specs:
+    blog_engine (0.0.1)
+      rails (~> 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,8 +80,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.8.0)
-      capybara (>= 2.3.0, < 2.7.0)
+    capybara-webkit (1.14.0)
+      capybara (>= 2.3.0, < 2.14.0)
       json
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -357,6 +363,7 @@ DEPENDENCIES
   annotate
   awesome_print
   better_errors
+  blog_engine!
   byebug
   capistrano-bundler
   capistrano-rails
@@ -409,5 +416,8 @@ DEPENDENCIES
   unicorn
   web-console (~> 2.0)
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   1.14.6

@@ -46,6 +46,9 @@ gem 'pr_geohash'
 gem 'meta-tags', require: 'meta_tags'
 gem 'sitemap_generator'
 
+# Mountable Engine
+gem 'blog_engine', path: 'BlogEngine'
+
 group :development do
   gem 'annotate'
   gem 'capistrano-rails'
@@ -71,7 +74,7 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit' 
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'fakeredis', require: 'fakeredis/rspec'
