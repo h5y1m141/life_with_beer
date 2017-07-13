@@ -31,6 +31,9 @@ gem 'sidetiq'
 gem 'celluloid', '0.16.0'
 gem 'ice_cube'
 
+# Mountable Engine
+gem 'blog_engine', path: 'blog_engine'
+
 # other
 gem 'settingslogic'
 gem 'rmagick'
