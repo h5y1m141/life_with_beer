@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520064359) do
+ActiveRecord::Schema.define(version: 20170714034523) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name",                limit: 255
@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(version: 20160520064359) do
   end
 
   add_index "beer_styles", ["name"], name: "index_beer_styles_on_name", using: :btree
+
+  create_table "blog_engine_articles", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.text     "body",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "breweries", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
