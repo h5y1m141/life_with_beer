@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require blog_engine/tether.min
+//= require blog_engine/bootstrap.min
