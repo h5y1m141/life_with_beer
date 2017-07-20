@@ -1,11 +1,17 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+# Pick the frameworks you want:
+require "active_record/railtie"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "action_view/railtie"
+require "sprockets/railtie"
+# require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
 require "blog_engine"
 
-module Dummy
+module DummyApp
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -23,4 +29,3 @@ module Dummy
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
-
