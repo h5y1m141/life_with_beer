@@ -10,7 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require blog_engine/jquery
+//= require blog_engine/jquery_ujs
 //= require blog_engine/tether.min
 //= require blog_engine/bootstrap.min
+//= require blog_engine/vue
