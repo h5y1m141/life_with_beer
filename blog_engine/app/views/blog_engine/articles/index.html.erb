@@ -29,17 +29,17 @@
       <div v-show="show">
         <div>
           <label for="title">Title</label>
-          <input type="text" id="title" />
+          <input type="text" v-model="title" />
         </div>
         <div>
           <label for="body">Body</label>
-          <textarea id="body"></textarea>
+          <textarea v-model="body"></textarea>
         </div>
         <div>
-          <button @click="loading=!loading" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
+          <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
         </div>
       </div>
-      <p v-show="loading">送信中です</p>
+      <p v-show="loading">{{ message }}</p>
     </div>
   </div>
 
