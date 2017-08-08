@@ -24,19 +24,19 @@
   </table>
 
   <div id="article-form">
-    <button @click="show=!show" class="btn btn-info">登録フォーム表示</button>
+    <button @click="show=!show" class="btn btn-info">NewArticle</button>
     <br><br>
     <div v-show="show">
       <div>
-        <label for="title">タイトル</label>
+        <label for="title">Title</label>
         <input type="text" id="title" />
       </div>
       <div>
-        <label for="body">内容</label>
+        <label for="body">Body</label>
         <textarea id="body"></textarea>
       </div>
       <div>
-        <button class="btn btn-primary">登録</button>
+        <button class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
