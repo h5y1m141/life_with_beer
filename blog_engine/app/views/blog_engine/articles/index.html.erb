@@ -25,19 +25,21 @@
 
   <div id="article-form">
     <button @click="show=!show" class="btn btn-info">NewArticle</button>
-    <br><br>
-    <div v-show="show">
-      <div>
-        <label for="title">Title</label>
-        <input type="text" id="title" />
+    <div v-cloak>
+      <div v-show="show">
+        <div>
+          <label for="title">Title</label>
+          <input type="text" id="title" />
+        </div>
+        <div>
+          <label for="body">Body</label>
+          <textarea id="body"></textarea>
+        </div>
+        <div>
+          <button @click="loading=!loading" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
+        </div>
       </div>
-      <div>
-        <label for="body">Body</label>
-        <textarea id="body"></textarea>
-      </div>
-      <div>
-        <button class="btn btn-primary">Submit</button>
-      </div>
+      <p v-show="loading">送信中です</p>
     </div>
   </div>
 
