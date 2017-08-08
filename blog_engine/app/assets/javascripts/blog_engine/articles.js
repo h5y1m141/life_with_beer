@@ -1,2 +1,8 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+window.onload = function() {
+  var articleViewModel = new Vue({
+    el: '#article-form',
+    data: {
+      show: false
+    }
+  })
+}
