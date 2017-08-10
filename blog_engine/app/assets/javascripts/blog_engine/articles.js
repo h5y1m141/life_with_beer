@@ -48,7 +48,7 @@ window.onload = function() {
           that.message = '送信完了しました';
           that.show = false;
           that.title = '';
-          that.title = '';
+          that.body = '';
         });
       }
     }
