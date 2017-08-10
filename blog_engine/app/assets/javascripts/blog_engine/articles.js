@@ -21,12 +21,13 @@ window.onload = function() {
           url: baseURL,
           method: 'POST',
           data: { title: that.title, body: that.body }
-        }
+        };
         $.ajax(params).done(function(response){
           that.message = '送信完了しました';
           that.show = false;
+          that.title = that.body = '';
         });
       }
     }
-  })
-}
+  });
+};
