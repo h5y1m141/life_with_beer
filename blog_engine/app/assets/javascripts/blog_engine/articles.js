@@ -37,4 +37,9 @@ window.onload = function() {
       }
     }
   });
+
+  articlesView.$on('updatedArticles', function () {
+    this.updateArticles();
+  });
+
 };
