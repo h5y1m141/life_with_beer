@@ -23,7 +23,7 @@ module BlogEngine
       if @article.save
         render action: :show, json: @article
       else
-        render :new
+        render json: { title: nil, body: nil }
       end
     end
 
