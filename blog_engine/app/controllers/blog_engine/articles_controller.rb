@@ -21,7 +21,7 @@ module BlogEngine
     def create
       @article = Article.new(title: params[:title], body: params[:body])
       if @article.save
-        redirect_to @article, notice: 'Article was successfully created.'
+        render action: :show, json: @article
       else
         render :new
       end
