@@ -1,4 +1,4 @@
-<div class="container">
+<div id="articles-view" class="container">
   <p id="notice"><%= notice %></p>
   <h1>Listing Articles</h1>
   <table id="articles-list" class="table table-responsive">
@@ -20,7 +20,7 @@
     </tbody>
   </table>
 
-  <div id="article-form">
+  <div>
     <button @click="show=!show" class="btn btn-info">NewArticle</button>
     <div v-cloak>
       <div v-show="show">
