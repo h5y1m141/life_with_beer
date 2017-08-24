@@ -4,11 +4,12 @@ window.onload = function() {
     el: '#articles-view',
     data: {
       articles: [],
-      show: false,
+      newArticle: false,
       loading: false,
       message: '送信中です',
       title: '',
-      body: ''
+      body: '',
+      show: false
     },
     beforeMount: function () {
       var that = this;
@@ -30,7 +31,7 @@ window.onload = function() {
           } else {
             that.message = '正しく登録できませんでした';
           }
-          that.show = false;
+          that.new = false;
           that.title = '';
           that.body = '';
         });

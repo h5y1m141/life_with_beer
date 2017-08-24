@@ -1,7 +1,7 @@
 <div id="articles-view" class="container">
   <p id="notice"><%= notice %></p>
   <h1>Listing Articles</h1>
-  <table id="articles-list" class="table table-responsive">
+  <table class="table table-responsive">
     <thead class="thead-inverse">
       <tr>
         <th>ID</th>
@@ -16,28 +16,42 @@
         <td>{{ article.id }}</td>
         <td>{{ article.title }}</td>
         <td>{{ article.body }}</td>
+        <td><button @click="show=!show">Show</button></td>
       </tr>
     </tbody>
   </table>
 
-  <div>
-    <button @click="show=!show" class="btn btn-info">NewArticle</button>
-    <div v-cloak>
-      <div v-show="show">
-        <div>
-          <label for="title">Title</label>
-          <input type="text" v-model="title" />
-        </div>
-        <div>
-          <label for="body">Body</label>
-          <textarea v-model="body"></textarea>
-        </div>
-        <div>
-          <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
-        </div>
+  <button @click="newArticle=!newArticle" class="btn btn-info">NewArticle</button>
+  <div v-cloak>
+    <div v-show="newArticle">
+      <div>
+        <label for="title">Title</label>
+        <input type="text" v-model="title" />
       </div>
-      <p v-show="loading">{{ message }}</p>
+      <div>
+        <label for="body">Body</label>
+        <textarea v-model="body"></textarea>
+      </div>
+      <div>
+        <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
+      </div>
     </div>
+    <p v-show="loading">{{ message }}</p>
+
+    <div v-show="show">
+      <div>
+        <label for="title">Title</label>
+        <div></div>
+      </div>
+      <div>
+        <label for="body">Body</label>
+        <div></div>
+      </div>
+      <div>
+        <button class="btn btn-primary">Edit</button>
+      </div>
+    </div>
+
   </div>
 
 </div>
