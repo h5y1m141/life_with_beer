@@ -9,7 +9,8 @@ window.onload = function() {
       message: '送信中です',
       title: '',
       body: '',
-      showArticle: false
+      showArticle: false,
+      showItem: {}
     },
     beforeMount: function () {
       var that = this;
@@ -37,14 +38,15 @@ window.onload = function() {
         });
       },
       show: function (articleId) {
-        this.showArticle =! this.showArticle;
         var that = this,
             data = { id: articleId };
+        if(that.showArticle) that.showArticle = false;
         articleModel.show(data);
         articleModel.deferred.done(function(response) {
-          console.log(response);
+          that.showItem['title'] = response.article.title;
+          that.showItem['body'] = response.article.body;
+          that.showArticle = !that.showArticle;
         });
-
       }
     }
   });
