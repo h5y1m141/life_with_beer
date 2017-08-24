@@ -9,7 +9,7 @@ window.onload = function() {
       message: '送信中です',
       title: '',
       body: '',
-      show: false
+      showArticle: false
     },
     beforeMount: function () {
       var that = this;
@@ -35,6 +35,16 @@ window.onload = function() {
           that.title = '';
           that.body = '';
         });
+      },
+      show: function (articleId) {
+        this.showArticle =! this.showArticle;
+        var that = this,
+            data = { id: articleId };
+        articleModel.show(data);
+        articleModel.deferred.done(function(response) {
+          console.log(response);
+        });
+
       }
     }
   });

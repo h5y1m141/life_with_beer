@@ -16,7 +16,7 @@
         <td>{{ article.id }}</td>
         <td>{{ article.title }}</td>
         <td>{{ article.body }}</td>
-        <td><button @click="show=!show">Show</button></td>
+        <td><button @click="show(article.id)">Show</button></td>
       </tr>
     </tbody>
   </table>
@@ -38,7 +38,7 @@
     </div>
     <p v-show="loading">{{ message }}</p>
 
-    <div v-show="show">
+    <div v-show="showArticle">
       <div>
         <label for="title">Title</label>
         <div></div>

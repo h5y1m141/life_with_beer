@@ -24,6 +24,15 @@ var ArticleModel = (function () {
       };
       return this._request(params);
     },
+    show : function (data) {
+      var params = {
+          url: this.baseURL + '/articles/' + data['id'] + '.json',
+          type: "GET",
+          data: data,
+          action: "show"
+      };
+      return this._request(params);
+    },
     _request : function (params) {
       this.deferred = $.ajax(params);
     }
