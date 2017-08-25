@@ -1,57 +1,66 @@
-<div id="articles-view" class="container">
+<div id="articles-view" class="container-fluid">
   <p id="notice"><%= notice %></p>
   <h1>Listing Articles</h1>
-  <table class="table table-responsive">
-    <thead class="thead-inverse">
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Body</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <tr v-for="article in articles">
-        <td>{{ article.id }}</td>
-        <td>{{ article.title }}</td>
-        <td>{{ article.body }}</td>
-        <td><button @click="show(article.id)">Show</button></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <button @click="newArticle=!newArticle" class="btn btn-info">NewArticle</button>
-  <div v-cloak>
-    <div v-show="newArticle">
-      <div>
-        <label for="title">Title</label>
-        <input type="text" v-model="title" />
-      </div>
-      <div>
-        <label for="body">Body</label>
-        <textarea v-model="body"></textarea>
-      </div>
-      <div>
-        <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-    <p v-show="loading">{{ message }}</p>
-
-    <div v-show="showArticle">
-      <div>
-        <label for="title">Title</label>
-        <div>{{ showItem['title'] }}</div>
-      </div>
-      <div>
-        <label for="body">Body</label>
-        <div>{{ showItem['body'] }}</div>
-      </div>
-      <div>
-        <button class="btn btn-primary">Edit</button>
-      </div>
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="article in articles">
+            <td>{{ article.id }}</td>
+            <td>{{ article.title }}</td>
+            <td>{{ article.body }}</td>
+            <td><button @click="show(article.id)" class="btn btn-info">Show</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
+    <div class="col-xs-6 col-md-4">
+      <div v-show="showArticle" class="jumbotron">
+        <div>
+          <label for="title" class="text-info">Title</label>
+          <p>{{ showItem['title'] }}</p>
+        </div>
+        <div>
+          <label for="body" class="text-info">Body</label>
+          <p>{{ showItem['body'] }}</p>
+        </div>
+        <div>
+          <button class="btn btn-info">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <button @click="newArticle=!newArticle" class="btn btn-info">NewArticle</button>
+      <div v-cloak>
+        <div v-show="newArticle" class="jumbotron">
+          <div>
+            <label for="title">Title</label>
+            <input type="text" v-model="title" class="form-control" />
+          </div>
+          <div>
+            <label for="body">Body</label>
+            <textarea v-model="body" class="form-control" ></textarea>
+          </div>
+          <div>
+            <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <p v-show="loading">{{ message }}</p>
+      </div>
+    </div>
   </div>
 
 </div>
