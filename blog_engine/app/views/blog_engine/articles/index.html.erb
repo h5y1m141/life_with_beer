@@ -32,11 +32,13 @@
         </div>
         <div>
           <label for="title" class="text-info">Title</label>
-          <p>{{ article.title }}</p>
+          <p v-show="!edit">{{ article.title }}</p>
+          <input type="text" v-show="edit" :value="article.title" class="form-control" />
         </div>
         <div>
           <label for="body" class="text-info">Body</label>
-          <p>{{ article.body }}</p>
+          <p v-show="!edit">{{ article.body }}</p>
+          <textarea v-show="edit" class="form-control" >{{ article.body }}</textarea>
         </div>
         <div>
           <button class="btn btn-info" @click="edit">Edit</button>
