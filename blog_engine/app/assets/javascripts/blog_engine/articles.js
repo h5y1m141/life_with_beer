@@ -10,7 +10,8 @@ window.onload = function() {
       title: '',
       body: '',
       articleSection: false,
-      article: []
+      article: [],
+      edit: false
     },
     beforeMount: function () {
       var that = this;
@@ -40,6 +41,7 @@ window.onload = function() {
       show: function (articleId) {
         var that = this,
             data = { id: articleId };
+        this.edit = false;
         if(that.articleSection) that.articleSection = false;
         articleModel.show(data);
         articleModel.deferred.done(function(response) {
