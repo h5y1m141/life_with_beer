@@ -1,5 +1,6 @@
 <div id="articles-view" class="container-fluid">
   <p id="notice"><%= notice %></p>
+  <p v-show="loading">{{ message }}</p>
   <h1>Listing Articles</h1>
 
   <div class="row">
@@ -81,7 +82,6 @@
             <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
           </div>
         </div>
-        <p v-show="loading">{{ message }}</p>
       </div>
     </div>
   </div>

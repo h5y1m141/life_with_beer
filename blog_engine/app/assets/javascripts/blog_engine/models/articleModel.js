@@ -33,6 +33,15 @@ var ArticleModel = (function () {
       };
       return this._request(params);
     },
+    update : function (data) {
+      var params = {
+          url: this.baseURL + '/articles/' + data['id'],
+          type: "PATCH",
+          data: data,
+          action: "update"
+      };
+      return this._request(params);
+    },
     _request : function (params) {
       this.deferred = $.ajax(params);
     }

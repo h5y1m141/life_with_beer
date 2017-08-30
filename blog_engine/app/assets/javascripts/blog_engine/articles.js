@@ -59,6 +59,18 @@ window.onload = function() {
         this.editArticleSection = true;
       },
       update: function (articleId) {
+        var that = this,
+            data = { id: articleId, title: that.title, body: that.body };
+        articleModel.update(data);
+        articleModel.deferred.done(function(response) {
+          that.loading = !that.loading;
+          if (that.title === response.title && that.body === response.body){
+            that.message = '更新しました';
+          } else {
+            that.message = '正しく更新できませんでした';
+          }
+          that.editArticleSection = false;
+        });
       }
     }
   });
