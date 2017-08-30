@@ -49,11 +49,16 @@ window.onload = function() {
           that.article.title = response.article.title;
           that.article.body = response.article.body;
           that.articleSection = true;
+          // Need to set for update method
+          that.title = response.article.title;
+          that.body = response.article.body;
         });
       },
       edit: function () {
         this.articleSection = false;
         this.editArticleSection = true;
+      },
+      update: function (articleId) {
       }
     }
   });

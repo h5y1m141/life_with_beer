@@ -50,14 +50,14 @@
         </div>
         <div>
           <label for="title" class="text-info">Title</label>
-          <input type="text" :value="article.title" class="form-control" />
+          <input type="text" v-model="title" class="form-control" />
         </div>
         <div>
           <label for="body" class="text-info">Body</label>
-          <textarea class="form-control" >{{ article.body }}</textarea>
+          <textarea v-model="body" class="form-control"></textarea>
         </div>
         <div>
-          <button class="btn btn-primary">Update</button>
+          <button class="btn btn-primary" @click="update(article.id)" >Update</button>
         </div>
       </div>
 
