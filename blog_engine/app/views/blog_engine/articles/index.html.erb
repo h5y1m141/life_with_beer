@@ -28,23 +28,39 @@
       <div v-show="articleSection" class="jumbotron">
         <div>
           <label for="id" class="text-info">ID</label>
-          <p>{{ article['id'] }}</p>
+          <p>{{ article.id }}</p>
         </div>
         <div>
           <label for="title" class="text-info">Title</label>
-          <p v-show="!edit">{{ article.title }}</p>
-          <input type="text" v-show="edit" :value="article.title" class="form-control" />
+          <p>{{ article.title }}</p>
         </div>
         <div>
           <label for="body" class="text-info">Body</label>
-          <p v-show="!edit">{{ article.body }}</p>
-          <textarea v-show="edit" class="form-control" >{{ article.body }}</textarea>
+          <p>{{ article.body }}</p>
         </div>
         <div>
-          <button v-show="!edit" class="btn btn-info" @click="edit = !edit">Edit</button>
-          <button v-show="edit" class="btn btn-primary">Update</button>
+          <button class="btn btn-info" @click="edit">Edit</button>
         </div>
       </div>
+
+      <div v-show="editArticleSection" class="jumbotron">
+        <div>
+          <label for="id" class="text-info">ID</label>
+          <p>{{ article.id }}</p>
+        </div>
+        <div>
+          <label for="title" class="text-info">Title</label>
+          <input type="text" :value="article.title" class="form-control" />
+        </div>
+        <div>
+          <label for="body" class="text-info">Body</label>
+          <textarea class="form-control" >{{ article.body }}</textarea>
+        </div>
+        <div>
+          <button class="btn btn-primary">Update</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
