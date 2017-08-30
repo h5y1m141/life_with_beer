@@ -10,7 +10,7 @@ window.onload = function() {
       title: '',
       body: '',
       articleSection: false,
-      article: [],
+      article: {},
       editArticleSection: false
     },
     beforeMount: function () {
