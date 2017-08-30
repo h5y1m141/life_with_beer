@@ -66,10 +66,16 @@ window.onload = function() {
           that.loading = !that.loading;
           if (that.title === response.title && that.body === response.body){
             that.message = '更新しました';
+            that.editArticleSection = false;
+            that.articles.filter(function(item, index){
+              if (item.id === articleId) {
+                that.articles[index].title = response.title;
+                that.articles[index].body = response.body;
+              }
+            });
           } else {
             that.message = '正しく更新できませんでした';
           }
-          that.editArticleSection = false;
         });
       }
     }
