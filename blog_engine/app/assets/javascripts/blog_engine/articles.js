@@ -7,6 +7,7 @@ window.onload = function() {
       newArticleSection: false,
       loading: false,
       message: '送信中です',
+      newArticle: [],
       title: '',
       body: '',
       articleSection: false,
@@ -24,18 +25,17 @@ window.onload = function() {
       create: function () {
         this.loading = !this.loading;
         var that = this,
-            data = { title: that.title, body: that.body };
+            data = { title: that.newArticle.title, body: that.newArticle.body };
         articleModel.create(data);
         articleModel.deferred.done(function(response) {
-          if (that.title === response.title && that.body === response.body){
+          if (that.newArticle.title === response.title && that.newArticle.body === response.body){
             that.message = '登録しました';
             that.articles.push({ id: response.id, title: response.title, body: response.body });
           } else {
             that.message = '正しく登録できませんでした';
           }
           that.newArticleSection = false;
-          that.title = '';
-          that.body = '';
+          that.newArticle = [];
         });
       },
       show: function (articleId) {
