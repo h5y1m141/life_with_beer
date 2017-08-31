@@ -10,7 +10,7 @@ window.onload = function() {
       title: '',
       body: '',
       articleSection: false,
-      article: {}
+      article: []
     },
     beforeMount: function () {
       var that = this;
@@ -43,8 +43,8 @@ window.onload = function() {
         if(that.articleSection) that.articleSection = false;
         articleModel.show(data);
         articleModel.deferred.done(function(response) {
-          that.article['title'] = response.article.title;
-          that.article['body'] = response.article.body;
+          that.article.title = response.article.title;
+          that.article.body = response.article.body;
           that.articleSection = true;
         });
       }
