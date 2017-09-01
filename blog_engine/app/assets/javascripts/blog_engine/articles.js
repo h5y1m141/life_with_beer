@@ -77,6 +77,14 @@ window.onload = function() {
             that.message = '正しく更新できませんでした';
           }
         });
+      },
+      destroy: function (articleId) {
+        var that = this,
+            data = { id: articleId };
+        articleModel.destroy(data);
+        articleModel.deferred.done(function(response) {
+          console.log(response);
+        });
       }
     }
   });

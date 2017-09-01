@@ -36,8 +36,13 @@ module BlogEngine
     end
 
     def destroy
-      @article.destroy
-      redirect_to articles_url, notice: 'Article was successfully destroyed.'
+      if @article.destroy
+        render json: { success: true }
+      else
+        render json: { success: false }
+      end
+      #@article.destroy
+      #redirect_to articles_url, notice: 'Article was successfully destroyed.'
     end
 
     private
