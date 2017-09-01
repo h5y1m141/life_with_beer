@@ -41,8 +41,6 @@ module BlogEngine
       else
         render json: { success: false }
       end
-      #@article.destroy
-      #redirect_to articles_url, notice: 'Article was successfully destroyed.'
     end
 
     private

@@ -83,7 +83,16 @@ window.onload = function() {
             data = { id: articleId };
         articleModel.destroy(data);
         articleModel.deferred.done(function(response) {
-          console.log(response);
+          that.loading = true;
+          if (response.success) {
+            that.message = '削除しました';
+            that.articles.filter(function(item, index){
+              if (item.id === articleId) that.articles.splice(index, 1);
+            });
+          } else {
+            that.message = '正しく削除できませんでした';
+          }
+          that.articleSection = false;
         });
       }
     }
