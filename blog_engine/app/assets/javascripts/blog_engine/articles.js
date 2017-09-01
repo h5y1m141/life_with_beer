@@ -39,6 +39,7 @@ window.onload = function() {
         });
       },
       show: function (articleId) {
+        this.loading = false;
         var that = this,
             data = { id: articleId };
         this.editArticleSection = false;
@@ -63,7 +64,7 @@ window.onload = function() {
             data = { id: articleId, title: that.title, body: that.body };
         articleModel.update(data);
         articleModel.deferred.done(function(response) {
-          that.loading = !that.loading;
+          that.loading = true;
           if (that.title === response.title && that.body === response.body){
             that.message = '更新しました';
             that.editArticleSection = false;
