@@ -21,7 +21,7 @@ module BlogEngine
     def create
       @article = Article.new(title: params[:title], body: params[:body])
       if @article.save
-        render action: :show, json: @article
+        render json: @article
       else
         render json: { title: nil, body: nil }
       end
@@ -29,7 +29,7 @@ module BlogEngine
 
     def update
       if @article.update(title: params[:title], body: params[:body])
-        render action: :show, json: @article
+        render json: @article
       else
         render json: { title: nil, body: nil }
       end
