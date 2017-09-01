@@ -23,7 +23,7 @@ window.onload = function() {
     },
     methods: {
       create: function () {
-        this.loading = !this.loading;
+        this.loading = true;
         var that = this,
             data = { title: that.newArticle.title, body: that.newArticle.body };
         articleModel.create(data);
@@ -39,6 +39,7 @@ window.onload = function() {
         });
       },
       show: function (articleId) {
+        this.loading = false;
         var that = this,
             data = { id: articleId };
         this.editArticleSection = false;
@@ -55,6 +56,7 @@ window.onload = function() {
         });
       },
       edit: function () {
+        this.loading = false;
         this.articleSection = false;
         this.editArticleSection = true;
       },
@@ -63,7 +65,7 @@ window.onload = function() {
             data = { id: articleId, title: that.title, body: that.body };
         articleModel.update(data);
         articleModel.deferred.done(function(response) {
-          that.loading = !that.loading;
+          that.loading = true;
           if (that.title === response.title && that.body === response.body){
             that.message = '更新しました';
             that.editArticleSection = false;
