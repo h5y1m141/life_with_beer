@@ -46,9 +46,7 @@ window.onload = function() {
         if(that.articleSection) that.articleSection = false;
         articleModel.show(data);
         articleModel.deferred.done(function(response) {
-          that.article.id = response.article.id;
-          that.article.title = response.article.title;
-          that.article.body = response.article.body;
+          that.article = response.article;
           that.articleSection = true;
           // Need to set for update method
           that.title = response.article.title;

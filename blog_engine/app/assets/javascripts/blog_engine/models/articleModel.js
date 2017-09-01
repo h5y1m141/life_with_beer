@@ -10,48 +10,47 @@ var ArticleModel = (function () {
     index : function () {
       var params = {
           url: this.baseURL + '/articles.json',
-          type: "GET",
-          action: "index"
+          type: 'GET',
+          action: 'index'
       };
       return this._request(params);
     },
     create : function (data) {
       var params = {
           url: this.baseURL + '/articles',
-          type: "POST",
-          data: { title: data['title'], body: data['body'] },
-          action: "create"
+          type: 'POST',
+          data: { title: data.title, body: data.body },
+          action: 'create'
       };
       return this._request(params);
     },
     show : function (data) {
       var params = {
-          url: this.baseURL + '/articles/' + data['id'] + '.json',
-          type: "GET",
+          url: this.baseURL + '/articles/' + data.id + '.json',
+          type: 'GET',
           data: data,
-          action: "show"
+          action: 'show'
       };
       return this._request(params);
     },
     update : function (data) {
       var params = {
-          url: this.baseURL + '/articles/' + data['id'],
-          type: "PATCH",
+          url: this.baseURL + '/articles/' + data.id,
+          type: 'PATCH',
           data: data,
-          action: "update"
+          action: 'update'
       };
       return this._request(params);
     },
     destroy : function (data) {
       var params = {
-          url: this.baseURL + '/articles/' + data['id'],
-          type: "DELETE",
+          url: this.baseURL + '/articles/' + data.id,
+          type: 'DELETE',
           data: data,
-          action: "destroy"
+          action: 'destroy'
       };
       return this._request(params);
     },
-
     _request : function (params) {
       this.deferred = $.ajax(params);
     }

@@ -19,7 +19,7 @@ module BlogEngine
     end
 
     def create
-      @article = Article.new(title: params[:title], body: params[:body])
+      @article = Article.new(article_params)
       if @article.save
         render json: @article
       else
@@ -28,7 +28,7 @@ module BlogEngine
     end
 
     def update
-      if @article.update(title: params[:title], body: params[:body])
+      if @article.update(article_params)
         render json: @article
       else
         render json: { title: nil, body: nil }
@@ -49,7 +49,7 @@ module BlogEngine
       end
 
       def article_params
-        params.require(:article).permit(:title, :body)
+        params.permit(:title, :body)
       end
   end
 end
