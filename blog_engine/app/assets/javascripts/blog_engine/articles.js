@@ -4,11 +4,13 @@ window.onload = function() {
     el: '#articles-view',
     data: {
       articles: [],
-      show: false,
+      newArticleSection: false,
       loading: false,
       message: '送信中です',
       title: '',
-      body: ''
+      body: '',
+      articleSection: false,
+      article: []
     },
     beforeMount: function () {
       var that = this;
@@ -30,9 +32,20 @@ window.onload = function() {
           } else {
             that.message = '正しく登録できませんでした';
           }
-          that.show = false;
+          that.newArticleSection = false;
           that.title = '';
           that.body = '';
+        });
+      },
+      show: function (articleId) {
+        var that = this,
+            data = { id: articleId };
+        if(that.articleSection) that.articleSection = false;
+        articleModel.show(data);
+        articleModel.deferred.done(function(response) {
+          that.article.title = response.article.title;
+          that.article.body = response.article.body;
+          that.articleSection = true;
         });
       }
     }

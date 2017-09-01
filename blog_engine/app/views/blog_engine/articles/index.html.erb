@@ -1,42 +1,65 @@
-<div id="articles-view" class="container">
+<div id="articles-view" class="container-fluid">
   <p id="notice"><%= notice %></p>
   <h1>Listing Articles</h1>
-  <table id="articles-list" class="table table-responsive">
-    <thead class="thead-inverse">
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Body</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <tr v-for="article in articles">
-        <td>{{ article.id }}</td>
-        <td>{{ article.title }}</td>
-        <td>{{ article.body }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="article in articles">
+            <td>{{ article.id }}</td>
+            <td>{{ article.title }}</td>
+            <td>{{ article.body }}</td>
+            <td><button @click="show(article.id)" class="btn btn-info">Show</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div>
-    <button @click="show=!show" class="btn btn-info">NewArticle</button>
-    <div v-cloak>
-      <div v-show="show">
+    <div class="col-xs-6 col-md-4">
+      <div v-show="articleSection" class="jumbotron">
         <div>
-          <label for="title">Title</label>
-          <input type="text" v-model="title" />
+          <label for="title" class="text-info">Title</label>
+          <p>{{ article.title }}</p>
         </div>
         <div>
-          <label for="body">Body</label>
-          <textarea v-model="body"></textarea>
+          <label for="body" class="text-info">Body</label>
+          <p>{{ article.body }}</p>
         </div>
         <div>
-          <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
+          <button class="btn btn-info">Edit</button>
         </div>
       </div>
-      <p v-show="loading">{{ message }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <button @click="newArticleSection=!newArticleSection" class="btn btn-info">New Article</button>
+      <div v-cloak>
+        <div v-show="newArticleSection" class="jumbotron">
+          <div>
+            <label for="title">Title</label>
+            <input type="text" v-model="title" class="form-control" />
+          </div>
+          <div>
+            <label for="body">Body</label>
+            <textarea v-model="body" class="form-control" ></textarea>
+          </div>
+          <div>
+            <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <p v-show="loading">{{ message }}</p>
+      </div>
     </div>
   </div>
 
