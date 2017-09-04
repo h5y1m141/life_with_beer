@@ -21,7 +21,7 @@ module BlogEngine
     def create
       @article = Article.new(article_params)
       if @article.save
-        render json: @article
+        render json: { id: @article.id, title: @article.title, body: @article.body }
       else
         render json: { title: nil, body: nil }
       end
@@ -29,7 +29,7 @@ module BlogEngine
 
     def update
       if @article.update(article_params)
-        render json: @article
+        render json: { id: @article.id, title: @article.title, body: @article.body }
       else
         render json: { title: nil, body: nil }
       end

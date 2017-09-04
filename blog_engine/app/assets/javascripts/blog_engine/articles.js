@@ -30,7 +30,7 @@ window.onload = function() {
         articleModel.deferred.done(function(response) {
           if (that.newArticle.title === response.title && that.newArticle.body === response.body){
             that.message = '登録しました';
-            that.articles.push({ id: response.id, title: response.title, body: response.body });
+            that.articles.push(response);
           } else {
             that.message = '正しく登録できませんでした';
           }
@@ -68,10 +68,7 @@ window.onload = function() {
             that.message = '更新しました';
             that.editArticleSection = false;
             that.articles.filter(function(item, index){
-              if (item.id === articleId) {
-                that.articles[index].title = response.title;
-                that.articles[index].body = response.body;
-              }
+              if (item.id === articleId) that.articles[index] = response;
             });
           } else {
             that.message = '正しく更新できませんでした';
