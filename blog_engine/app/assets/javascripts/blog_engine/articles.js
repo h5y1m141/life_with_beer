@@ -10,7 +10,8 @@ window.onload = function() {
       title: '',
       body: '',
       articleSection: false,
-      article: []
+      article: [],
+      editArticleSection: false
     },
     beforeMount: function () {
       var that = this;
@@ -40,13 +41,19 @@ window.onload = function() {
       show: function (articleId) {
         var that = this,
             data = { id: articleId };
+        this.editArticleSection = false;
         if(that.articleSection) that.articleSection = false;
         articleModel.show(data);
         articleModel.deferred.done(function(response) {
+          that.article.id = response.article.id;
           that.article.title = response.article.title;
           that.article.body = response.article.body;
           that.articleSection = true;
         });
+      },
+      edit: function () {
+        this.articleSection = false;
+        this.editArticleSection = true;
       }
     }
   });
