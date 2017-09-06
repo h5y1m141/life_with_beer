@@ -19,9 +19,9 @@ module BlogEngine
     end
 
     def create
-      @article = Article.new(title: params[:title], body: params[:body])
+      @article = Article.new(article_params)
       if @article.save
-        render action: :show, json: @article
+        render json: { id: @article.id, title: @article.title, body: @article.body }
       else
         render json: { title: nil, body: nil }
       end
@@ -29,15 +29,18 @@ module BlogEngine
 
     def update
       if @article.update(article_params)
-        redirect_to @article, notice: 'Article was successfully updated.'
+        render json: { id: @article.id, title: @article.title, body: @article.body }
       else
-        render :edit
+        render json: { title: nil, body: nil }
       end
     end
 
     def destroy
-      @article.destroy
-      redirect_to articles_url, notice: 'Article was successfully destroyed.'
+      if @article.destroy
+        render json: { success: true }
+      else
+        render json: { success: false }
+      end
     end
 
     private
@@ -46,7 +49,7 @@ module BlogEngine
       end
 
       def article_params
-        params.require(:article).permit(:title, :body)
+        params.permit(:title, :body)
       end
   end
 end

@@ -1,5 +1,5 @@
-<div id="articles-view" class="container-fluid">
-  <p id="notice"><%= notice %></p>
+<div id="articles-view" v-cloak class="container-fluid">
+  <p v-show="loading">{{ message }}</p>
   <h1>Listing Articles</h1>
 
   <div class="row">
@@ -40,6 +40,7 @@
         </div>
         <div>
           <button class="btn btn-info" @click="edit">Edit</button>
+          <button class="btn btn-warning" @click="destroy(article.id)">Delete</button>
         </div>
       </div>
 
@@ -50,14 +51,14 @@
         </div>
         <div>
           <label for="title" class="text-info">Title</label>
-          <input type="text" :value="article.title" class="form-control" />
+          <input type="text" v-model="title" class="form-control" />
         </div>
         <div>
           <label for="body" class="text-info">Body</label>
-          <textarea class="form-control" >{{ article.body }}</textarea>
+          <textarea v-model="body" class="form-control"></textarea>
         </div>
         <div>
-          <button class="btn btn-primary">Update</button>
+          <button class="btn btn-primary" @click="update(article.id)">Update</button>
         </div>
       </div>
 
@@ -71,17 +72,16 @@
         <div v-show="newArticleSection" class="jumbotron">
           <div>
             <label for="title">Title</label>
-            <input type="text" v-model="title" class="form-control" />
+            <input type="text" v-model="newArticle.title" class="form-control" />
           </div>
           <div>
             <label for="body">Body</label>
-            <textarea v-model="body" class="form-control" ></textarea>
+            <textarea v-model="newArticle.body" class="form-control" ></textarea>
           </div>
           <div>
             <button @click="create" :class="{ disabled: loading }" class="btn btn-primary">Submit</button>
           </div>
         </div>
-        <p v-show="loading">{{ message }}</p>
       </div>
     </div>
   </div>
