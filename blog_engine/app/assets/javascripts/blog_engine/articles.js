@@ -7,6 +7,7 @@ window.onload = function() {
       newArticleSection: false,
       loading: false,
       message: '送信中です',
+      newArticle: [],
       title: '',
       body: '',
       articleSection: false,
@@ -24,21 +25,21 @@ window.onload = function() {
       create: function () {
         this.loading = !this.loading;
         var that = this,
-            data = { title: that.title, body: that.body };
+            data = { title: that.newArticle.title, body: that.newArticle.body };
         articleModel.create(data);
         articleModel.deferred.done(function(response) {
-          if (that.title === response.title && that.body === response.body){
+          if (that.newArticle.title === response.title && that.newArticle.body === response.body){
             that.message = '登録しました';
             that.articles.push({ id: response.id, title: response.title, body: response.body });
           } else {
             that.message = '正しく登録できませんでした';
           }
           that.newArticleSection = false;
-          that.title = '';
-          that.body = '';
+          that.newArticle = [];
         });
       },
       show: function (articleId) {
+        this.loading = false;
         var that = this,
             data = { id: articleId };
         this.editArticleSection = false;
@@ -49,11 +50,34 @@ window.onload = function() {
           that.article.title = response.article.title;
           that.article.body = response.article.body;
           that.articleSection = true;
+          // Need to set for update method
+          that.title = response.article.title;
+          that.body = response.article.body;
         });
       },
       edit: function () {
         this.articleSection = false;
         this.editArticleSection = true;
+      },
+      update: function (articleId) {
+        var that = this,
+            data = { id: articleId, title: that.title, body: that.body };
+        articleModel.update(data);
+        articleModel.deferred.done(function(response) {
+          that.loading = true;
+          if (that.title === response.title && that.body === response.body){
+            that.message = '更新しました';
+            that.editArticleSection = false;
+            that.articles.filter(function(item, index){
+              if (item.id === articleId) {
+                that.articles[index].title = response.title;
+                that.articles[index].body = response.body;
+              }
+            });
+          } else {
+            that.message = '正しく更新できませんでした';
+          }
+        });
       }
     }
   });

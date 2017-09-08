@@ -28,10 +28,10 @@ module BlogEngine
     end
 
     def update
-      if @article.update(article_params)
-        redirect_to @article, notice: 'Article was successfully updated.'
+      if @article.update(title: params[:title], body: params[:body])
+        render action: :show, json: @article
       else
-        render :edit
+        render json: { title: nil, body: nil }
       end
     end
 
