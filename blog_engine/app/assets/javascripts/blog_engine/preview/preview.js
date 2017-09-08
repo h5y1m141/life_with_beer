@@ -10,10 +10,11 @@ $(function () {
     }
   });
 
-  var app = new Vue({
+  var articleView = new Vue({
     el: '#article-view',
     computed: {
       message () {
+        // console.log(marked('I am using __markdown__.'));
         return store.state.message;
       }
     },

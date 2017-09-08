@@ -18,4 +18,5 @@
 //= require blog_engine/vuex
 //= require blog_engine/models/articleModel
 //= require blog_engine/articles
+//= require blog_engine/preview/marked.min
 //= require blog_engine/preview/preview
