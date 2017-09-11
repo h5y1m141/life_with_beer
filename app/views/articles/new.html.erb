@@ -1,0 +1,33 @@
+<div id="app">
+  <h1>Shopping Cart Example</h1>
+  <hr>
+
+  <product-list :products="products" v-on:add-to-cart="addToCart"></product-list>
+  <hr>
+  <cart :carts="carts"></cart>
+</div>
+
+<script type="text/x-template" id="product-list-template">
+  <div>
+    <h2>Products</h2>  
+    <li v-for="p in products">
+      {{ p.title }} - {{ p.price }}
+      <button
+          @click="addToCart(p)">
+        Add to cart
+      </button>
+    </li>
+    </ul>
+  </div>
+</script>
+
+<script type="text/x-template" id="cart-template">
+ <div class="cart">
+ <h3>Your Cart</h3>
+ <ul>
+   <li v-for="cart in carts">
+     {{ cart.title }}
+ </ul>
+
+ </div>
+</script>
