@@ -1,5 +1,5 @@
 $(function () {
-  const store = new Vuex.Store({
+  var store = new Vuex.Store({
     state: {
       message: ''
     },
