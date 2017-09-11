@@ -40,9 +40,6 @@ module BlogEngine
       redirect_to articles_url, notice: 'Article was successfully destroyed.'
     end
 
-    def preview
-    end
-
     private
       def set_article
         @article = Article.find(params[:id])

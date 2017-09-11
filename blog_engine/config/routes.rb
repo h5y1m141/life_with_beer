@@ -1,4 +1,4 @@
 BlogEngine::Engine.routes.draw do
   resources :articles
-  get '/articles/preview/:id', to: 'articles#preview'
+  get 'preview/:id/edit', to: 'preview#edit'
 end
