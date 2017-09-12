@@ -3,7 +3,8 @@
 //= require twitter/bootstrap
 //= require tinyPubSub
 //= require namespace
-//= require_directory ./models
-//= require_directory ./views
-//= require_directory ./controllers
-//= require main
+//= require vue.min
+//= require vuex.min
+//= require components/product-list
+//= require components/cart
+//= require app

@@ -7,9 +7,14 @@ class ArticlesController < ApplicationController
     @articles = Article.published
   end
 
+
   def show
   end
 
+  def new
+    @article = Article.new
+  end
+  
   def preview
     @article = Article.find_by_preview_key(params[:preview_key])
     if(@article)

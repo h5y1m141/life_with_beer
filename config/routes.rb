@@ -9,7 +9,7 @@ Rails.application.routes.draw do
              )
   resources :items
   resources :users
-  resources :articles, only: [:index, :show]
+  resources :articles, only: [:index, :show, :new]
   resources :tags, only: [:index, :show]
   resources :beer_styles, only: [:index, :show]
   resources :areas, only: [:index, :show]
