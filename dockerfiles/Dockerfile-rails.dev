@@ -1,0 +1,17 @@
+FROM ruby:2.3.6
+
+ENV APP_HOME /myapp
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
+
+RUN apt-get update -qq && apt-get install -y git build-essential libpq-dev nodejs
+RUN gem install bundler
+RUN bundle config build.nokogiri --use-system-libraries
+
+# setup Rails
+ADD Gemfile $APP_HOME/
+ADD Gemfile.lock $APP_HOME/
+
+ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
+    BUNDLE_JOBS=4
+RUN bundle install
