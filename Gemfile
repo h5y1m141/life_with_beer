@@ -1,4 +1,4 @@
-ruby File.read(File.expand_path('../.ruby-version', __FILE__)).strip
+ruby '2.4.0'
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
@@ -73,8 +73,8 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'capybara-webkit'
+  # gem 'capybara'
+  # gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'fakeredis', require: 'fakeredis/rspec'
