@@ -1,9 +1,3 @@
-PATH
-  remote: blog_engine
-  specs:
-    blog_engine (0.0.1)
-      rails (~> 4.2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -379,7 +373,6 @@ DEPENDENCIES
   annotate
   awesome_print
   better_errors
-  blog_engine!
   byebug
   capistrano-bundler
   capistrano-rails
@@ -431,7 +424,7 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 RUBY VERSION
-   ruby 2.4.0p0
+   ruby 2.3.6p384
 
 BUNDLED WITH
    1.16.1
