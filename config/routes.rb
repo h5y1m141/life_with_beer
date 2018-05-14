@@ -1,7 +1,6 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/admin/sidekiq'
-  mount BlogEngine::Engine, at: '/blog'
   devise_for(:users,
              path: 'admin',
              path_names: {sign_in: 'home'},
