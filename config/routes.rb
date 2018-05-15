@@ -37,6 +37,9 @@ Rails.application.routes.draw do
       end
     end
   end
+  namespace :api, { format: :json } do
+    resources :places, only: [:index]
+  end
   root to: 'static_pages#index'
   get '/articles/preview/:preview_key', to: 'articles#preview'
 end
