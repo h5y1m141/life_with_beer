@@ -3,7 +3,7 @@ set :repo_url, 'git@github.com:h5y1m141/life_with_beer.git'
 
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :deploy_to, '/home/ops/life_with_beer'
+set :deploy_to, '/home/ec2-user/life_with_beer'
 set :scm, :git
 set :format, :pretty
 set :log_level, :debug
