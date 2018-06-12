@@ -1,7 +1,6 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/admin/sidekiq'
-  mount BlogEngine::Engine, at: '/blog'
   devise_for(:users,
              path: 'admin',
              path_names: {sign_in: 'home'},
@@ -37,6 +36,9 @@ Rails.application.routes.draw do
         post :places_belong_to_this_area
       end
     end
+  end
+  namespace :api, { format: :json } do
+    resources :places, only: [:index]
   end
   root to: 'static_pages#index'
   get '/articles/preview/:preview_key', to: 'articles#preview'

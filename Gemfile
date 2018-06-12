@@ -1,4 +1,4 @@
-ruby File.read(File.expand_path('../.ruby-version', __FILE__)).strip
+ruby '2.3.6'
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
@@ -31,16 +31,12 @@ gem 'sidetiq'
 gem 'celluloid', '0.16.0'
 gem 'ice_cube'
 
-# Mountable Engine
-gem 'blog_engine', path: 'blog_engine'
-
 # other
 gem 'settingslogic'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'seed-fu', '~> 2.3'
 gem 'devise', '~> 3.5'
-gem 'sitemap_generator'
 gem 'jp_prefecture'
 gem 'sprockets-rails', '~> 2.0' # https://github.com/modeset/teaspoon/issues/443
 gem 'pr_geohash'
@@ -73,8 +69,8 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'capybara-webkit'
+  # gem 'capybara'
+  # gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'fakeredis', require: 'fakeredis/rspec'

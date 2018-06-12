@@ -1,5 +1,10 @@
 set :stage, :production
-set :branch, 'master'
-role :web, %w{160.16.208.241}
-server '160.16.208.241', user: 'ops', roles: %w{web}
+set :branch, 'develop'
+set :ssh_options, {
+  user: 'ec2-user',
+  keys: %w(~/.ssh/oyamada-private-aws.pem),
+  auth_methods: %w(publickey)
+}
+role :web, %w{ec2-13-230-82-108.ap-northeast-1.compute.amazonaws.com}
+server '13.230.82.108', user: 'ec2-user', roles: %w{web}
 fetch(:default_env).merge!(rails_env: :production)
