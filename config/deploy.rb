@@ -10,7 +10,7 @@ set :log_level, :debug
 set :pty, true
 
 # sharedへsymlinkを貼るものを指定
-set :linked_files, %w{config/database.yml}
+# set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{public/uploads vendor/bundle}
 
 SSHKit.config.command_map[:rake]  = "bundle exec rake"

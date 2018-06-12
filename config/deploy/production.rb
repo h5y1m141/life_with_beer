@@ -1,6 +1,7 @@
 set :stage, :production
-set :branch, 'master'
+set :branch, 'develop'
 set :ssh_options, {
+  user: 'ec2-user',
   keys: %w(~/.ssh/oyamada-private-aws.pem),
   auth_methods: %w(publickey)
 }
