@@ -30,6 +30,9 @@ jobs:
       - run:
           name: revise locale setting
           command: sudo locale-gen ja_JP.UTF-8
+      - run:
+          name: Copy database yml
+          command: cp config/database.yml.sample config/database.yml
       - restore_cache:
           keys:
             - pokeme-rails-bundle-v2-{{ checksum "Gemfile.lock" }}
