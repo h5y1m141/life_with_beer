@@ -1,8 +1,0 @@
-machine:
-  timezone:
-    Asia/Tokyo
-  services:
-    - elasticsearch
-test:
-  pre:
-    - bundle exec rspec spec
