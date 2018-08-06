@@ -1,17 +1,23 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: life_with_beer_development
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
 test:
   <<: *default
   database: life_with_beer_test
+  host: 127.0.0.1
+  port: 3306
+  username: <%= ENV['DB_USERNAME'] || 'root' %>
+  password: <%= ENV['DB_PASSWORD'] || 'password' %>
+  pool: 5
+  timeout: 5000
 production:
   <<: *default
   database: life_with_beer_production

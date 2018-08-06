@@ -1,0 +1,77 @@
+version: 2
+
+references:
+  container_config: &container_config
+    working_directory: ~/life_with_beer
+    environment:
+      TZ: /usr/share/zoneinfo/Asia/Tokyo
+    docker:
+      - image: circleci/ruby:2.3.6-node
+        environment:
+          BUNDLE_JOBS: 2
+          BUNDLE_RETRY: 2
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USER: root
+          DB_PASSWORD: 'password'
+          REDIS_HOST: 127.0.0.1
+          REDIS_URL: redis://localhost:6379
+      - image: circleci/mysql:5.6
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+      - image: redis
+      - image: elasticsearch
+
+jobs:
+  rspec:
+    parallelism: 1
+    <<: *container_config
+    steps:
+      - checkout
+      - run:
+          name: revise locale setting
+          command: sudo locale-gen ja_JP.UTF-8
+      - run:
+          name: Copy database yml
+          command: cp config/database.yml.sample config/database.yml
+      - restore_cache:
+          keys:
+            - pokeme-rails-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - pokeme-rails-bundle-v2-
+      - run:
+          name: Bundle install
+          command: bundle install
+      - save_cache:
+          name: Saving Cache - Bundler
+          key: pokeme-rails-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths: vendor/bundle
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
+          name: Wait for Redis
+          command: dockerize -wait tcp://localhost:6379 -timeout 1m
+      - run:
+          name: Wait for ES
+          command: dockerize -wait tcp://localhost:9200 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rake db:create RAILS_ENV=test; bundle exec rake db:schema:load RAILS_ENV=test
+      - run:
+          name: RSpec in parallel
+          command: |
+            bundle exec rspec --profile 10 \
+            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          no_output_timeout: 15m
+  deploy:
+    <<: *container_config
+    steps:
+      - checkout
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - rspec
