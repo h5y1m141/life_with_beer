@@ -18,6 +18,9 @@ references:
           REDIS_HOST: 127.0.0.1
           REDIS_URL: redis://localhost:6379
       - image: circleci/mysql:5.6
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
       - image: redis
       - image: elasticsearch
 
