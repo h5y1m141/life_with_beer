@@ -2,8 +2,8 @@ require 'elasticsearch/model'
 
 class Place < ActiveRecord::Base
   include JpPrefecture
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  # include Elasticsearch::Model
+  # include Elasticsearch::Model::Callbacks
   include GeoModule
   after_create :generate_geohash  
   jp_prefecture :prefecture_id
