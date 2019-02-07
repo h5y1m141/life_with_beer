@@ -2,7 +2,7 @@ require_dependency "blog_engine/application_controller"
 
 module BlogEngine
   class ArticlesController < ApplicationController
-    before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :set_article, only: [:show, :edit, :update, :destroy, :preview]
 
     def index
       @articles = Article.all

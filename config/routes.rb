@@ -1,5 +1,8 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  namespace :blog_engine do
+  end
+
   mount Sidekiq::Web, at: '/admin/sidekiq'
   devise_for(:users,
              path: 'admin',
@@ -41,5 +44,4 @@ Rails.application.routes.draw do
     resources :places, only: [:index]
   end
   root to: 'static_pages#index'
-  get '/articles/preview/:preview_key', to: 'articles#preview'
 end

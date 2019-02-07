@@ -1,0 +1,9 @@
+<div id="article-view" v-cloak class="container-fluid">
+  <div>
+    <div>
+      <textarea v-model="message" :value="message" @input="updateMessage" /></textarea>
+    </div>
+  </div>
+
+  <div>{{ message }}</div>
+</div>
